@@ -1435,9 +1435,9 @@ function getCurrentTheme(){
 function loadTheme(theme){
   const root = document.querySelector(':root');
   if(theme === "light"){
-    themeBtn.innerHTML = `<i class="ph-bold ph-moon-stars"></i>`;
+    themeBtn.innerHTML = `<i class="ph-fill ph-moon"></i>`;
   } else {
-    themeBtn.innerHTML = `<i class="ph-bold ph-sun-horizon"></i>`;
+    themeBtn.innerHTML = `<i class="ph-fill ph-sun"></i>`;
   }
   root.setAttribute('color-scheme', `${theme}`);
 };
