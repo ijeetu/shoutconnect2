@@ -107,6 +107,12 @@
   --bg-demo-screen-07--dark: url(../img/demo/screens/07-d.webp);
   --bg-demo-screen-08--dark: url(../img/demo/screens/08-d.webp);
   --bg-demo-screen-09--dark: url(../img/demo/screens/09-d.webp);
+  --body-bg-image--light: url(../img/backgrounds/bg_light.webp);
+  --body-bg-image--dark: url(../img/backgrounds/bg_dark.webp);
+  --body-bg-color--light: var(--base--light);
+  --body-bg-color--dark: #050608;
+  --body-bg-image: var(--body-bg-image--light);
+  --body-bg-color: var(--body-bg-color--light);
   /* permanent colors */
   --pt-base: #FFFFFF;
   --pt-base-dark: #161616;
@@ -147,6 +153,8 @@
     --additional: var(--additional--light);
     --additional-rgb: var(--additional-rgb--light);
     --neutral-transparent: var(--neutral-transparent--light);
+    --body-bg-color: var(--body-bg-color--light);
+    --body-bg-image: var(--body-bg-image--light);
     --st-bright: var(--st-bright--light);
     --st-medium: var(--st-medium--light);
     --st-muted: var(--st-muted--light);
@@ -188,6 +196,8 @@
     --additional: var(--additional--dark);
     --additional-rgb: var(--additional-rgb--dark);
     --neutral-transparent: var(--neutral-transparent--dark);
+    --body-bg-color: var(--body-bg-color--dark);
+    --body-bg-image: var(--body-bg-image--dark);
     --st-bright: var(--st-bright--dark);
     --st-medium: var(--st-medium--dark);
     --fw-semibold: var(--fw-semibold--dark);
@@ -228,6 +238,8 @@
   --additional: var(--additional--light);
   --additional-rgb: var(--additional-rgb--light);
   --neutral-transparent: var(--neutral-transparent--light);
+  --body-bg-color: var(--body-bg-color--light);
+  --body-bg-image: var(--body-bg-image--light);
   --st-bright: var(--st-bright--light);
   --st-medium: var(--st-medium--light);
   --st-muted: var(--st-muted--light);
@@ -268,6 +280,8 @@
   --additional: var(--additional--dark);
   --additional-rgb: var(--additional-rgb--dark);
   --neutral-transparent: var(--neutral-transparent--dark);
+  --body-bg-color: var(--body-bg-color--dark);
+  --body-bg-image: var(--body-bg-image--dark);
   --st-bright: var(--st-bright--dark);
   --st-medium: var(--st-medium--dark);
   --st-muted: var(--st-muted--dark);

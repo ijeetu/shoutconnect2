@@ -61,7 +61,12 @@ body
   overflow-x: unset !important
   font: normal 400 var(--_size)/1.6 var(--_font-default)
   text-rendering: optimizeLegibility
-  background-color: var(--base)
+  background-color: var(--body-bg-color, var(--base))
+  background-image: var(--body-bg-image)
+  background-repeat: no-repeat
+  background-size: cover
+  background-position: center
+  background-attachment: fixed
   color: var(--t-medium)
   +font-smoothing
 
