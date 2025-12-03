@@ -393,135 +393,139 @@
 /* Template Backgrounds Start */
 /* ------------------------------------------------*/
 .about-image-1 {
-  background-image: url(https://dummyimage.com/1400x1000/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .divider-image-1 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project1.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  -moz-background-size: cover;
+       background-size: cover;
 }
 
 .divider-image-2 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .divider-image-3 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Swiss.webp);
 }
 
 .divider-image-4 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Mockup.webp);
 }
 
 .divider-image-5 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/ReasonToSelectUs.webp);
 }
 
 .divider-image-6 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/freeaudit.webp);
 }
 
 .divider-image-7 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/4.webp);
 }
 
 .divider-image-8 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .divider-image-9 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .divider-image-10 {
-  background-image: url(https://dummyimage.com/1920x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/ReasonToSelectUs.webp);
 }
 
 .mxd-promo__bg {
-  background-image: url(https://dummyimage.com/1400x900/838383/5d5d5d);
+  background-image: url(../img/mockup/Mockup.webp);
 }
 
 .preview-image-1 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/Project1.webp);
 }
 
 .preview-image-2 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .preview-image-3 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .preview-image-4 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/Swiss.webp);
 }
 
 .preview-image-5 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/ReasonToSelectUs.webp);
 }
 
 .preview-image-6 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/Mockup.webp);
 }
 
 .preview-image-7 {
-  background-image: url(https://dummyimage.com/1400x1400/5d5d5d/838383);
+  background-image: url(../img/mockup/freeaudit.webp);
 }
 
 .blog-preview-image-1 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/mockup/Project1.webp);
 }
 
 .blog-preview-image-2 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .blog-preview-image-3 {
-  background-image: url(https://dummyimage.com/1000x1250/5d5d5d/838383);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .headline-img-01::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project1.webp);
 }
 
 .headline-img-02::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .headline-img-03::after {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .headline-img-04::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/Swiss.webp);
 }
 
 .headline-img-05::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/ReasonToSelectUs.webp);
 }
 
 .headline-img-06::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/freeaudit.webp);
 }
 
 .headline-img-07::before {
-  background-image: url(https://dummyimage.com/400x200/5d5d5d/838383);
+  background-image: url(../img/mockup/Mockup.webp);
 }
 
 .image-values-1 {
-  background-image: url(https://dummyimage.com/1200x1600/5d5d5d/838383);
+  background-image: url(../img/mockup/Project1.webp);
 }
 
 .image-values-2 {
-  background-image: url(https://dummyimage.com/1600x1200/5d5d5d/838383);
+  background-image: url(../img/mockup/Project2.webp);
 }
 
 .prj-details-img-01 {
-  background-image: url(https://dummyimage.com/1920x1200/414141/636363);
+  background-image: url(../img/mockup/Project3.webp);
 }
 
 .prj-details-img-02 {
-  background-image: url(https://dummyimage.com/1920x1200/414141/636363);
+  background-image: url(../img/mockup/Swiss.webp);
 }
 
 /* ------------------------------------------------*/
@@ -3424,6 +3428,16 @@ p.t-semibold {
   color: var(--t-opp-bright);
 }
 
+@media (prefers-color-scheme: dark) {
+  .btn-accent,
+  .tag-accent,
+  .footer-nav__counter,
+  .footer-nav__counter span,
+  .mxd-hero-00__marquee .marquee__item.item-regular,
+  .mxd-hero-00__marquee .marquee__item.item-regular p {
+    color: #fff;
+  }
+}
 .tag-additional {
   background-color: var(--additional);
   border-style: solid;
@@ -5050,29 +5064,29 @@ form textarea:required:valid {
   position: relative;
   display: block;
   margin-bottom: 1.4rem;
-  height: 460px;
+  height: 340px;
 }
 @media only screen and (min-width: 768px) {
   .mxd-project-item__media {
-    height: 600px;
+    height: 450px;
     margin-bottom: 2.3rem;
   }
 }
 @media only screen and (min-width: 1200px) {
   .mxd-project-item__media {
-    height: 760px;
+    height: 580px;
   }
 }
 @media only screen and (min-width: 1600px) {
   .mxd-project-item__media {
-    height: 930px;
+    height: 700px;
   }
 }
 
 .mxd-project-item__preview {
   position: relative;
   width: 100%;
-  height: 460px;
+  height: 340px;
   -moz-border-radius: var(--_radius-l);
        border-radius: var(--_radius-l);
   overflow: hidden;
@@ -5097,17 +5111,17 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 768px) {
   .mxd-project-item__preview {
-    height: 600px;
+    height: 450px;
   }
 }
 @media only screen and (min-width: 1200px) {
   .mxd-project-item__preview {
-    height: 760px;
+    height: 580px;
   }
 }
 @media only screen and (min-width: 1600px) {
   .mxd-project-item__preview {
-    height: 930px;
+    height: 700px;
   }
 }
 
@@ -5802,7 +5816,7 @@ form textarea:required:valid {
         -ms-flex-direction: row;
             flex-direction: row;
     overflow: hidden;
-    padding-top: 0;
+    padding-top: 13vh;
     padding-bottom: 9.7rem;
   }
 }
@@ -5822,7 +5836,7 @@ form textarea:required:valid {
   .mxd-menu__left {
     width: 50%;
     height: 100%;
-    padding: 4rem 4rem 0 4rem;
+    padding: 6rem 4rem 0 4rem;
     overflow-y: scroll;
     overscroll-behavior-y: contain;
     scrollbar-width: none;
@@ -5836,8 +5850,8 @@ form textarea:required:valid {
 }
 @media only screen and (min-width: 1600px) {
   .mxd-menu__left {
-    padding-top: 6rem;
-    padding: 6rem 7rem 0 7rem;
+    padding-top: 7rem;
+    padding: 7rem 7rem 0 7rem;
   }
 }
 
@@ -9594,7 +9608,7 @@ form textarea:required:valid {
      -moz-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.24em 0.48em;
+  padding: 0.18em 0.34em;
   -moz-border-radius: 0.8rem;
        border-radius: 0.8rem;
   background-color: var(--accent);
@@ -17064,6 +17078,24 @@ form textarea:required:valid {
             align-items: flex-end;
   }
 }
+@media (prefers-color-scheme: dark) {
+  .mxd-stats-cards__inner.bg-accent {
+    color: #fff;
+  }
+  .mxd-stats-cards__inner.bg-accent .mxd-counter__number,
+  .mxd-stats-cards__inner.bg-accent .mxd-counter__descr,
+  .mxd-stats-cards__inner.bg-accent .btn,
+  .mxd-stats-cards__inner.bg-accent .btn .btn-caption,
+  .mxd-stats-cards__inner.bg-accent .btn i::before {
+    color: #fff;
+  }
+  .mxd-stats-cards__inner.bg-accent .btn.btn-outline {
+    border-color: #fff;
+  }
+  .mxd-stats-cards__inner.bg-accent .btn.btn-outline i::before {
+    color: #fff;
+  }
+}
 
 .mxd-stats-cards__btngroup {
   z-index: 1;
@@ -18575,6 +18607,22 @@ form textarea:required:valid {
             justify-content: space-between;
   }
 }
+@media (prefers-color-scheme: dark) {
+  .mxd-services-stack__inner.bg-accent {
+    color: #fff;
+  }
+  .mxd-services-stack__inner.bg-accent h3, .mxd-services-stack__inner.bg-accent p {
+    color: #fff;
+  }
+  .mxd-services-stack__inner.bg-accent .btn {
+    color: #fff;
+    border-color: #fff;
+    background-color: transparent;
+  }
+  .mxd-services-stack__inner.bg-accent .btn i::before {
+    color: #fff;
+  }
+}
 
 .mxd-services-stack__container {
   position: relative;
@@ -18870,10 +18918,13 @@ form textarea:required:valid {
   }
   .services-stack__image .service-img {
     position: absolute;
-    right: -15%;
-    bottom: 0;
+    top: 0;
+    right: -5%;
+    width: 60%;
     height: 100%;
-    width: auto;
+    max-height: none;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
   .services-stack__image .service-img-s {
     display: none;
@@ -18885,12 +18936,25 @@ form textarea:required:valid {
 @media only screen and (min-width: 1200px) {
   .services-stack__image .service-img {
     position: absolute;
-    right: 0;
-    bottom: -5%;
+    top: 0;
+    right: -5%;
+    width: 60%;
+    height: 100%;
     max-height: none;
-    height: 110%;
-    width: auto;
+    -o-object-fit: cover;
+       object-fit: cover;
   }
+}
+
+.service-card--annual .services-stack__image .service-img {
+  right: -5% !important;
+  bottom: auto !important;
+  top: 0 !important;
+  width: 60% !important;
+  height: 100% !important;
+  max-height: none !important;
+  -o-object-fit: cover !important;
+     object-fit: cover !important;
 }
 
 .portfolio-stack__inner {

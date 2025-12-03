@@ -25,6 +25,20 @@
     gap: 0
     &.align-end
       align-items: flex-end
+  @media (prefers-color-scheme: dark)
+    &.bg-accent
+      color: #fff
+      .mxd-counter__number,
+      .mxd-counter__descr,
+      .btn,
+      .btn .btn-caption,
+      .btn i::before
+        color: #fff
+      .btn.btn-outline
+        border-color: #fff
+        i
+          &::before
+            color: #fff
 
 .mxd-stats-cards__btngroup
   z-index: 1

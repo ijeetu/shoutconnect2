@@ -73,6 +73,18 @@
       justify-content: flex-end
     &.justify-between
       justify-content: space-between
+  @media (prefers-color-scheme: dark)
+    &.bg-accent
+      color: #fff
+      h3, p
+        color: #fff
+      .btn
+        color: #fff
+        border-color: #fff
+        background-color: transparent
+        i
+          &::before
+            color: #fff
 
 .mxd-services-stack__container
   position: relative
@@ -234,20 +246,34 @@
     z-index: 0
     padding-left: 0
     .service-img
-      +position(absolute, null -15% 0 null)
+      +position(absolute, 0 -5% null null)
+      width: 60%
       height: 100%
-      width: auto
+      max-height: none
+      object-fit: cover
     .service-img-s
       display: none
     .service-img-m
       display: block
   +MQ(XL)
     .service-img
-      +position(absolute, null 0 -5% null)
+      +position(absolute, 0 -5% null null)
+      width: 60%
+      height: 100%
       max-height: none
-      height: 110%
-      width: auto
+      object-fit: cover
 
+// annual reports card - force image fill
+.service-card--annual
+  .services-stack__image
+    .service-img
+      right: -5% !important
+      bottom: auto !important
+      top: 0 !important
+      width: 60% !important
+      height: 100% !important
+      max-height: none !important
+      object-fit: cover !important
 .portfolio-stack__inner
   position: relative
   display: flex
