@@ -17,10 +17,6 @@
   margin-top: -2px
   &:first-of-type
     margin-top: 0
-  .no-touch &:hover
-    .mxd-approach-list__image
-      img
-        animation-play-state: running
 
 .mxd-approach-list__border
   position: relative
@@ -42,8 +38,7 @@
   img
     display: block
     position: relative
-    animation: spin 5s linear infinite
-    animation-play-state: paused
+    animation: none
   +MQ(XL)
     margin-bottom: 0
 
@@ -55,3 +50,6 @@
     text-align: right
 
 .mxd-approach-list__descr
+  padding-right: 3rem
+  +MQ(XL)
+    padding-right: 0
