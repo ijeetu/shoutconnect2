@@ -68,6 +68,20 @@ const imgLoad = imagesLoaded(content);
 const loadingWrap = document.querySelector('.loading-wrap');
 const loadingItems = loadingWrap.querySelectorAll('.loading__item');
 const fadeInItems = document.querySelectorAll('.loading__fade');
+const deferredVideos = document.querySelectorAll('.menu-video, .mxd-hero-05-videoblock__video video');
+
+deferredVideos.forEach((video) => video.pause());
+
+// Pause key videos until loader finishes, then trigger playback.
+function playDeferredVideos() {
+  deferredVideos.forEach((video) => {
+    video.pause();
+    const playPromise = video.play();
+    if (playPromise && playPromise.catch) {
+      playPromise.catch(() => {});
+    }
+  });
+}
 
 function startLoader() {
   let counterElement = document.querySelector(".loader__count .count__text");
@@ -95,6 +109,7 @@ function hideLoader() {
   gsap.to(".loader__wrapper", { duration: 0.8, ease: 'power4.in', y: "-100%", delay: 2.2 });
   setTimeout(() => {
     document.getElementById("loader").classList.add("loaded");
+    playDeferredVideos();
   }, 3200);
 }
 

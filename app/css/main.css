@@ -18965,12 +18965,6 @@ form textarea:required:valid {
     border-color: #fff;
   }
 }
-@media (prefers-color-scheme: dark) {
-  .mxd-services-stack__inner.bg-accent .mxd-services-cards__tags .tag-default {
-    color: #fff;
-    border-color: #fff;
-  }
-}
 
 .service-card--annual .services-stack__image .service-img {
   right: -5% !important;
