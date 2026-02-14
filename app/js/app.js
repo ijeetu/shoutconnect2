@@ -69,6 +69,13 @@ const loadingWrap = document.querySelector('.loading-wrap');
 const loadingItems = loadingWrap.querySelectorAll('.loading__item');
 const fadeInItems = document.querySelectorAll('.loading__fade');
 const deferredVideos = document.querySelectorAll('.menu-video, .mxd-hero-05-videoblock__video video');
+const loaderTypedTarget = document.getElementById('loader-typed');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+let lenisInstance = null;
+let loaderTypedInstance = null;
+let loaderTypingDone = false;
+let loaderImagesDone = false;
 
 deferredVideos.forEach((video) => video.pause());
 
@@ -83,25 +90,57 @@ function playDeferredVideos() {
   });
 }
 
-function startLoader() {
-  let counterElement = document.querySelector(".loader__count .count__text");
-  let currentValue = 0;
-  function updateCounter() {
-    if (currentValue < 100) {
-      let increment = Math.floor(Math.random() * 10) + 1;
-      currentValue = Math.min(currentValue + increment, 100);
-      counterElement.textContent = currentValue;
-      let delay = Math.floor(Math.random() * 120) + 25;
-      setTimeout(updateCounter, delay);
-    }
+function startSequenceWhenReady() {
+  if (loaderTypingDone && loaderImagesDone) {
+    hideLoader();
+    pageAppearance();
   }
-  updateCounter();
+}
+
+function markLoaderTypingDone() {
+  if (loaderTypingDone) {
+    return;
+  }
+  loaderTypingDone = true;
+  startSequenceWhenReady();
+}
+
+function markLoaderImagesDone() {
+  if (loaderImagesDone) {
+    return;
+  }
+  loaderImagesDone = true;
+  startSequenceWhenReady();
+}
+
+function startLoader() {
+  if (loaderTypedTarget && window.Typed) {
+    loaderTypedTarget.innerHTML = "";
+    loaderTypedInstance = new Typed("#loader-typed", {
+      strings: ["Conceptualisation<br>Creators<br>Communicators"],
+      typeSpeed: 56,
+      backSpeed: 0,
+      startDelay: 140,
+      showCursor: false,
+      cursorChar: "|",
+      loop: false,
+      contentType: "html",
+      onComplete: () => {
+        setTimeout(markLoaderTypingDone, 260);
+      }
+    });
+    setTimeout(markLoaderTypingDone, 5200);
+  } else if (loaderTypedTarget) {
+    loaderTypedTarget.innerHTML = "Conceptualisation<br>Creators<br>Communicators";
+    setTimeout(markLoaderTypingDone, 1200);
+  } else {
+    setTimeout(markLoaderTypingDone, 800);
+  }
 }
 startLoader();
 
 imgLoad.on('done', instance => {
-  hideLoader();
-  pageAppearance();
+  markLoaderImagesDone();
 });
 
 function hideLoader() {
@@ -114,6 +153,23 @@ function hideLoader() {
 }
 
 function pageAppearance() {
+  const heroSection = document.querySelector('.hero-news.mxd-hero-section');
+
+  if (heroSection) {
+    if (prefersReducedMotion) {
+      gsap.set(heroSection, { autoAlpha: 1, scale: 1 });
+    } else {
+      gsap.set(heroSection, { autoAlpha: 0, scale: 1.025, transformOrigin: "50% 50%" });
+      gsap.to(heroSection, {
+        duration: 1.35,
+        ease: 'power2.out',
+        autoAlpha: 1,
+        scale: 1,
+        delay: 0.1
+      });
+    }
+  }
+
   gsap.set(loadingItems, { opacity: 0 })
   gsap.to(loadingItems, { 
     duration: 1.1,
@@ -121,12 +177,13 @@ function pageAppearance() {
     startAt: {y: 120},
     y: 0,
     opacity: 1,
-    delay: 0.8,
+    delay: 0.2,
     stagger: 0.08
   }, '>-=1.1');
   gsap.set(fadeInItems, { opacity: 0 });
-  gsap.to(fadeInItems, { duration: 0.8, ease: 'none', opacity: 1, delay: 3.2 });
+  gsap.to(fadeInItems, { duration: 0.8, ease: 'none', opacity: 1, delay: 0.25 });
 }
+
 // --------------------------------------------- //
 // Loader & Loading Animation End
 // --------------------------------------------- //
@@ -135,6 +192,7 @@ function pageAppearance() {
 // Lenis Scroll Plugin Start
 // --------------------------------------------- //
 const lenis = new Lenis();
+lenisInstance = lenis;
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000)
@@ -455,12 +513,18 @@ $(function() {
     tl.set(menuWrapEl, { display: "flex" });
     tl.from(menuBaseEl, { 
       opacity: 0,
-      duration: flipDuration,
-      ease: "none",
+      duration: 0.75,
+      ease: "power2.inOut",
       onStart: () => {
         flip(true);
       }
-    });
+    }, 0);
+    tl.from(menuContainEl, {
+      opacity: 0,
+      yPercent: 2,
+      duration: 0.55,
+      ease: "power2.out"
+    }, 0.08);
     tl.to(navLineEl.eq(0), { y: 5, duration: 0.16 }, "<")
     tl.to(navLineEl.eq(1), { y: -5, duration: 0.16 }, "<")
     tl.to(navLineEl.eq(0), { rotate: 45, duration: 0.16 }, 0.2)
@@ -1439,38 +1503,17 @@ SVGInjector(mySVGsToInject, injectorOptions, function (totalSVGsInjected) {
 // --------------------------------------------- //
 
 // --------------------------------------------- //
-// Color Switch Start
+// Light Theme Lock Start
 // --------------------------------------------- //
-const themeBtn = document.querySelector('#color-switcher');
-function getCurrentTheme(){
-  let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  localStorage.getItem('template.theme') ? theme = localStorage.getItem('template.theme') : null;
-  return theme;
+function applyLightTheme() {
+  const root = document.documentElement;
+  root.setAttribute('color-scheme', 'light');
+  localStorage.setItem('template.theme', 'light');
 }
-function loadTheme(theme){
-  const root = document.querySelector(':root');
-  if(theme === "light"){
-    themeBtn.innerHTML = `<i class="ph-fill ph-moon"></i>`;
-  } else {
-    themeBtn.innerHTML = `<i class="ph-fill ph-sun"></i>`;
-  }
-  root.setAttribute('color-scheme', `${theme}`);
-};
-themeBtn.addEventListener('click', () => {
-  let theme = getCurrentTheme();
-  if(theme === 'dark'){
-    theme = 'light';
-  } else {
-    theme = 'dark';
-  }
-  localStorage.setItem('template.theme', `${theme}`);
-  loadTheme(theme);
-});
-window.addEventListener('DOMContentLoaded', () => {
-  loadTheme(getCurrentTheme());
-});
+applyLightTheme();
+window.addEventListener('DOMContentLoaded', applyLightTheme);
 // --------------------------------------------- //
-// Color Switch End
+// Light Theme Lock End
 // --------------------------------------------- //
 
 // --------------------------------------------- //

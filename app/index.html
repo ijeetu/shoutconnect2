@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" color-scheme="light">
 
   <head>
     <meta charset="UTF-8">
@@ -33,17 +33,17 @@
     <!-- Facebook Metadata End -->
 
     <!-- Template Styles Start -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
     <link rel="stylesheet" type="text/css" href="css/plugins.css">
-    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css?v=20260214-54">
     <!-- Template Styles End -->
 
     <!-- Custom Browser Color Start -->
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#FAF7F6">
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#161616">
-    <meta name="msapplication-navbutton-color" content="#161616">
+    <meta name="msapplication-navbutton-color" content="#FAF7F6">
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <!-- Custom Browser Color End -->
     
   </head>
@@ -55,8 +55,8 @@
       <div class="loader__wrapper">
         <div class="loader__content">
           <div class="loader__count">
-            <span class="count__text">0</span>
-            <span class="count__percent">%</span>
+            <span class="count__lead">We are...</span>
+            <span class="count__text" id="loader-typed" aria-live="polite"></span>
           </div>
         </div>
       </div>
@@ -167,10 +167,9 @@
       </div>
       <!-- header controls -->
       <div class="mxd-header__controls loading__fade">
-        <button id="color-switcher" class="mxd-color-switcher" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
-        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up" href="#">
-          <span class="btn-caption">Say Hello</span>
-          <i class="ph-bold ph-arrow-up-right"></i>
+        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up header-intro-btn" href="#">
+          <span class="btn-caption">PLAY INTRO</span>
+          <i class="ph-bold ph-play"></i>
         </a>
       </div>
     </header>
@@ -180,103 +179,88 @@
     <main id="mxd-page-content" class="mxd-page-content">
 
       <!-- Hero Section Start -->
-      <div class="mxd-section mxd-hero-section padding-grid-pre-mtext">
-        <div class="mxd-hero-05">
-          <div class="mxd-hero-05__wrap loading-wrap">
-            <div class="mxd-hero-05__top">
-              <div class="mxd-hero-05__headline">
-                <div class="container-fluid p-0">
-                    <div class="row g-0 d-flex flex-column flex-xl-row">
-                    <div class="col-12 mxd-grid-item no-margin">
-                      <!-- title text -->
-                      <h1 class="hero-05-title">
-                        <span class="hero-05-title__row hero-05-title__row--nowrap loading__item">
-                          <em class="hero-05-title__item">Business Grows On Trust.</em>
-                        </span>
-                        <span class="hero-05-title__row hero-05-title__row--nowrap hero-05-title__row--secondary loading__item">
-                          <em class="hero-05-title__item hero-05-title__item--secondary"><span class="hero-05-title__accent">Connect Agency</span> <span class="hero-05-title__rest">Helps You Communicate It.</span></em>
-                        </span>
-                      </h1>
-                      <ul class="hero-05-tags loading__item">
-                        <li><span class="tag-default">Annual Reports</span></li>
-                        <li><span class="tag-default">ESG &amp; BRSR</span></li>
-                        <li><span class="tag-default">Corporate Narratives</span></li>
-                        <li><span class="tag-default">Design</span></li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="mxd-hero-05__bottom mxd-grid-item no-margin">
-              <div class="mxd-hero-05__worksblock loading__item">
-                <img src="img/mockup/Mockup.webp" alt="Hero image">
-                <div class="hero-05-worksblock__descr">
-                  <p class="t-large t-caption t-bright">Blending creativity with practical design</p>
-                  <a class="btn btn-anim btn-default btn-outline slide-right-up" href="#">
-                    <span class="btn-caption">Explore</span>
-                    <i class="ph-bold ph-arrow-up-right"></i>
-                  </a>
-                </div>
-              </div>
-              <div class="mxd-hero-05__videoblock loading__item">
-                <div class="mxd-hero-05-videoblock__video">
-                  <video preload="auto" autoplay="autoplay" loop="loop" muted="muted">
-                    <source type="video/webm" src="video/hero.webm">
-                  </video>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="mxd-section mxd-hero-section hero-news">
+        <div class="hero-news__inner loading-wrap">
+          <h1 class="hero-news__title loading__item">
+            <span class="hero-news__line-nowrap"><span class="hero-news__light">Business grows on </span><strong>trust.</strong></span><br>
+            <span class="hero-news__line-nowrap hero-news__light">Connect Agency helps you</span><br>
+            <strong>communicate it.</strong>
+          </h1>
+          <ul class="hero-news__services loading__item">
+            <li>Annual Reports</li>
+            <li>ESG &amp; BRSR</li>
+            <li>Corporate Narratives</li>
+            <li>Design</li>
+          </ul>
         </div>
       </div>
       <!-- Hero Section End -->
 
-      <!-- Section - About Start -->
-      <div class="mxd-section padding-pre-grid">
+      <!-- Section - Work Question Start -->
+      <div class="mxd-section work-question-section">
         <div class="mxd-container grid-container">
-        
-          <!-- Block - About Description with Manifest Start -->
-          <div class="mxd-block">
-            <div class="container-fluid px-0">
-              <div class="row gx-0">
-                <div class="col-12 col-xl-5 mxd-grid-item no-margin">
-                  <div class="mxd-block__name name-manifest">
-                    <p class="mxd-point-subtitle anim-uni-in-up">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
-                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
-                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
-                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
-                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
-                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
-                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
-                      </svg>
-                      <span>What makes business work?</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-7 mxd-grid-item no-margin">
-                  <div class="mxd-block__content">
-                    <div class="mxd-block__manifest">
-                      <p class="mxd-manifest reveal-type anim-uni-in-up">We solve the problems that slow businesses down with thoughtful reporting, clear narratives, and reliable delivery.</p>
-                      <div class="mxd-manifest__controls anim-uni-in-up">
-                        <a class="btn btn-anim btn-default btn-outline slide-right-up anim-uni-in-up" href="#">
-                          <span class="btn-caption">Who We Are</span>
-                          <i class="ph-bold ph-arrow-up-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <div class="mxd-work-question">
+            <img class="mxd-work-question__mark anim-uni-in-up" src="img/backgrounds/%3F.svg" alt="" aria-hidden="true">
+            <p class="mxd-work-question__line anim-uni-in-up">
+              <span>What makes business <strong>work</strong></span>
+              <img class="mxd-work-question__clock" src="img/backgrounds/Clock.png" alt="" aria-hidden="true">
+              <span class="mxd-work-question__tail">...Ideas? Strategy? Execution?</span>
+            </p>
           </div>
-          <!-- Block - About Description with Manifest End -->
-  
         </div>
       </div>
-      <!-- Section - About End -->
+      <!-- Section - Work Question End -->
+
+      <!-- Section - People Foundation Start -->
+      <div class="mxd-section people-foundation-section">
+        <div class="mxd-container grid-container">
+          <div class="mxd-people-foundation">
+            <p class="mxd-people-foundation__intro anim-uni-in-up">
+              <span class="mxd-people-foundation__intro-yes">Yes-</span>
+              but it begins with something much
+              <strong>simpler...</strong>
+            </p>
+            <ul class="mxd-people-foundation__list">
+              <li class="anim-uni-in-up">
+                <span class="mxd-people-foundation__icon" aria-hidden="true">
+                  <i class="fa-solid fa-people-group"></i>
+                </span>
+                <span class="mxd-people-foundation__word">People.</span>
+              </li>
+              <li class="anim-uni-in-up">
+                <span class="mxd-people-foundation__icon" aria-hidden="true">
+                  <i class="fa-solid fa-circle-nodes"></i>
+                </span>
+                <span class="mxd-people-foundation__word">Connections.</span>
+              </li>
+              <li class="anim-uni-in-up">
+                <span class="mxd-people-foundation__icon" aria-hidden="true">
+                  <i class="fa-solid fa-handshake"></i>
+                </span>
+                <span class="mxd-people-foundation__word">Relationships.</span>
+              </li>
+            </ul>
+            <p class="mxd-people-foundation__subline anim-uni-in-up">
+              Business is not built by algorithms. It's built by <strong>people.</strong>
+            </p>
+            <p class="mxd-people-foundation__copy anim-uni-in-up">
+              At Connect Agency, we slow down where it matters-<br>
+              to listen, to understand and to <strong>deliver every single time.</strong>
+            </p>
+            <div class="mxd-people-foundation__closing">
+              <p class="mxd-people-foundation__closing-line mxd-people-foundation__closing-line--green anim-uni-in-up">
+                <span>Consistency</span>
+                <em>defines us.</em>
+              </p>
+              <p class="mxd-people-foundation__closing-line mxd-people-foundation__closing-line--blue anim-uni-in-up">
+                <span>Relationships</span>
+                <em>sustain us.</em>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - People Foundation End -->
 
       <!-- Section - Statistics Cards Start -->
       <div class="mxd-section padding-grid-pre-mtext overflow-hidden">
@@ -1875,7 +1859,7 @@
 
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
-    <script src="js/app.js"></script>
+    <script src="js/app.js?v=20260214-13"></script>
     <!-- counters -->
     <script>
       const statsCounter1 = new countUp.CountUp("stats-counter-1", 50, optionsPlus);
