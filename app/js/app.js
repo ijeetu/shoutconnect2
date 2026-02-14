@@ -66,8 +66,9 @@ gsap.registerPlugin(Flip);
 const content = document.querySelector('body');
 const imgLoad = imagesLoaded(content);
 const loadingWrap = document.querySelector('.loading-wrap');
-const loadingItems = loadingWrap.querySelectorAll('.loading__item');
+const loadingItems = loadingWrap.querySelectorAll('.loading__item:not(.hero-news__title):not(.hero-news__services)');
 const fadeInItems = document.querySelectorAll('.loading__fade');
+const pageEntryItems = document.querySelectorAll('.mxd-nav__wrap, #header, #mxd-page-content');
 const deferredVideos = document.querySelectorAll('.menu-video, .mxd-hero-05-videoblock__video video');
 const loaderTypedTarget = document.getElementById('loader-typed');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -78,6 +79,7 @@ let loaderTypingDone = false;
 let loaderImagesDone = false;
 
 deferredVideos.forEach((video) => video.pause());
+gsap.set(pageEntryItems, { autoAlpha: 0 });
 
 // Pause key videos until loader finishes, then trigger playback.
 function playDeferredVideos() {
@@ -117,7 +119,7 @@ function startLoader() {
   if (loaderTypedTarget && window.Typed) {
     loaderTypedTarget.innerHTML = "";
     loaderTypedInstance = new Typed("#loader-typed", {
-      strings: ["Conceptualisation<br>Creators<br>Communicators"],
+      strings: ["Conceptualisers<br>Creators<br>Communicators"],
       typeSpeed: 56,
       backSpeed: 0,
       startDelay: 140,
@@ -131,7 +133,7 @@ function startLoader() {
     });
     setTimeout(markLoaderTypingDone, 5200);
   } else if (loaderTypedTarget) {
-    loaderTypedTarget.innerHTML = "Conceptualisation<br>Creators<br>Communicators";
+    loaderTypedTarget.innerHTML = "Conceptualisers<br>Creators<br>Communicators";
     setTimeout(markLoaderTypingDone, 1200);
   } else {
     setTimeout(markLoaderTypingDone, 800);
@@ -154,10 +156,15 @@ function hideLoader() {
 
 function pageAppearance() {
   const heroSection = document.querySelector('.hero-news.mxd-hero-section');
+  const heroTitleLines = document.querySelectorAll('.hero-news__title .hero-news__line-nowrap, .hero-news__title > strong');
+  const heroServiceItems = document.querySelectorAll('.hero-news__services li');
+  gsap.to(pageEntryItems, { autoAlpha: 1, duration: 0.45, ease: 'power2.out' });
 
   if (heroSection) {
     if (prefersReducedMotion) {
       gsap.set(heroSection, { autoAlpha: 1, scale: 1 });
+      gsap.set(heroTitleLines, { autoAlpha: 1, y: 0 });
+      gsap.set(heroServiceItems, { autoAlpha: 1, y: 0 });
     } else {
       gsap.set(heroSection, { autoAlpha: 0, scale: 1.025, transformOrigin: "50% 50%" });
       gsap.to(heroSection, {
@@ -167,6 +174,23 @@ function pageAppearance() {
         scale: 1,
         delay: 0.1
       });
+      gsap.set(heroTitleLines, { autoAlpha: 0, y: 120 });
+      gsap.set(heroServiceItems, { autoAlpha: 0, y: 80 });
+      gsap.timeline({ delay: 0.34 })
+        .to(heroTitleLines, {
+          duration: 1.08,
+          ease: 'power4.out',
+          autoAlpha: 1,
+          y: 0,
+          stagger: 0.11
+        })
+        .to(heroServiceItems, {
+          duration: 0.8,
+          ease: 'power3.out',
+          autoAlpha: 1,
+          y: 0,
+          stagger: 0.08
+        }, '-=0.34');
     }
   }
 
