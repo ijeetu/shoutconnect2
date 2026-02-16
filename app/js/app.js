@@ -814,38 +814,167 @@ $(".mxd-pinned").each(function (index) {
 // --------------------------------------------- //
 // Stacking Cards Start
 // --------------------------------------------- //
-const cards  = document.querySelectorAll('.stack-item');
-const stickySpace  = document.querySelector('.stack-offset');
-const animation = gsap.timeline();
-let cardHeight;
+const stackWrappers = document.querySelectorAll(".stack-wrapper");
 
-if(document.querySelector(".stack-item")) {
-  function initCards(){
-    animation.clear();
-    cardHeight = cards[0].offsetHeight;
-    //console.log("initCards()", cardHeight);
-    cards.forEach((card, index) => {
-      if(index > 0){
-        gsap.set(card, {y:index * cardHeight,});
-        animation.to(card, {y:0, duration: index*0.5, ease: "none"},0);
-      }
+if (stackWrappers.length) {
+  stackWrappers.forEach((wrapper) => {
+    const cards = wrapper.querySelectorAll(".stack-item");
+    const stickySpace = wrapper.querySelector(".stack-offset");
+    if (!cards.length || !stickySpace) return;
+
+    const animation = gsap.timeline();
+    let cardHeight = 0;
+
+    function initCards() {
+      animation.clear();
+      cardHeight = cards[0].offsetHeight;
+      cards.forEach((card, index) => {
+        if (index === 0) {
+          gsap.set(card, { y: 0 });
+          return;
+        }
+        gsap.set(card, { y: index * cardHeight });
+        animation.to(card, { y: 0, duration: index * 0.5, ease: "none" }, 0);
+      });
+    }
+
+    initCards();
+
+    ScrollTrigger.create({
+      trigger: wrapper,
+      start: "top top",
+      pin: true,
+      end: () => `+=${(cards.length * cardHeight) + stickySpace.offsetHeight}`,
+      scrub: true,
+      animation: animation,
+      // markers: true,
+      invalidateOnRefresh: true
     });
-  };
-  initCards();
-  ScrollTrigger.create({
-    trigger: ".stack-wrapper",
-    start: "top top",
-    pin: true,
-    end: ()=>`+=${(cards.length * cardHeight) + stickySpace.offsetHeight}`,
-    scrub: true,
-    animation: animation,
-    // markers: true,
-    invalidateOnRefresh: true
+
+    ScrollTrigger.addEventListener("refreshInit", initCards);
   });
-  ScrollTrigger.addEventListener("refreshInit", initCards);
-};
+}
 // --------------------------------------------- //
 // Stacking Cards End
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+// Deliver Showcase Rows Start
+// --------------------------------------------- //
+const deliverShowcases = document.querySelectorAll(".deliver-showcase");
+
+if (deliverShowcases.length) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  deliverShowcases.forEach((showcase) => {
+    const rows = Array.from(showcase.querySelectorAll(".deliver-showcase__row"));
+    if (!rows.length) return;
+
+    let activeIndex = 0;
+    let timer = null;
+    let paused = false;
+
+    const setActive = (index) => {
+      rows.forEach((row, rowIndex) => row.classList.toggle("is-active", rowIndex === index));
+      activeIndex = index;
+    };
+
+    const next = () => setActive((activeIndex + 1) % rows.length);
+
+    const start = () => {
+      if (prefersReducedMotion || timer) return;
+      timer = window.setInterval(() => {
+        if (!paused) next();
+      }, 3200);
+    };
+
+    const stop = () => {
+      if (!timer) return;
+      window.clearInterval(timer);
+      timer = null;
+    };
+
+    setActive(0);
+    requestAnimationFrame(() => {
+      showcase.classList.add("is-ready");
+    });
+
+    rows.forEach((row, index) => {
+      row.addEventListener("mouseenter", () => {
+        paused = true;
+        setActive(index);
+      });
+      row.addEventListener("mouseleave", () => {
+        paused = false;
+      });
+      row.addEventListener("focusin", () => {
+        paused = true;
+        setActive(index);
+      });
+      row.addEventListener("focusout", () => {
+        paused = false;
+      });
+    });
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) start();
+            else stop();
+          });
+        },
+        { threshold: 0.35 }
+      );
+      observer.observe(showcase);
+    } else {
+      start();
+    }
+  });
+}
+// --------------------------------------------- //
+// Deliver Showcase Rows End
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+// Key Clients Slider Start
+// --------------------------------------------- //
+const keyClientsSliders = document.querySelectorAll(".key-clients__slider");
+
+if (keyClientsSliders.length) {
+  keyClientsSliders.forEach((slider) => {
+    const track = slider.querySelector("[data-clients-track]");
+    const prevButton = slider.querySelector(".key-clients__arrow--prev");
+    const nextButton = slider.querySelector(".key-clients__arrow--next");
+    if (!track || !prevButton || !nextButton) return;
+
+    const getStep = () => {
+      const tile = track.querySelector(".key-clients__tile");
+      if (!tile) return track.clientWidth * 0.8;
+      return tile.getBoundingClientRect().width;
+    };
+
+    const updateButtons = () => {
+      const maxScroll = Math.max(0, track.scrollWidth - track.clientWidth);
+      prevButton.disabled = track.scrollLeft <= 2;
+      nextButton.disabled = track.scrollLeft >= maxScroll - 2;
+    };
+
+    prevButton.addEventListener("click", () => {
+      track.scrollBy({ left: -getStep(), behavior: "smooth" });
+    });
+
+    nextButton.addEventListener("click", () => {
+      track.scrollBy({ left: getStep(), behavior: "smooth" });
+    });
+
+    track.addEventListener("scroll", updateButtons, { passive: true });
+    window.addEventListener("resize", updateButtons);
+    updateButtons();
+  });
+}
+// --------------------------------------------- //
+// Key Clients Slider End
 // --------------------------------------------- //
 
 // --------------------------------------------- //
