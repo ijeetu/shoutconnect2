@@ -141,9 +141,13 @@ function startLoader() {
 }
 startLoader();
 
-imgLoad.on('done', instance => {
+imgLoad.on('always', () => {
   markLoaderImagesDone();
 });
+
+// Safety fallback: never let the loader block the homepage forever.
+window.addEventListener('load', markLoaderImagesDone, { once: true });
+setTimeout(markLoaderImagesDone, 4200);
 
 function hideLoader() {
   gsap.to(".loader__count", { duration: 0.8, ease: 'power2.in', y: "100%", delay: 1.8 });
@@ -934,6 +938,131 @@ if (deliverShowcases.length) {
 }
 // --------------------------------------------- //
 // Deliver Showcase Rows End
+// --------------------------------------------- //
+
+// --------------------------------------------- //
+// Progress Stories Hover Loops Start
+// --------------------------------------------- //
+const progressStoryItems = document.querySelectorAll(".progress-stories__item");
+
+if (progressStoryItems.length) {
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const hoverImageSets = {
+    building_nation: [
+      "img/ListCoverImages/BuildingtheNation/1APLapollotubes.webp",
+      "img/ListCoverImages/BuildingtheNation/Ganeshhousing.webp",
+      "img/ListCoverImages/BuildingtheNation/Ajmerarealty.webp",
+      "img/ListCoverImages/BuildingtheNation/04 Tarc.webp",
+      "img/ListCoverImages/BuildingtheNation/Alpexsolar.webp",
+      "img/ListCoverImages/BuildingtheNation/Yashhi-voltage.webp",
+      "img/ListCoverImages/BuildingtheNation/Advait.webp",
+      "img/ListCoverImages/BuildingtheNation/LMW.webp",
+      "img/ListCoverImages/BuildingtheNation/09Craftsman.webp",
+      "img/ListCoverImages/BuildingtheNation/10Diffusion.webp",
+      "img/ListCoverImages/BuildingtheNation/11GMM.webp",
+      "img/ListCoverImages/BuildingtheNation/12Rajesh power.webp",
+      "img/ListCoverImages/BuildingtheNation/13Simplex.webp"
+    ],
+    shaping_future: [
+      "img/ListCoverImages/ShapingtheFurure/01CStech.webp",
+      "img/ListCoverImages/ShapingtheFurure/02CyientDLM.webp",
+      "img/ListCoverImages/ShapingtheFurure/03Rapidue.webp",
+      "img/ListCoverImages/ShapingtheFurure/04Shellz.webp",
+      "img/ListCoverImages/ShapingtheFurure/05Accent.webp"
+    ],
+    creating_impact: [
+      "img/ListCoverImages/CreatingImpact/01Adani.webp",
+      "img/ListCoverImages/CreatingImpact/02Srichakra.webp",
+      "img/ListCoverImages/CreatingImpact/03Sigachi[SR].webp",
+      "img/ListCoverImages/CreatingImpact/04Gainwell.webp"
+    ],
+    driving_growth: [
+      "img/ListCoverImages/DrivingGrowth/01Zaggle.webp",
+      "img/ListCoverImages/DrivingGrowth/02SGMart.webp",
+      "img/ListCoverImages/DrivingGrowth/03Wealthfirst.webp",
+      "img/ListCoverImages/DrivingGrowth/04Armaan.webp",
+      "img/ListCoverImages/DrivingGrowth/05SwissMilitary.webp"
+    ]
+  };
+
+  const encodePath = (path) => path.split("/").map((segment) => encodeURIComponent(segment)).join("/");
+
+  Object.values(hoverImageSets).forEach((rawSet) => {
+    rawSet.forEach((rawPath) => {
+      const src = encodePath(rawPath);
+      const preloaded = new Image();
+      preloaded.src = src;
+    });
+  });
+
+  progressStoryItems.forEach((item) => {
+    const media = item.querySelector(".progress-stories__media");
+    const frontImg = media ? media.querySelector("img") : null;
+    if (!media || !frontImg) return;
+
+    const setName = item.dataset.storySet;
+    const rawSet = hoverImageSets[setName];
+    if (!rawSet || !rawSet.length) return;
+    const imageSet = rawSet.map(encodePath);
+    const initialAlt = frontImg.alt;
+
+    const backImg = frontImg.cloneNode(true);
+    backImg.classList.remove("is-visible");
+    backImg.removeAttribute("loading");
+    backImg.removeAttribute("decoding");
+    media.appendChild(backImg);
+
+    let currentIndex = 0;
+    let loopTimer = null;
+    let showFront = true;
+
+    const swapTo = (index) => {
+      const incoming = showFront ? backImg : frontImg;
+      const outgoing = showFront ? frontImg : backImg;
+      incoming.src = imageSet[index];
+      incoming.alt = initialAlt;
+      requestAnimationFrame(() => {
+        incoming.classList.add("is-visible");
+        outgoing.classList.remove("is-visible");
+        showFront = !showFront;
+      });
+    };
+
+    const startLoop = () => {
+      item.classList.add("is-looping");
+      if (prefersReducedMotion || loopTimer || imageSet.length < 2) return;
+      loopTimer = window.setInterval(() => {
+        currentIndex = (currentIndex + 1) % imageSet.length;
+        swapTo(currentIndex);
+      }, 1300);
+    };
+
+    const stopLoop = () => {
+      item.classList.remove("is-looping");
+      if (loopTimer) {
+        window.clearInterval(loopTimer);
+        loopTimer = null;
+      }
+      currentIndex = 0;
+      frontImg.src = imageSet[0];
+      backImg.src = imageSet[0];
+      frontImg.classList.add("is-visible");
+      backImg.classList.remove("is-visible");
+      showFront = true;
+    };
+
+    frontImg.src = imageSet[0];
+    frontImg.classList.add("is-visible");
+    backImg.classList.remove("is-visible");
+
+    item.addEventListener("mouseenter", startLoop);
+    item.addEventListener("mouseleave", stopLoop);
+    item.addEventListener("focusin", startLoop);
+    item.addEventListener("focusout", stopLoop);
+  });
+}
+// --------------------------------------------- //
+// Progress Stories Hover Loops End
 // --------------------------------------------- //
 
 // --------------------------------------------- //

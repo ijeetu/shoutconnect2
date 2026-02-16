@@ -10662,8 +10662,17 @@ form textarea:required:valid {
 }
 
 .progress-stories__item {
+  position: relative;
   min-width: 0;
   border: 1px solid rgba(52, 56, 60, 0.18);
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 620ms cubic-bezier(0.22, 1, 0.36, 1), border-color 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progress-stories__item.is-looping {
+  z-index: 3;
+  transform: translateY(-0.9rem) scale(1.02);
+  border-color: rgba(58, 77, 98, 0.36);
+  box-shadow: 0 20px 36px rgba(14, 29, 52, 0.22);
 }
 
 .progress-stories__label {
@@ -10679,23 +10688,41 @@ form textarea:required:valid {
 
 .progress-stories__media {
   display: block;
+  position: relative;
+  aspect-ratio: 4 / 5;
   border-radius: 0;
   overflow: hidden;
+  background-color: rgba(7, 23, 49, 0.92);
 }
 
 .progress-stories__media img {
-  display: block;
+  position: absolute;
+  inset: 0;
   width: 100%;
-  aspect-ratio: 4 / 5;
+  height: 100%;
   object-fit: cover;
+  opacity: 0;
   transform: scale(1);
-  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1), filter 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition: opacity 520ms cubic-bezier(0.22, 1, 0.36, 1), transform 760ms cubic-bezier(0.22, 1, 0.36, 1), filter 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.progress-stories__media img.is-visible {
+  opacity: 1;
+}
+
+.progress-stories__media img:first-child {
+  opacity: 1;
 }
 
 @media only screen and (min-width: 1200px) and (hover) and (prefers-reduced-motion: no-preference) {
-  .no-touch .progress-stories__item:hover .progress-stories__media img {
-    transform: scale(1.03);
-    filter: saturate(1.06);
+  .no-touch .progress-stories__item.is-looping .progress-stories__media {
+    overflow: visible;
+  }
+  .no-touch .progress-stories__item.is-looping .progress-stories__media img {
+    object-fit: contain;
+    transform: scale(1.14);
+    filter: saturate(1.04);
   }
 }
 
