@@ -6730,6 +6730,7 @@ form textarea:required:valid {
   max-width: 1920px;
   margin: 0 auto;
   padding-bottom: 3rem;
+  background-color: #ffffff;
 }
 @media only screen and (min-width: 768px) {
   .mxd-footer {
@@ -6740,6 +6741,7 @@ form textarea:required:valid {
 .mxd-footer__text-wrap {
   position: relative;
   width: 100%;
+  background-color: #ffffff;
 }
 
 .mxd-footer__fullwidth-text {
@@ -6921,6 +6923,7 @@ form textarea:required:valid {
   width: 100%;
   max-width: 1920px;
   padding: 0 3rem;
+  background-color: #ffffff;
 }
 @media only screen and (min-width: 768px) {
   .mxd-footer__footer-blocks {
@@ -6985,7 +6988,8 @@ form textarea:required:valid {
   gap: 3rem;
   width: 100%;
   padding: 3rem;
-  background-color: var(--base-tint);
+  background-color: #f3f4f6;
+  border: 1px solid #e2e6eb;
   -moz-border-radius: var(--_radius-m);
        border-radius: var(--_radius-m);
 }
@@ -7210,6 +7214,19 @@ form textarea:required:valid {
 }
 .no-touch .footer-socials__link:hover {
   color: var(--t-medium);
+}
+
+.footer-blocks__image {
+  position: relative;
+  width: 100%;
+  min-height: clamp(18rem, 22vw, 30rem);
+  border-radius: var(--_radius-s);
+  overflow: hidden;
+}
+.footer-blocks__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* ------------------------------------------------*/
@@ -10297,37 +10314,13 @@ form textarea:required:valid {
   display: flex;
   align-items: center;
   background-color: #0d2a14;
-  background-image: linear-gradient(90deg, rgba(6, 27, 12, 0.95) 0%, rgba(10, 51, 18, 0.82) 44%, rgba(11, 62, 21, 0.4) 76%, rgba(10, 58, 19, 0.26) 100%), url("../img/hero/Hero.jpg");
-  background-size: cover;
-  background-position: 72% center;
+  background-image: linear-gradient(90deg, rgba(6, 27, 12, 0.95) 0%, rgba(10, 51, 18, 0.82) 44%, rgba(11, 62, 21, 0.4) 76%, rgba(10, 58, 19, 0.26) 100%), url("../img/backgrounds/Boutique.jpg");
+  background-size: cover, auto 100%;
+  background-position: center center, right center;
+  background-repeat: no-repeat, no-repeat;
   border-left: 1px solid rgba(28, 66, 32, 0.62);
   overflow: hidden;
 }
-.boutique-design__hero::before {
-  content: "";
-  position: absolute;
-  width: clamp(32rem, 40vw, 78rem);
-  height: clamp(32rem, 40vw, 78rem);
-  right: clamp(-14rem, -8vw, -4rem);
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  border: 2px solid rgba(83, 196, 104, 0.2);
-  pointer-events: none;
-}
-.boutique-design__hero::after {
-  content: "";
-  position: absolute;
-  width: clamp(21rem, 28vw, 49rem);
-  height: clamp(21rem, 28vw, 49rem);
-  right: clamp(4rem, 8vw, 15rem);
-  top: 50%;
-  transform: translateY(-50%);
-  border-radius: 50%;
-  border: 1px solid rgba(83, 196, 104, 0.2);
-  pointer-events: none;
-}
-
 .boutique-design__hero-content {
   position: relative;
   z-index: 2;
@@ -10411,9 +10404,13 @@ form textarea:required:valid {
 
 .deliver-showcase {
   position: relative;
-  max-width: 1720px;
-  margin: 0 auto;
+  max-width: none;
+  margin: 0;
   padding: clamp(2rem, 2.4vw, 3.2rem) clamp(1.6rem, 2.4vw, 3rem) clamp(2.4rem, 2.7vw, 3.8rem);
+  background-image: url("../img/backgrounds/servicesbg.png");
+  background-size: 100% auto;
+  background-position: center center;
+  background-repeat: no-repeat;
   overflow: hidden;
 }
 
@@ -10494,7 +10491,11 @@ form textarea:required:valid {
 .deliver-showcase__rows {
   position: relative;
   z-index: 2;
+  width: 100%;
+  max-width: 166rem;
   margin-top: clamp(2.4rem, 2.6vw, 3.6rem);
+  margin-left: auto;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   gap: clamp(1.2rem, 1.35vw, 1.8rem);
@@ -10607,7 +10608,7 @@ form textarea:required:valid {
 
 .progress-stories-section {
   padding: clamp(3.8rem, 4.6vw, 6.4rem) 0 clamp(5rem, 5.8vw, 8.2rem);
-  background-color: #e9e9e9;
+  background-color: #ffffff;
 }
 
 .progress-stories {
@@ -10617,10 +10618,10 @@ form textarea:required:valid {
 }
 
 .progress-stories__heading h2 {
-  margin: 0;
+  margin: 0 0 clamp(1.2rem, 1.6vw, 2.2rem) 0;
   font-family: var(--_font-accent);
   letter-spacing: -0.02em;
-  line-height: 0.92;
+  line-height: 0.88;
   font-weight: 300;
 }
 
@@ -10628,6 +10629,7 @@ form textarea:required:valid {
   display: block;
   color: #b8b8b8;
   font-size: clamp(6rem, 5.7vw, 10rem);
+  line-height: 1;
 }
 
 .progress-stories__line strong {
@@ -10637,15 +10639,15 @@ form textarea:required:valid {
 
 .progress-stories__word {
   display: block;
-  margin-top: 0.2rem;
+  margin-top: -1.4rem;
   color: #d3d400;
   font-size: clamp(12rem, 12vw, 24rem);
-  line-height: 0.84;
+  line-height: 0.76;
   font-weight: 400;
 }
 
 .progress-stories__grid {
-  margin-top: clamp(2.2rem, 2.6vw, 3.8rem);
+  margin-top: clamp(4.8rem, 6vw, 8rem);
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0;
@@ -10733,6 +10735,8 @@ form textarea:required:valid {
   }
   .progress-stories__word {
     font-size: clamp(8rem, 20vw, 13rem);
+    margin-top: -0.7rem;
+    line-height: 0.8;
   }
   .progress-stories__label {
     font-size: clamp(2.4rem, 6.5vw, 3.4rem);
@@ -10750,9 +10754,9 @@ form textarea:required:valid {
   padding: clamp(2rem, 2.2vw, 3.2rem) clamp(0.8rem, 1.1vw, 1.6rem) clamp(3rem, 3.6vw, 4.8rem);
   border-left: 1px solid rgba(75, 173, 239, 0.68);
   border-right: 1px solid rgba(75, 173, 239, 0.68);
-  background-image: url("../img/hero/Hero.jpg");
+  background-image: url("../img/backgrounds/WesolveBG.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: left center;
   background-repeat: no-repeat;
 }
 
@@ -11412,10 +11416,10 @@ form textarea:required:valid {
   font-family: var(--_font-accent);
   font-size: clamp(17rem, 19vw, 30rem);
   line-height: 0.78;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: -0.04em;
   color: transparent;
-  -webkit-text-stroke: 2px var(--metric-stroke);
+  -webkit-text-stroke: 3px var(--metric-stroke);
   pointer-events: none;
 }
 
@@ -11456,7 +11460,7 @@ form textarea:required:valid {
     right: -5%;
     top: -11%;
     font-size: clamp(13rem, 38vw, 19rem);
-    -webkit-text-stroke: 1.5px var(--metric-stroke);
+    -webkit-text-stroke: 2px var(--metric-stroke);
   }
   .relationship-metrics__value {
     font-size: clamp(7.4rem, 20vw, 10.4rem);
