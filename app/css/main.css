@@ -203,8 +203,8 @@
   --bg-demo-screen-07--dark: url(../img/demo/screens/07-d.webp);
   --bg-demo-screen-08--dark: url(../img/demo/screens/08-d.webp);
   --bg-demo-screen-09--dark: url(../img/demo/screens/09-d.webp);
-  --body-bg-image--light: url(../img/backgrounds/bg_light.webp);
-  --body-bg-image--dark: url(../img/backgrounds/bg_dark.webp);
+  --body-bg-image--light: none;
+  --body-bg-image--dark: none;
   --body-bg-color--light: var(--base--light);
   --body-bg-color--dark: #050608;
   --body-bg-image: var(--body-bg-image--light);
@@ -1468,7 +1468,6 @@ html.lenis, html.lenis body {
 .mxd-container {
   position: relative;
   width: 100%;
-  max-width: 1920px;
   padding: 0 3rem;
   margin: 0 auto;
 }
@@ -6730,8 +6729,8 @@ form textarea:required:valid {
   max-width: 1920px;
   margin: 0 auto;
   padding-bottom: 3rem;
-  background-color: #ffffff;
 }
+
 @media only screen and (min-width: 768px) {
   .mxd-footer {
     padding-bottom: 6rem;
@@ -6741,7 +6740,6 @@ form textarea:required:valid {
 .mxd-footer__text-wrap {
   position: relative;
   width: 100%;
-  background-color: #ffffff;
 }
 
 .mxd-footer__fullwidth-text {
@@ -6921,9 +6919,8 @@ form textarea:required:valid {
           flex-direction: column;
   gap: 3rem;
   width: 100%;
-  max-width: 1920px;
   padding: 0 3rem;
-  background-color: #ffffff;
+  background-color: transparent;
 }
 @media only screen and (min-width: 768px) {
   .mxd-footer__footer-blocks {
