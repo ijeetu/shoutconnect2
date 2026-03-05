@@ -10268,24 +10268,53 @@ form textarea:required:valid {
   overflow: hidden;
   min-height: clamp(23rem, 23vw, 36rem);
   padding: clamp(2.4rem, 2.9vw, 4.2rem) clamp(1.8rem, 2.2vw, 3.2rem);
-  background: linear-gradient(180deg, rgba(216, 231, 212, 0.95) 0%, rgba(196, 216, 189, 0.95) 100%);
+  background: linear-gradient(180deg, rgba(145, 189, 138, 0.96) 0%, rgba(112, 154, 105, 0.96) 100%);
+  background-size: 150% 150%;
+  transition: transform 0.55s var(--_animbezier), box-shadow 0.55s var(--_animbezier);
+  transform: translateZ(0) scale(1);
+  transform-origin: center center;
+  will-change: transform;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
+.boutique-design__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0;
+  background: var(--card-hover-bg);
+  background-size: 150% 150%;
+  transition: opacity 0.75s var(--_animbezier);
+  pointer-events: none;
+}
 .boutique-design__card--one {
-  background: radial-gradient(circle at center, rgba(129, 176, 120, 0.9) 0%, rgba(223, 233, 222, 0.96) 72%, rgba(210, 222, 210, 0.98) 100%);
+  background: radial-gradient(circle at 22% 20%, rgba(178, 220, 160, 0.96) 0%, rgba(118, 165, 102, 0.97) 62%, rgba(76, 121, 66, 0.98) 100%);
+  --card-hover-bg: radial-gradient(circle at 78% 80%, rgba(103, 186, 151, 0.97) 0%, rgba(52, 140, 104, 0.97) 60%, rgba(30, 97, 70, 0.98) 100%);
 }
 .boutique-design__card--two {
-  background: radial-gradient(circle at center, rgba(222, 233, 222, 0.98) 0%, rgba(201, 216, 198, 0.95) 54%, rgba(149, 189, 141, 0.9) 100%);
+  background: radial-gradient(circle at 80% 18%, rgba(164, 212, 168, 0.96) 0%, rgba(104, 154, 120, 0.97) 60%, rgba(66, 116, 86, 0.98) 100%);
+  --card-hover-bg: radial-gradient(circle at 22% 84%, rgba(112, 177, 193, 0.97) 0%, rgba(60, 132, 154, 0.97) 60%, rgba(32, 93, 116, 0.98) 100%);
 }
 .boutique-design__card--three {
-  background: radial-gradient(circle at center, rgba(126, 173, 118, 0.9) 0%, rgba(221, 232, 220, 0.96) 72%, rgba(209, 221, 209, 0.98) 100%);
+  background: radial-gradient(circle at 24% 82%, rgba(187, 218, 150, 0.96) 0%, rgba(128, 162, 96, 0.97) 64%, rgba(90, 120, 64, 0.98) 100%);
+  --card-hover-bg: radial-gradient(circle at 80% 18%, rgba(170, 182, 113, 0.97) 0%, rgba(118, 137, 58, 0.97) 62%, rgba(76, 95, 36, 0.98) 100%);
 }
 .boutique-design__card--four {
-  background: radial-gradient(circle at center, rgba(220, 231, 220, 0.98) 0%, rgba(199, 214, 196, 0.95) 54%, rgba(145, 185, 137, 0.9) 100%);
+  background: radial-gradient(circle at 78% 80%, rgba(154, 206, 144, 0.96) 0%, rgba(98, 150, 92, 0.97) 60%, rgba(60, 107, 58, 0.98) 100%);
+  --card-hover-bg: radial-gradient(circle at 24% 22%, rgba(128, 188, 125, 0.97) 0%, rgba(69, 141, 77, 0.97) 60%, rgba(39, 98, 52, 0.98) 100%);
+}
+
+.no-touch .boutique-design__card:hover {
+  transform: translateZ(0) scale(1.035);
+  box-shadow: 0 2.2rem 4rem rgba(14, 42, 18, 0.26);
+  z-index: 3;
+}
+.no-touch .boutique-design__card:hover::after {
+  opacity: 1;
 }
 
 .boutique-design__card:not(:last-child) {
@@ -10313,7 +10342,7 @@ form textarea:required:valid {
   font-size: clamp(18rem, 30vw, 44rem);
   line-height: 0.78;
   font-weight: 500;
-  color: rgba(239, 245, 237, 0.34);
+  color: rgba(239, 245, 237, 0.14);
   letter-spacing: -0.04em;
   pointer-events: none;
 }
