@@ -1914,6 +1914,52 @@ html.lenis, html.lenis body {
   }
 }
 
+.hero-plexus {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-plexus .mxd-container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-plexus > :not(.hero-plexus__canvas-wrap) {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-plexus__canvas-wrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(48vw, 740px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.92;
+  -webkit-mask-image: linear-gradient(to left, #000 66%, rgba(0, 0, 0, 0) 100%);
+          mask-image: linear-gradient(to left, #000 66%, rgba(0, 0, 0, 0) 100%);
+}
+
+.hero-plexus__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 991px) {
+  .hero-plexus__canvas-wrap {
+    width: 58vw;
+    opacity: 0.78;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .hero-plexus__canvas-wrap {
+    display: none;
+  }
+}
+
 .mxd-block__decoration {
   display: block;
   width: 7rem;
@@ -9611,7 +9657,7 @@ form textarea:required:valid {
           align-items: center;
   overflow: hidden;
   background-color: #03131d;
-  background-image: linear-gradient(90deg, rgba(2, 11, 19, 0.96) 0%, rgba(2, 11, 19, 0.74) 40%, rgba(2, 11, 19, 0.34) 74%, rgba(2, 11, 19, 0.2) 100%), url("../img/hero/Hero.jpg");
+  background-image: url("../img/hero/Hero.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -9620,7 +9666,7 @@ form textarea:required:valid {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 85% 50%, rgba(255, 181, 62, 0.25) 0%, rgba(255, 181, 62, 0) 34%);
+  background: none;
   pointer-events: none;
 }
 

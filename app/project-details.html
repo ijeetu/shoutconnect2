@@ -312,7 +312,7 @@
     <main id="mxd-page-content" class="mxd-page-content inner-page-content">
 
       <!-- Section - Inner Page Headline Start -->
-      <div class="mxd-section mxd-section-inner-headline padding-default">
+      <div class="mxd-section mxd-section-inner-headline padding-default hero-plexus">
         <div class="mxd-container grid-container">
         
           <!-- Block - Inner Page Headline Start -->
@@ -405,6 +405,9 @@
           </div>
           <!-- Block - Inner Page Headline End -->
 
+        </div>
+        <div class="hero-plexus__canvas-wrap" aria-hidden="true">
+          <canvas id="hero-plexus-canvas" class="hero-plexus__canvas"></canvas>
         </div>
       </div>
       <!-- Section - Inner Page Headline End -->
@@ -846,6 +849,172 @@
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
     <script src="js/app.js"></script>
+    <script>
+      (function () {
+        const canvas = document.getElementById("hero-plexus-canvas");
+        if (!canvas) return;
+
+        const section = canvas.closest(".hero-plexus");
+        const wrap = canvas.parentElement;
+        const ctx = canvas.getContext("2d");
+        if (!section || !wrap || !ctx) return;
+
+        let width = 0;
+        let height = 0;
+        let points = [];
+        let rafId = 0;
+        let inView = true;
+        const pointer = { x: 0, y: 0, active: false };
+
+        const pointCount = () => {
+          const count = Math.floor((width * height) / 13000);
+          return Math.max(18, Math.min(58, count));
+        };
+
+        const palette = () => {
+          const mode = document.documentElement.getAttribute("color-scheme");
+          if (mode === "dark") {
+            return {
+              dot: "rgba(10,138,101,0.82)",
+              line: "rgba(10,138,101,0.22)"
+            };
+          }
+          return {
+            dot: "rgba(10,138,101,0.58)",
+            line: "rgba(10,138,101,0.20)"
+          };
+        };
+
+        const setupCanvas = () => {
+          const rect = wrap.getBoundingClientRect();
+          width = Math.max(1, Math.floor(rect.width));
+          height = Math.max(1, Math.floor(rect.height));
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          canvas.width = Math.floor(width * dpr);
+          canvas.height = Math.floor(height * dpr);
+          canvas.style.width = width + "px";
+          canvas.style.height = height + "px";
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        };
+
+        const seedPoints = () => {
+          points = Array.from({ length: pointCount() }, () => ({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.28,
+            vy: (Math.random() - 0.5) * 0.28,
+            r: 0.8 + Math.random() * 1.7
+          }));
+        };
+
+        const resize = () => {
+          setupCanvas();
+          seedPoints();
+        };
+
+        const updatePointer = (event) => {
+          const rect = wrap.getBoundingClientRect();
+          pointer.x = event.clientX - rect.left;
+          pointer.y = event.clientY - rect.top;
+        };
+
+        const drawFrame = () => {
+          const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          const colors = palette();
+          const maxDist = Math.min(140, Math.max(88, width * 0.2));
+          const hoverRadius = Math.min(220, Math.max(120, width * 0.22));
+
+          ctx.clearRect(0, 0, width, height);
+
+          for (let i = 0; i < points.length; i += 1) {
+            const p = points[i];
+
+            if (!reduced) {
+              p.x += p.vx;
+              p.y += p.vy;
+
+              if (p.x <= 0 || p.x >= width) p.vx *= -1;
+              if (p.y <= 0 || p.y >= height) p.vy *= -1;
+            }
+
+            if (pointer.active) {
+              const pdx = p.x - pointer.x;
+              const pdy = p.y - pointer.y;
+              const pdist = Math.sqrt(pdx * pdx + pdy * pdy) || 1;
+
+              if (pdist < hoverRadius) {
+                const force = (1 - pdist / hoverRadius) * 1.05;
+                p.x += (pdx / pdist) * force;
+                p.y += (pdy / pdist) * force;
+              }
+            }
+
+            ctx.beginPath();
+            ctx.fillStyle = colors.dot;
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          for (let i = 0; i < points.length; i += 1) {
+            for (let j = i + 1; j < points.length; j += 1) {
+              const a = points[i];
+              const b = points[j];
+              const dx = a.x - b.x;
+              const dy = a.y - b.y;
+              const distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance > maxDist) continue;
+
+              const alpha = (1 - distance / maxDist) * 0.9;
+              ctx.strokeStyle = colors.line.replace(/[\d.]+\)$/, alpha.toFixed(3) + ")");
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        };
+
+        const tick = () => {
+          if (!inView) {
+            rafId = 0;
+            return;
+          }
+          drawFrame();
+          rafId = requestAnimationFrame(tick);
+        };
+
+        resize();
+        drawFrame();
+
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          rafId = requestAnimationFrame(tick);
+        }
+
+        window.addEventListener("resize", resize);
+        section.addEventListener("pointerenter", (event) => {
+          pointer.active = true;
+          updatePointer(event);
+        });
+        section.addEventListener("pointermove", (event) => {
+          updatePointer(event);
+        });
+        section.addEventListener("pointerleave", () => {
+          pointer.active = false;
+        });
+
+        if ("IntersectionObserver" in window) {
+          const observer = new IntersectionObserver((entries) => {
+            inView = entries[0].isIntersecting;
+            if (inView && !rafId && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+              rafId = requestAnimationFrame(tick);
+            }
+          }, { threshold: 0.08 });
+          observer.observe(section);
+        }
+      })();
+    </script>
     <!-- Load Scripts End -->
     
   </body>
