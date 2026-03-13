@@ -24368,3 +24368,19 @@ body.home-no-radius .tag-default {
 /* ------------------------------------------------*/
 /* Home - Loader Font Sync End */
 /* ------------------------------------------------*/
+
+/* ------------------------------------------------*/
+/* Home - Footer Visual Refresh Start */
+/* ------------------------------------------------*/
+.footer-blocks__block--visual {
+  flex: 1;
+}
+
+.footer-blocks__image--full {
+  flex: 1;
+  height: 100%;
+  min-height: clamp(24rem, 28vw, 38rem);
+}
+/* ------------------------------------------------*/
+/* Home - Footer Visual Refresh End */
+/* ------------------------------------------------*/
