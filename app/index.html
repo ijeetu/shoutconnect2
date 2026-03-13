@@ -167,9 +167,14 @@
       </div>
       <!-- header controls -->
       <div class="mxd-header__controls loading__fade">
-        <a class="btn btn-anim btn-default btn-mobile-icon btn-outline slide-right-up header-intro-btn" href="#">
-          <span class="btn-caption">PLAY INTRO</span>
-          <i class="ph-bold ph-play"></i>
+        <a class="btn header-intro-btn" href="#">
+          <span class="header-intro-btn__copy">
+            <span class="header-intro-btn__eyebrow">Media</span>
+            <span class="header-intro-btn__label">Play Intro</span>
+          </span>
+          <span class="header-intro-btn__icon" aria-hidden="true">
+            <i class="ph-fill ph-play"></i>
+          </span>
         </a>
       </div>
     </header>
@@ -277,11 +282,26 @@
                 <span class="connect-story-banner__title-light">story</span>
               </h2>
               <div class="connect-story-banner__actions">
-                <a class="btn btn-anim btn-default btn-outline slide-right-up" aria-disabled="true">
-                  <span class="btn-caption">About Us</span>
+                <a class="btn connect-story-banner__btn connect-story-banner__btn--ghost" href="#">
+                  <span class="connect-story-banner__btn-copy">
+                    <span class="connect-story-banner__btn-label">About Us</span>
+                  </span>
+                  <span class="connect-story-banner__btn-icon connect-story-banner__btn-icon--spark" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M12 4.5c.6 3.1 1.9 4.4 5 5-3.1.6-4.4 1.9-5 5-.6-3.1-1.9-4.4-5-5 3.1-.6 4.4-1.9 5-5Z" fill="none" />
+                    </svg>
+                  </span>
                 </a>
-                <a class="btn btn-anim btn-default btn-outline slide-right-up" href="#">
-                  <span class="btn-caption">Our Journey</span>
+                <a class="btn connect-story-banner__btn connect-story-banner__btn--primary" href="#">
+                  <span class="connect-story-banner__btn-copy">
+                    <span class="connect-story-banner__btn-label">Our Journey</span>
+                  </span>
+                  <span class="connect-story-banner__btn-icon connect-story-banner__btn-icon--arrow" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M7 17 17 7" fill="none" />
+                      <path d="M8.75 7H17v8.25" fill="none" />
+                    </svg>
+                  </span>
                 </a>
               </div>
             </div>
