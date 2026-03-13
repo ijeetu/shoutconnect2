@@ -24327,3 +24327,18 @@ body.home-no-radius .tag-default {
 /* ------------------------------------------------*/
 /* Home - Connect Story Banner Alignment End */
 /* ------------------------------------------------*/
+
+/* ------------------------------------------------*/
+/* Home - Loader Font Sync Start */
+/* ------------------------------------------------*/
+#loader .loader__count {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+#loader.loader--fonts-ready .loader__count {
+  opacity: 1;
+}
+/* ------------------------------------------------*/
+/* Home - Loader Font Sync End */
+/* ------------------------------------------------*/
