@@ -954,6 +954,7 @@ body.home-no-radius
 
 .connect-story-banner__btn
   position: relative
+  overflow: hidden
   min-width: clamp(14.8rem, 11.5vw, 19rem)
   height: 4.6rem
   padding: 0.55rem 0.65rem 0.55rem 1.55rem
@@ -967,6 +968,8 @@ body.home-no-radius
   transition: transform 0.35s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease
 
 .connect-story-banner__btn-copy
+  position: relative
+  z-index: 1
   display: inline-flex
   align-items: center
   min-width: 0
@@ -978,24 +981,16 @@ body.home-no-radius
   white-space: nowrap
 
 .connect-story-banner__btn-icon
+  position: relative
+  z-index: 1
   flex: 0 0 auto
-  width: 3.2rem
-  height: 3.2rem
+  width: 3.35rem
+  height: 3.35rem
   border-radius: 50%
   display: inline-flex
   align-items: center
   justify-content: center
   transition: transform 0.35s ease, background-color 0.3s ease, border-color 0.3s ease
-
-.connect-story-banner__btn-icon--spark
-  svg
-    width: 1.55rem
-    height: 1.55rem
-  path
-    stroke: currentColor
-    stroke-width: 1.75
-    stroke-linecap: round
-    stroke-linejoin: round
 
 .connect-story-banner__btn-icon--arrow
   svg
@@ -1014,6 +1009,24 @@ body.home-no-radius
   .connect-story-banner__btn-icon
     border: 1px solid rgba(214, 229, 243, 0.2)
     background: rgba(255, 255, 255, 0.07)
+
+.connect-story-banner__btn--about
+  border-color: rgba(221, 237, 249, 0.34)
+  background: linear-gradient(135deg, rgba(19, 56, 89, 0.4) 0%, rgba(10, 33, 58, 0.28) 52%, rgba(7, 24, 43, 0.2) 100%)
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(113, 164, 209, 0.08), 0 1rem 2.4rem rgba(4, 17, 31, 0.18)
+  color: rgba(246, 250, 255, 0.96)
+  &::before
+    content: ""
+    position: absolute
+    inset: 0
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 36%, rgba(255, 255, 255, 0) 60%)
+    opacity: 0.9
+    pointer-events: none
+  .connect-story-banner__btn-icon
+    border: 1px solid rgba(231, 242, 252, 0.3)
+    background: linear-gradient(180deg, rgba(242, 248, 255, 0.18) 0%, rgba(205, 226, 244, 0.08) 100%)
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16)
+    color: #f6fbff
 
 .connect-story-banner__btn--primary
   border-color: rgba(255, 255, 255, 0.7)
@@ -1037,6 +1050,15 @@ body.home-no-radius
   .connect-story-banner__btn-icon
     background: rgba(255, 255, 255, 0.12)
     border-color: rgba(223, 236, 248, 0.3)
+
+.no-touch .connect-story-banner__btn--about:hover
+  border-color: rgba(239, 247, 255, 0.56)
+  background: linear-gradient(135deg, rgba(23, 64, 99, 0.48) 0%, rgba(13, 40, 67, 0.34) 52%, rgba(8, 27, 47, 0.24) 100%)
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), inset 0 -1px 0 rgba(133, 182, 224, 0.1), 0 1.4rem 3rem rgba(4, 17, 31, 0.24)
+  .connect-story-banner__btn-icon
+    border-color: rgba(240, 247, 255, 0.42)
+    background: linear-gradient(180deg, rgba(248, 252, 255, 0.24) 0%, rgba(212, 231, 247, 0.12) 100%)
+    transform: translateX(0.15rem) scale(1.04)
 
 .no-touch .connect-story-banner__btn--primary:hover
   border-color: rgba(255, 255, 255, 0.86)
