@@ -71,6 +71,7 @@ const fadeInItems = document.querySelectorAll('.loading__fade');
 const pageEntryItems = document.querySelectorAll('.mxd-nav__wrap, #header, #mxd-page-content');
 const deferredVideos = document.querySelectorAll('.menu-video, .mxd-hero-05-videoblock__video video');
 const loaderRoot = document.getElementById('loader');
+const isInnerPage = document.body.classList.contains('inner-page') || !loaderRoot;
 const loaderTypedTarget = document.getElementById('loader-typed');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -80,7 +81,14 @@ let loaderTypingDone = false;
 let loaderImagesDone = false;
 
 deferredVideos.forEach((video) => video.pause());
-gsap.set(pageEntryItems, { autoAlpha: 0 });
+
+if (isInnerPage) {
+  if (loaderRoot) loaderRoot.style.display = 'none';
+  gsap.set(pageEntryItems, { autoAlpha: 1 });
+  playDeferredVideos();
+} else {
+  gsap.set(pageEntryItems, { autoAlpha: 0 });
+}
 
 // Pause key videos until loader finishes, then trigger playback.
 function playDeferredVideos() {
@@ -94,6 +102,7 @@ function playDeferredVideos() {
 }
 
 function startSequenceWhenReady() {
+  if (isInnerPage) return;
   if (loaderTypingDone && loaderImagesDone) {
     hideLoader(pageAppearance);
   }
@@ -136,6 +145,7 @@ function waitForLoaderFonts() {
 }
 
 function startLoader() {
+  if (isInnerPage) return;
   if (loaderTypedTarget && window.Typed) {
     loaderTypedTarget.innerHTML = "";
     loaderTypedInstance = new Typed("#loader-typed", {
@@ -160,18 +170,20 @@ function startLoader() {
   }
 }
 
-waitForLoaderFonts().finally(() => {
-  revealLoaderText();
-  startLoader();
-});
+if (!isInnerPage) {
+  waitForLoaderFonts().finally(() => {
+    revealLoaderText();
+    startLoader();
+  });
 
-imgLoad.on('always', () => {
-  markLoaderImagesDone();
-});
+  imgLoad.on('always', () => {
+    markLoaderImagesDone();
+  });
 
-// Safety fallback: never let the loader block the homepage forever.
-window.addEventListener('load', markLoaderImagesDone, { once: true });
-setTimeout(markLoaderImagesDone, 4200);
+  // Safety fallback: never let the loader block the homepage forever.
+  window.addEventListener('load', markLoaderImagesDone, { once: true });
+  setTimeout(markLoaderImagesDone, 4200);
+}
 
 function hideLoader(onComplete) {
   const finalizeLoaderExit = () => {

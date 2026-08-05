@@ -6971,8 +6971,10 @@ form textarea:required:valid {
   position: relative;
   display: block;
   width: 100%;
+  height: auto;
+  overflow: visible;
   fill: currentColor;
-  z-index: -1;
+  z-index: 1;
 }
 
 .fullwidth-text__tl-trigger {
