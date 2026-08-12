@@ -1,0 +1,21 @@
+<svg width="108" height="98" viewBox="0 0 108 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M24.541 33.7657C30.3022 19.9725 43.9206 10.2793 59.8029 10.2793C62.973 10.2793 66.0529 10.6655 68.9981 11.3933M24.9695 64.1746C30.9575 77.4414 44.3019 86.6746 59.8029 86.6746C62.7728 86.6746 65.6635 86.3357 68.4385 85.6944M93.5952 30.6519C96.4079 35.9733 98.0006 42.0391 98.0006 48.477C98.0006 55.1745 96.2769 61.4694 93.2489 66.9422" stroke="#302F3A"/>
+<path d="M68.6981 70.9768L53.0004 63.3896L37.3027 55.8024M68.1748 26.6309L53.0004 34.0873L37.3027 41.6745" stroke="#302F3A"/>
+<path d="M66.6047 19.6977C66.6047 28.3673 73.6327 35.3953 82.3023 35.3953C90.9719 35.3953 98 28.3673 98 19.6977C98 11.0281 90.9719 4 82.3023 4C73.6327 4 66.6047 11.0281 66.6047 19.6977Z" fill="url(#paint0_linear_17_319)" stroke="#302F3A"/>
+<path d="M66.6047 78.3022C66.6047 86.9718 73.6327 93.9998 82.3023 93.9998C90.9719 93.9998 98 86.9718 98 78.3022C98 69.6326 90.9719 62.6045 82.3023 62.6045C73.6327 62.6045 66.6047 69.6326 66.6047 78.3022Z" fill="url(#paint1_linear_17_319)" stroke="#302F3A"/>
+<path d="M23.6969 64.1976C15.3034 64.1976 8.49918 57.3934 8.49918 48.9999C8.49918 40.6065 15.3034 33.8022 23.6969 33.8022C32.0903 33.8022 38.8945 40.6065 38.8945 48.9999C38.8945 57.3934 32.0903 64.1976 23.6969 64.1976Z" fill="url(#paint2_linear_17_319)" fill-opacity="0.5" stroke="#AAECD8"/>
+<defs>
+<linearGradient id="paint0_linear_17_319" x1="98" y1="4" x2="75.7944" y2="40.9222" gradientUnits="userSpaceOnUse">
+<stop stop-color="#30303A"/>
+<stop offset="1" stop-color="#30303A" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint1_linear_17_319" x1="98" y1="62.6045" x2="75.7944" y2="99.5267" gradientUnits="userSpaceOnUse">
+<stop stop-color="#30303A"/>
+<stop offset="1" stop-color="#30303A" stop-opacity="0"/>
+</linearGradient>
+<linearGradient id="paint2_linear_17_319" x1="37.8248" y1="48.9999" x2="7.99918" y2="48.9999" gradientUnits="userSpaceOnUse">
+<stop stop-color="#AAECD8"/>
+<stop offset="1" stop-color="#AAECD8" stop-opacity="0"/>
+</linearGradient>
+</defs>
+</svg>
