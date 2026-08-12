@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" fill="none" role="img" aria-label="Abstract radiating arcs representing education and social impact organisations">
+  <defs>
+    <linearGradient id="ed-base" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a2c40"/>
+      <stop offset=".55" stop-color="#051d2c"/>
+      <stop offset="1" stop-color="#03131d"/>
+    </linearGradient>
+    <linearGradient id="ed-arc" x1="150" y1="0" x2="640" y2="400" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ff0d0"/>
+      <stop offset="1" stop-color="#1C6695"/>
+    </linearGradient>
+    <linearGradient id="ed-veil" x1="0" y1="190" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03131d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03131d" stop-opacity=".88"/>
+    </linearGradient>
+    <pattern id="ed-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+    <filter id="ed-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="ed-halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <filter id="ed-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .55 0 0 0 0"/>
+    </filter>
+    <clipPath id="ed-clip"><rect width="640" height="420"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#ed-clip)">
+    <rect width="640" height="420" fill="url(#ed-base)"/>
+
+    <g filter="url(#ed-soft)">
+      <ellipse cx="200" cy="360" rx="190" ry="150" fill="#0A8A65" fill-opacity=".6"/>
+      <ellipse cx="520" cy="110" rx="170" ry="140" fill="#1C6695" fill-opacity=".55"/>
+    </g>
+
+    <rect width="640" height="420" fill="url(#ed-grid)"/>
+
+    <g stroke="url(#ed-arc)" fill="none">
+      <path d="M150 280A120 120 0 0 1 270 400" stroke-opacity=".95"/>
+      <path d="M150 210A190 190 0 0 1 340 400" stroke-opacity=".8"/>
+      <path d="M150 140A260 260 0 0 1 410 400" stroke-opacity=".62"/>
+      <path d="M150 70A330 330 0 0 1 480 400" stroke-opacity=".45"/>
+      <path d="M150 0A400 400 0 0 1 550 400" stroke-opacity=".3"/>
+      <path d="M150 -70A470 470 0 0 1 620 400" stroke-opacity=".18"/>
+    </g>
+
+    <ellipse cx="150" cy="400" rx="90" ry="90" fill="#58d5ac" fill-opacity=".4" filter="url(#ed-halo)"/>
+
+    <g stroke="#8ff0d0" stroke-opacity=".22" stroke-dasharray="3 12">
+      <path d="M150 400 560 130"/>
+      <path d="M150 400 600 300"/>
+      <path d="M150 400 330 40"/>
+    </g>
+
+    <g fill="#c9fff0">
+      <circle cx="383" cy="171" r="5.5"/>
+      <circle cx="470" cy="248" r="4.5" fill-opacity=".8"/>
+      <circle cx="277" cy="128" r="4" fill-opacity=".7"/>
+      <circle cx="524" cy="336" r="4" fill-opacity=".6"/>
+      <circle cx="150" cy="400" r="7"/>
+    </g>
+
+    <path d="M40 392.5h560" stroke="#ffffff" stroke-opacity=".1"/>
+
+    <rect y="190" width="640" height="230" fill="url(#ed-veil)"/>
+    <rect width="640" height="420" filter="url(#ed-grain)" opacity=".09"/>
+  </g>
+</svg>

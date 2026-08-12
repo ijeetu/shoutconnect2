@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" fill="none" role="img" aria-label="Abstract stacked perspective planes representing public sector entities">
+  <defs>
+    <linearGradient id="ps-base" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a2c40"/>
+      <stop offset=".55" stop-color="#051d2c"/>
+      <stop offset="1" stop-color="#03131d"/>
+    </linearGradient>
+    <linearGradient id="ps-sheet" x1="200" y1="80" x2="520" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ff0d0" stop-opacity=".26"/>
+      <stop offset=".55" stop-color="#2f8fbf" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity=".04"/>
+    </linearGradient>
+    <linearGradient id="ps-veil" x1="0" y1="190" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03131d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03131d" stop-opacity=".9"/>
+    </linearGradient>
+    <pattern id="ps-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+    <filter id="ps-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="ps-halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+    <filter id="ps-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .55 0 0 0 0"/>
+    </filter>
+    <clipPath id="ps-clip"><rect width="640" height="420"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#ps-clip)">
+    <rect width="640" height="420" fill="url(#ps-base)"/>
+
+    <g filter="url(#ps-soft)">
+      <ellipse cx="420" cy="100" rx="170" ry="130" fill="#0A8A65" fill-opacity=".55"/>
+      <ellipse cx="150" cy="330" rx="180" ry="140" fill="#1C6695" fill-opacity=".5"/>
+    </g>
+
+    <rect width="640" height="420" fill="url(#ps-grid)"/>
+    <ellipse cx="360" cy="140" rx="120" ry="70" fill="#58d5ac" fill-opacity=".2" filter="url(#ps-halo)"/>
+
+    <g fill="url(#ps-sheet)" stroke="#8ff0d0">
+      <path d="M360 246 190 306 360 366 530 306Z" stroke-opacity=".16"/>
+      <path d="M360 208 190 268 360 328 530 268Z" stroke-opacity=".24"/>
+      <path d="M360 170 190 230 360 290 530 230Z" stroke-opacity=".34"/>
+      <path d="M360 132 190 192 360 252 530 192Z" stroke-opacity=".48"/>
+      <path d="M360 94 190 154 360 214 530 154Z" stroke-opacity=".8"/>
+    </g>
+
+    <g stroke="#8ff0d0" stroke-opacity=".22">
+      <path d="M190 154v152"/>
+      <path d="M530 154v152"/>
+      <path d="M360 214v152"/>
+    </g>
+
+    <g stroke="#c9fff0" stroke-opacity=".55" stroke-linecap="round">
+      <path d="M296 136 360 112"/>
+      <path d="M320 156 402 126"/>
+      <path d="M344 176 428 145"/>
+    </g>
+
+    <g fill="#c9fff0">
+      <circle cx="360" cy="94" r="4.5"/>
+      <circle cx="530" cy="154" r="4" fill-opacity=".7"/>
+      <circle cx="190" cy="154" r="4" fill-opacity=".7"/>
+    </g>
+
+    <path d="M40 392.5h560" stroke="#ffffff" stroke-opacity=".1"/>
+
+    <rect y="190" width="640" height="230" fill="url(#ps-veil)"/>
+    <rect width="640" height="420" filter="url(#ps-grain)" opacity=".09"/>
+  </g>
+</svg>

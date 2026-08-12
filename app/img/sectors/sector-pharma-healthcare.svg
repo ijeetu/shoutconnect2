@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" fill="none" role="img" aria-label="Abstract molecular constellation representing pharmaceutical and healthcare">
+  <defs>
+    <linearGradient id="ph-base" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a2c40"/>
+      <stop offset=".55" stop-color="#051d2c"/>
+      <stop offset="1" stop-color="#03131d"/>
+    </linearGradient>
+    <radialGradient id="ph-orb" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(392 196) scale(178)">
+      <stop stop-color="#8ff0d0" stop-opacity=".2"/>
+      <stop offset=".62" stop-color="#1C6695" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ph-veil" x1="0" y1="190" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03131d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03131d" stop-opacity=".9"/>
+    </linearGradient>
+    <pattern id="ph-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+    <filter id="ph-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="ph-halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14"/>
+    </filter>
+    <filter id="ph-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .55 0 0 0 0"/>
+    </filter>
+    <clipPath id="ph-clip"><rect width="640" height="420"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#ph-clip)">
+    <rect width="640" height="420" fill="url(#ph-base)"/>
+
+    <g filter="url(#ph-soft)">
+      <ellipse cx="430" cy="120" rx="168" ry="132" fill="#0A8A65" fill-opacity=".55"/>
+      <ellipse cx="150" cy="330" rx="180" ry="140" fill="#1C6695" fill-opacity=".5"/>
+    </g>
+
+    <rect width="640" height="420" fill="url(#ph-grid)"/>
+    <circle cx="392" cy="196" r="178" fill="url(#ph-orb)"/>
+    <circle cx="392" cy="196" r="178" stroke="#8ff0d0" stroke-opacity=".1"/>
+
+    <g stroke="#8ff0d0" stroke-opacity=".32">
+      <path d="M162 306 246 238"/>
+      <path d="M246 238 330 292"/>
+      <path d="M246 238 300 172"/>
+      <path d="M300 172 372 112"/>
+      <path d="M300 172 402 208"/>
+      <path d="M402 208 476 146"/>
+      <path d="M402 208 446 292"/>
+      <path d="M476 146 528 246"/>
+      <path d="M446 292 528 246"/>
+      <path d="M232 136 300 172"/>
+      <path d="M232 136 372 112"/>
+      <path d="M330 292 446 292"/>
+    </g>
+
+    <g fill="#03131d" stroke="#8ff0d0" stroke-opacity=".75">
+      <circle cx="162" cy="306" r="6"/>
+      <circle cx="330" cy="292" r="5"/>
+      <circle cx="232" cy="136" r="6"/>
+      <circle cx="528" cy="246" r="7"/>
+      <circle cx="446" cy="292" r="5"/>
+    </g>
+
+    <g filter="url(#ph-halo)">
+      <circle cx="300" cy="172" r="11" fill="#58d5ac" fill-opacity=".85"/>
+      <circle cx="402" cy="208" r="13" fill="#58d5ac" fill-opacity=".8"/>
+      <circle cx="476" cy="146" r="9" fill="#8ff0d0" fill-opacity=".75"/>
+    </g>
+    <g fill="#c9fff0">
+      <circle cx="300" cy="172" r="6"/>
+      <circle cx="402" cy="208" r="7.5"/>
+      <circle cx="476" cy="146" r="5"/>
+      <circle cx="246" cy="238" r="5" fill-opacity=".8"/>
+      <circle cx="372" cy="112" r="4.5" fill-opacity=".75"/>
+    </g>
+
+    <path d="M40 340h120l22-44 26 88 24-58 18 14h350" stroke="#58d5ac" stroke-opacity=".5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <rect y="190" width="640" height="230" fill="url(#ph-veil)"/>
+    <rect width="640" height="420" filter="url(#ph-grain)" opacity=".09"/>
+  </g>
+</svg>

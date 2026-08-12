@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" fill="none" role="img" aria-label="Abstract interlocking rings and rhythmic slabs representing manufacturing and industry">
+  <defs>
+    <linearGradient id="mi-base" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a2c40"/>
+      <stop offset=".55" stop-color="#051d2c"/>
+      <stop offset="1" stop-color="#03131d"/>
+    </linearGradient>
+    <linearGradient id="mi-plane" x1="0" y1="120" x2="0" y2="380" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7fe3c4" stop-opacity=".28"/>
+      <stop offset=".5" stop-color="#2f8fbf" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity=".02"/>
+    </linearGradient>
+    <linearGradient id="mi-veil" x1="0" y1="190" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03131d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03131d" stop-opacity=".9"/>
+    </linearGradient>
+    <pattern id="mi-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+    <filter id="mi-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="mi-halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="30"/>
+    </filter>
+    <filter id="mi-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .55 0 0 0 0"/>
+    </filter>
+    <clipPath id="mi-clip"><rect width="640" height="420"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#mi-clip)">
+    <rect width="640" height="420" fill="url(#mi-base)"/>
+
+    <g filter="url(#mi-soft)">
+      <ellipse cx="452" cy="150" rx="168" ry="140" fill="#0A8A65" fill-opacity=".58"/>
+      <ellipse cx="130" cy="330" rx="180" ry="140" fill="#1C6695" fill-opacity=".52"/>
+    </g>
+
+    <rect width="640" height="420" fill="url(#mi-grid)"/>
+
+    <ellipse cx="452" cy="150" rx="92" ry="92" fill="#58d5ac" fill-opacity=".26" filter="url(#mi-halo)"/>
+
+    <g stroke-linecap="round">
+      <circle cx="452" cy="150" r="122" stroke="#58d5ac" stroke-opacity=".38" stroke-dasharray="2 18"/>
+      <circle cx="452" cy="150" r="96" stroke="#8ff0d0" stroke-opacity=".55"/>
+      <circle cx="452" cy="150" r="62" stroke="#1C6695" stroke-opacity=".85"/>
+      <circle cx="524" cy="212" r="96" stroke="#1C6695" stroke-opacity=".45"/>
+      <circle cx="380" cy="212" r="62" stroke="#8ff0d0" stroke-opacity=".2"/>
+    </g>
+    <circle cx="452" cy="150" r="7" fill="#8ff0d0" fill-opacity=".9"/>
+
+    <g stroke="#ffffff" stroke-opacity=".05">
+      <path d="M40 118h560"/>
+      <path d="M40 246h560"/>
+    </g>
+
+    <g fill="url(#mi-plane)" stroke="#8ff0d0" stroke-opacity=".2">
+      <rect x="58" y="228" width="26" height="144" rx="5"/>
+      <rect x="98" y="196" width="42" height="176" rx="6"/>
+      <rect x="154" y="252" width="20" height="120" rx="4"/>
+      <rect x="188" y="168" width="52" height="204" rx="6"/>
+      <rect x="254" y="238" width="26" height="134" rx="5"/>
+      <rect x="294" y="286" width="42" height="86" rx="6"/>
+    </g>
+
+    <g fill="#8ff0d0">
+      <rect x="58" y="228" width="26" height="2.5" rx="1.25" fill-opacity=".5"/>
+      <rect x="98" y="196" width="42" height="2.5" rx="1.25" fill-opacity=".7"/>
+      <rect x="154" y="252" width="20" height="2.5" rx="1.25" fill-opacity=".4"/>
+      <rect x="188" y="168" width="52" height="2.5" rx="1.25" fill-opacity=".85"/>
+      <rect x="254" y="238" width="26" height="2.5" rx="1.25" fill-opacity=".45"/>
+      <rect x="294" y="286" width="42" height="2.5" rx="1.25" fill-opacity=".3"/>
+    </g>
+
+    <path d="M40 372.5h560" stroke="#ffffff" stroke-opacity=".18"/>
+    <path d="M40 372.5h260" stroke="#58d5ac" stroke-opacity=".45"/>
+
+    <rect y="190" width="640" height="230" fill="url(#mi-veil)"/>
+    <rect width="640" height="420" filter="url(#mi-grain)" opacity=".09"/>
+  </g>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420" width="640" height="420" fill="none" role="img" aria-label="Abstract expanding nested forms representing small and medium enterprises">
+  <defs>
+    <linearGradient id="sme-base" x1="0" y1="0" x2="640" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0a2c40"/>
+      <stop offset=".55" stop-color="#051d2c"/>
+      <stop offset="1" stop-color="#03131d"/>
+    </linearGradient>
+    <linearGradient id="sme-core" x1="300" y1="120" x2="470" y2="290" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8ff0d0" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="sme-veil" x1="0" y1="190" x2="0" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03131d" stop-opacity="0"/>
+      <stop offset="1" stop-color="#03131d" stop-opacity=".9"/>
+    </linearGradient>
+    <pattern id="sme-grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#ffffff" stroke-opacity=".045"/>
+    </pattern>
+    <filter id="sme-soft" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="62"/>
+    </filter>
+    <filter id="sme-halo" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="sme-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="4" stitchTiles="stitch" result="n"/>
+      <feColorMatrix in="n" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  .55 0 0 0 0"/>
+    </filter>
+    <clipPath id="sme-clip"><rect width="640" height="420"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#sme-clip)">
+    <rect width="640" height="420" fill="url(#sme-base)"/>
+
+    <g filter="url(#sme-soft)">
+      <ellipse cx="380" cy="120" rx="170" ry="132" fill="#0A8A65" fill-opacity=".58"/>
+      <ellipse cx="140" cy="330" rx="180" ry="140" fill="#1C6695" fill-opacity=".5"/>
+    </g>
+
+    <rect width="640" height="420" fill="url(#sme-grid)"/>
+
+    <g transform="rotate(-14 384 186)">
+      <g stroke="#8ff0d0">
+        <rect x="354" y="156" width="60" height="60" rx="14" stroke-opacity=".95" fill="url(#sme-core)"/>
+        <rect x="324" y="126" width="120" height="120" rx="26" stroke-opacity=".55"/>
+        <rect x="284" y="86" width="200" height="200" rx="42" stroke-opacity=".32"/>
+        <rect x="234" y="36" width="300" height="300" rx="62" stroke-opacity=".18"/>
+        <rect x="174" y="-24" width="420" height="420" rx="88" stroke-opacity=".09"/>
+      </g>
+    </g>
+
+    <ellipse cx="384" cy="186" rx="60" ry="60" fill="#58d5ac" fill-opacity=".35" filter="url(#sme-halo)"/>
+
+    <g fill="#c9fff0">
+      <circle cx="384" cy="186" r="5"/>
+      <circle cx="196" cy="120" r="3.5" fill-opacity=".65"/>
+      <circle cx="560" cy="252" r="4" fill-opacity=".6"/>
+      <circle cx="252" cy="298" r="3" fill-opacity=".5"/>
+    </g>
+
+    <g stroke="#8ff0d0" stroke-opacity=".28" stroke-linecap="round">
+      <path d="M92 344 150 344"/>
+      <path d="M92 316 128 316"/>
+      <path d="M92 372 186 372"/>
+    </g>
+
+    <path d="M40 396.5h560" stroke="#ffffff" stroke-opacity=".12"/>
+
+    <rect y="190" width="640" height="230" fill="url(#sme-veil)"/>
+    <rect width="640" height="420" filter="url(#sme-grain)" opacity=".09"/>
+  </g>
+</svg>
