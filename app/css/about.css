@@ -1,4 +1,45 @@
 /* About page — an immersive extension of the Connect landing-page system. */
+.mxd-section h2.reveal-type strong,
+.mxd-section h3.reveal-type strong { color: var(--accent); }
+
+.about-expertise-title__line--grey {
+  display: inline-block;
+  color: #8d8d8d;
+  font-size: clamp(3.2rem, 3.2vw, 5rem);
+}
+.about-expertise-title__line--accent {
+  display: inline-block;
+  margin-top: .2rem;
+  font-size: clamp(5.2rem, 5vw, 8rem);
+}
+
+.trust-cta__panel { background: none; box-shadow: none; }
+
+.mxd-services-list__title p {
+  font-size: 3rem;
+}
+@media only screen and (min-width: 1200px) {
+  .mxd-services-list__title p {
+    font-size: 4.4rem;
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .mxd-services-list__title p {
+    font-size: 5.6rem;
+  }
+}
+
+.mxd-section.about-standapart-section {
+  padding-top: clamp(6rem, 8vw, 11rem);
+  padding-bottom: clamp(6rem, 8vw, 11rem);
+  background:
+    linear-gradient(132deg, rgba(36, 120, 166, 0.06) 0%, rgba(36, 120, 166, 0) 42%),
+    linear-gradient(228deg, rgba(16, 151, 116, 0.08) 0%, rgba(16, 151, 116, 0) 44%),
+    #d8eaf5;
+  border-top: 1px solid rgba(88, 142, 176, 0.3);
+  border-bottom: 1px solid rgba(88, 142, 176, 0.3);
+}
+
 .about-hero {
   position: relative;
   min-height: 100vh;
@@ -150,26 +191,6 @@
 
 .about-hero__actions { display: flex; align-items: center; justify-content: flex-end; flex-wrap: wrap; gap: 1.5rem 2.4rem; }
 
-.about-hero__primary {
-  min-width: 19rem;
-  min-height: 6.4rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
-  padding: 1.4rem 1.6rem 1.4rem 2.4rem;
-  border-radius: 999px;
-  color: #061b25;
-  background: #fff;
-  font-size: 1.7rem;
-  font-weight: 500 !important;
-  text-decoration: none;
-  transition: color .3s ease, background .3s ease, transform .3s ease;
-}
-
-.about-hero__primary i { display: grid; place-items: center; width: 3.8rem; height: 3.8rem; border-radius: 50%; color: #fff; background: #0a8a65; }
-.about-hero__primary:hover { color: #fff; background: #0a8a65; transform: translateY(-.3rem); }
-.about-hero__primary:hover i { color: #0a8a65; background: #fff; }
 
 .about-hero__discover { display: inline-flex; align-items: center; gap: .8rem; color: rgba(255, 255, 255, .78); font-size: 1.6rem; text-decoration: none; }
 .about-hero__discover i { color: #35bc91; transition: transform .3s ease; }
@@ -261,6 +282,7 @@
 
 .about-split h2 { position: relative; z-index: 1; max-width: 20ch; }
 .about-split .mxd-point-subtitle { position: relative; z-index: 1; }
+.about-split__col--beliefs h2 { margin-top: clamp(1.6rem, 2.5vw, 3.2rem); }
 
 .about-split__flow {
   display: flex;
@@ -402,16 +424,16 @@
 }
 
 .about-directory__foot {
-  margin-top: clamp(3rem, 5vw, 5rem);
-  padding-top: clamp(2.4rem, 4vw, 4rem);
-  border-top: 1px solid rgba(22, 22, 22, .12);
+  margin-top: clamp(3.5rem, 6vw, 6rem);
+  padding: clamp(3rem, 5vw, 5rem) 0 0;
+  text-align: center;
 }
 
-.about-directory__foot p {
-  max-width: 62ch;
-  margin: 0;
-  font-size: clamp(2rem, 1.9vw, 2.8rem);
-  line-height: 1.4;
+.about-directory__foot h3 {
+  max-width: 78ch;
+  margin: 0 auto;
+  font-size: clamp(2.6rem, 3vw, 4.2rem);
+  line-height: 1.25;
 }
 
 @media only screen and (max-width: 767px) {
@@ -448,7 +470,6 @@
 .about-checklist__banner {
   margin-top: clamp(3.5rem, 6vw, 6rem);
   padding: clamp(3rem, 5vw, 5rem) 0 0;
-  border-top: 1px solid rgba(22, 22, 22, .12);
   text-align: center;
 }
 
@@ -574,8 +595,6 @@
   line-height: 1;
   letter-spacing: -.04em;
 }
-
-.sectors-head__main h2 strong { color: var(--accent); }
 
 .sectors-head__aside p {
   margin: 0 0 clamp(2rem, 2.4vw, 3rem);
@@ -730,7 +749,7 @@
   .sector-card__line::after { transition: none; }
 }
 
-.about-story { overflow: hidden; }
+.about-story { overflow: hidden; padding-top: clamp(6rem, 8vw, 11rem); }
 
 .about-story__head {
   display: grid;
@@ -747,8 +766,6 @@
   line-height: .92;
   letter-spacing: -.045em;
 }
-
-.about-story__head h2 strong { color: var(--accent); }
 
 .about-story__layout {
   display: grid;
@@ -838,4 +855,24 @@
   .about-story__visual figcaption i { transform: rotate(90deg); }
   .about-story__copy { min-height: auto; padding: 4rem 2.5rem; }
   .about-story__number { top: 2rem; right: 2rem; }
+}
+
+/* ==========================================================================
+   Light display headings — mirrors the landing page convention: only the
+   large display type drops to Futura Light (300), with <strong> stepping
+   back up to Medium (500) for emphasis. Body copy, mid-size text and small
+   labels intentionally keep their default weight.
+   ========================================================================== */
+.about-approach h2,
+.about-story__head h2,
+.sectors-head__main h2,
+.mxd-section-title__hrtitle h2 {
+  font-weight: 300 !important;
+}
+
+.about-approach h2 strong,
+.about-story__head h2 strong,
+.sectors-head__main h2 strong,
+.mxd-section-title__hrtitle h2 strong {
+  font-weight: 500 !important;
 }
