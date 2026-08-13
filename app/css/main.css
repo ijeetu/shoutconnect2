@@ -24492,10 +24492,12 @@ body.home-no-radius .tag-default {
 
 .site-btn--dark { background: #061b25; color: #fff; border-color: rgba(255, 255, 255, .1); }
 .site-btn--dark .site-btn__fill { background: #fff; }
+.site-btn--dark .site-btn__icon { color: #061b25; }
 .site-btn--dark:hover { color: #061b25; }
 
 .site-btn--light { background: #fff; color: #061b25; border-color: rgba(0, 0, 0, .15); }
 .site-btn--light .site-btn__fill { background: var(--accent); }
+.site-btn--light .site-btn__icon { color: #fff; }
 .site-btn--light:hover { color: #fff; }
 /* ------------------------------------------------*/
 /* Site Button - lrsd-1 style fly button End */
