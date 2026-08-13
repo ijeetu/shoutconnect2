@@ -10717,7 +10717,12 @@ form textarea:required:valid {
 
 .problem-stack__card--problem {
   --ps-card-offset: clamp(1.4rem, 1.8vw, 2.4rem);
-  background: linear-gradient(140deg, var(--ps-soft-a) 0%, var(--ps-soft-b) 100%);
+  background: linear-gradient(140deg, #fbe7e6 0%, #fdf2f1 100%);
+  border-color: rgba(199, 84, 74, 0.32);
+}
+
+.problem-stack__card--problem::before {
+  background: linear-gradient(90deg, #e2574c 0%, #c23a3a 100%);
 }
 
 .problem-stack__card--solution {
@@ -10730,8 +10735,8 @@ form textarea:required:valid {
 }
 
 .no-touch .problem-stack__pair:hover .problem-stack__card--problem {
-  border-color: rgba(54, 124, 164, 0.58);
-  background: linear-gradient(140deg, color-mix(in srgb, var(--ps-soft-a) 84%, #ffffff 16%) 0%, color-mix(in srgb, var(--ps-soft-b) 84%, #ffffff 16%) 100%);
+  border-color: rgba(194, 66, 58, 0.55);
+  background: linear-gradient(140deg, color-mix(in srgb, #fbe7e6 84%, #ffffff 16%) 0%, color-mix(in srgb, #fdf2f1 84%, #ffffff 16%) 100%);
 }
 
 .no-touch .problem-stack__pair:hover .problem-stack__card--solution {
@@ -10751,9 +10756,9 @@ form textarea:required:valid {
   line-height: 1;
   letter-spacing: -0.01em;
   font-weight: 400;
-  color: #236d96;
-  border: 1px solid rgba(106, 159, 192, 0.4);
-  background: linear-gradient(90deg, #d6e9f4 0%, #e2f0f8 100%);
+  color: #a5342d;
+  border: 1px solid rgba(199, 84, 74, 0.4);
+  background: linear-gradient(90deg, #f6d9d7 0%, #fbe8e7 100%);
   gap: 0.9rem;
 }
 
@@ -10766,8 +10771,8 @@ form textarea:required:valid {
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-  border: 1px solid rgba(58, 128, 171, 0.35);
-  color: #1f6d98;
+  border: 1px solid rgba(178, 58, 50, 0.35);
+  color: #9c2e28;
   font-size: 1.8rem;
   line-height: 1;
   font-weight: 700;
@@ -10793,7 +10798,7 @@ form textarea:required:valid {
 
 .problem-stack__card--problem h3 {
   margin: 0;
-  color: #236f98;
+  color: #b2382f;
   font-family: var(--_font-accent);
   font-size: clamp(4.2rem, 4.4vw, 7.1rem);
   line-height: 0.95;

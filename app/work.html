@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
     <link rel="stylesheet" type="text/css" href="css/plugins.css">
     <link rel="stylesheet" type="text/css" href="css/main.css?v=20260218-62">
+    <link rel="stylesheet" type="text/css" href="css/work.css?v=20260813-1">
     <!-- Template Styles End -->
 
     <!-- Custom Font Weight Cap & Loader Font Start -->
@@ -83,6 +84,11 @@
               <div class="main-menu">
                 <nav class="main-menu__content">
                   <ul id="main-menu" class="main-menu__accordion">
+                    <li class="main-menu__item">
+                      <a class="main-menu__link btn btn-anim" href="index.html">
+                        <span class="btn-caption">Home</span>
+                      </a>
+                    </li>
                     <li class="main-menu__item">
                       <a class="main-menu__link btn btn-anim" href="about-us.html">
                         <span class="btn-caption">About</span>
@@ -148,13 +154,17 @@
         </a>
       </div>
       <div class="mxd-header__controls loading__fade">
-        <a class="btn header-intro-btn" href="#">
-          <span class="header-intro-btn__copy">
-            <span class="header-intro-btn__eyebrow">Media</span>
-            <span class="header-intro-btn__label">Play Intro</span>
-          </span>
-          <span class="header-intro-btn__icon" aria-hidden="true">
-            <i class="ph-fill ph-play"></i>
+        <a class="site-btn site-btn--dark" href="#">
+          <span class="site-btn__inner">
+            <span class="site-btn__fill" aria-hidden="true"></span>
+            <span class="site-btn__label">
+              <span class="site-btn__row">Play Intro</span>
+              <span class="site-btn__row">Play Intro</span>
+            </span>
+            <span class="site-btn__icon" aria-hidden="true">
+              <i class="ph-fill ph-play"></i>
+              <i class="ph-fill ph-play"></i>
+            </span>
           </span>
         </a>
       </div>
@@ -162,103 +172,514 @@
     <!-- Header End -->
 
     <!-- Page Content Start -->
-    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+    <main id="mxd-page-content" class="mxd-page-content">
 
-      <!-- Section - Inner Page Headline Start -->
-      <div class="mxd-section mxd-section-inner-headline padding-headline-pre-block">
-        <div class="mxd-container grid-container">
-          <div class="mxd-block loading-wrap">
-            <div class="container-fluid px-0">
-              <div class="row gx-0">
-                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
-                  <div class="mxd-block__name name-inner-headline loading__item">
-                    <p class="mxd-point-subtitle">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
-                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
-                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
-                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
-                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
-                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
-                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
-                      </svg>
-                      <span>Our Work</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
-                  <div class="mxd-block__content">
-                    <div class="mxd-block__inner-headline">
-                      <h1 class="inner-headline__title headline-img-before headline-img-01 loading__item">
-                        Crafting Reports &amp; Disclosures That <strong>Build Trust</strong>
-                      </h1>
-                      <p class="inner-headline__text t-large loading__item">A curation of integrated annual reports, ESG communications, investor decks, and brand narratives crafted for industry-leading organizations.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <!-- Section - Work Hero Start -->
+      <section class="mxd-section work-hero loading-wrap">
+        <div class="work-hero__ambient" aria-hidden="true"></div>
+        <div class="work-grid-lines" aria-hidden="true"></div>
+        <div class="work-hero__shell">
+          <h1 class="work-hero__title">
+            <span class="work-hero__line loading__item">Work that</span>
+            <span class="work-hero__line work-hero__line--indent loading__item"><em>earns</em> trust in</span>
+            <span class="work-hero__line loading__item">
+              <span class="work-hero__rotator" data-work-rotator>
+                <span class="work-hero__rotator-item">annual reports.</span>
+                <span class="work-hero__rotator-item">ESG &amp; BRSR.</span>
+                <span class="work-hero__rotator-item">investor decks.</span>
+                <span class="work-hero__rotator-item">boardrooms.</span>
+              </span>
+            </span>
+          </h1>
+
+          <div class="work-hero__bottom loading__item">
+            <p class="work-hero__intro">A curated archive of integrated annual reports, sustainability disclosures, investor presentations and corporate narratives — crafted cover to cover by one senior team.</p>
+            <div class="work-hero__actions">
+              <a class="site-btn site-btn--light" href="contact.html">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Start your report</span>
+                    <span class="site-btn__row">Start your report</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
+                </span>
+              </a>
+              <a class="work-hero__discover" href="#archive">Browse the archive <i class="ph-bold ph-arrow-down"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="work-hero__rail">
+          <div class="work-hero__stat"><strong>100+</strong><span>Reports crafted</span></div>
+          <div class="work-hero__stat"><strong>28</strong><span>Covers in archive</span></div>
+          <div class="work-hero__stat"><strong>12+</strong><span>Industries served</span></div>
+          <div class="work-hero__stat"><strong>80%</strong><span>Repeat &amp; referral</span></div>
+        </div>
+      </section>
+      <!-- Section - Work Hero End -->
+
+      <!-- Section - Client Marquee Start -->
+      <div class="mxd-section work-marquee">
+        <p class="work-marquee__label">Trusted by listed enterprises &amp; growth leaders</p>
+        <div class="work-marquee__viewport">
+          <div class="work-marquee__track">
+            <div class="work-marquee__group">
+              <img src="img/clients/crisil.png" alt="CRISIL" loading="lazy" decoding="async">
+              <img src="img/clients/aplapollo.png" alt="APL Apollo" loading="lazy" decoding="async">
+              <img src="img/clients/gmmpfaudler.svg" alt="GMM Pfaudler" loading="lazy" decoding="async">
+              <img src="img/clients/kajaria.svg" alt="Kajaria" loading="lazy" decoding="async">
+              <img src="img/clients/rvnl.svg" alt="RVNL" loading="lazy" decoding="async">
+              <img src="img/clients/vardhman.svg" alt="Vardhman" loading="lazy" decoding="async">
+              <img src="img/clients/mobikwik.svg" alt="MobiKwik" loading="lazy" decoding="async">
+              <img src="img/clients/cohance.svg" alt="Cohance" loading="lazy" decoding="async">
+              <img src="img/clients/lmw.png" alt="LMW" loading="lazy" decoding="async">
+              <img src="img/clients/HEG.png" alt="HEG" loading="lazy" decoding="async">
+              <img src="img/clients/indocount.png" alt="Indo Count" loading="lazy" decoding="async">
+              <img src="img/clients/heritage.png" alt="Heritage" loading="lazy" decoding="async">
+              <img src="img/clients/alembic.gif" alt="Alembic" loading="lazy" decoding="async">
+              <img src="img/clients/azad.png" alt="Azad" loading="lazy" decoding="async">
+              <img src="img/clients/arman.png" alt="Arman" loading="lazy" decoding="async">
+              <img src="img/clients/wealthfirst.png" alt="Wealth First" loading="lazy" decoding="async">
+            </div>
+            <div class="work-marquee__group" aria-hidden="true">
+              <img src="img/clients/crisil.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/aplapollo.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/gmmpfaudler.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/kajaria.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/rvnl.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/vardhman.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/mobikwik.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/cohance.svg" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/lmw.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/HEG.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/indocount.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/heritage.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/alembic.gif" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/azad.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/arman.png" alt="" loading="lazy" decoding="async">
+              <img src="img/clients/wealthfirst.png" alt="" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Inner Page Headline End -->
+      <!-- Section - Client Marquee End -->
 
-      <!-- Section - Portfolio Grid Start -->
-      <div class="mxd-section padding-pre-grid">
+      <!-- Section - Work Archive Start -->
+      <div id="archive" class="mxd-section work-archive">
         <div class="mxd-container grid-container">
           <div class="mxd-block">
-            <div class="container-fluid p-0">
-              <div class="row g-4">
-                <!-- Project 1 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <div class="overflow-hidden radius-m mb-3">
-                      <img src="img/mockup/ReasonToSelectUs.webp" alt="Integrated Annual Report" style="height: 280px; object-fit: cover;">
-                    </div>
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-file-text"></i> <span>Annual Report</span></p>
-                    <h3 class="reveal-type mb-2">Integrated Annual Report 2025</h3>
-                    <p class="t-muted mb-0">End-to-end financial analysis, strategic narrative, and high-impact layout design for a listed financial enterprise.</p>
-                  </div>
-                </div>
-                <!-- Project 2 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <div class="overflow-hidden radius-m mb-3">
-                      <img src="img/mockup/ReasonToSelectUs.webp" alt="ESG & BRSR Disclosures" style="height: 280px; object-fit: cover;">
-                    </div>
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-leaf"></i> <span>ESG &amp; Sustainability</span></p>
-                    <h3 class="reveal-type mb-2">Sustainability &amp; BRSR Report 2025</h3>
-                    <p class="t-muted mb-0">Framework-aligned ESG data structuring, BRSR compliance, and stakeholder communication for a leading industrial group.</p>
-                  </div>
-                </div>
-                <!-- Project 3 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <div class="overflow-hidden radius-m mb-3">
-                      <img src="img/mockup/ReasonToSelectUs.webp" alt="Corporate Narrative" style="height: 280px; object-fit: cover;">
-                    </div>
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-pen-nib"></i> <span>Content Writing</span></p>
-                    <h3 class="reveal-type mb-2">Corporate Narrative &amp; Brand Book</h3>
-                    <p class="t-muted mb-0">Research-driven leadership messaging, corporate story positioning, and publication copy for a tech conglomerate.</p>
-                  </div>
-                </div>
-                <!-- Project 4 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <div class="overflow-hidden radius-m mb-3">
-                      <img src="img/mockup/ReasonToSelectUs.webp" alt="Investor Deck Design" style="height: 280px; object-fit: cover;">
-                    </div>
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-chart-pie"></i> <span>Design &amp; Visuals</span></p>
-                    <h3 class="reveal-type mb-2">Investor Relations Presentation</h3>
-                    <p class="t-muted mb-0">Data visualization, infographic chart design, and executive presentation layout for growth-stage enterprises.</p>
-                  </div>
-                </div>
+
+            <div class="work-archive__head">
+              <div class="anim-uni-in-up">
+                <h2>Every cover tells a <strong>story of progress</strong></h2>
               </div>
+              <p class="work-archive__note anim-uni-in-up">Filter by the narrative each engagement was built around. Select any cover to view it full size.</p>
+            </div>
+
+            <div class="work-filters">
+              <div class="work-filters__list" role="group" aria-label="Filter projects by theme">
+                <button class="work-filters__btn is-active" type="button" aria-pressed="true" data-work-filter="all">All work <sup>28</sup></button>
+                <button class="work-filters__btn" type="button" aria-pressed="false" data-work-filter="building-nation">Building the Nation <sup>13</sup></button>
+                <button class="work-filters__btn" type="button" aria-pressed="false" data-work-filter="shaping-future">Shaping the Future <sup>5</sup></button>
+                <button class="work-filters__btn" type="button" aria-pressed="false" data-work-filter="creating-impact">Creating Impact <sup>5</sup></button>
+                <button class="work-filters__btn" type="button" aria-pressed="false" data-work-filter="driving-growth">Driving Growth <sup>5</sup></button>
+              </div>
+              <p class="work-filters__count">Showing <strong data-work-count>28</strong> covers</p>
+            </div>
+
+            <div class="work-grid" data-work-grid>
+
+              <!-- Building the Nation -->
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="APL Apollo Tubes" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/1APLapollotubes.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/1APLapollotubes.webp" alt="APL Apollo Tubes report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">APL Apollo Tubes</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Ganesh Housing" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/Ganeshhousing.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/Ganeshhousing.webp" alt="Ganesh Housing report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Ganesh Housing</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Ajmera Realty" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/Ajmerarealty.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/Ajmerarealty.webp" alt="Ajmera Realty report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Ajmera Realty</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="TARC" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/04%20Tarc.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/04%20Tarc.webp" alt="TARC report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">TARC</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Alpex Solar" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/Alpexsolar.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/Alpexsolar.webp" alt="Alpex Solar report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Alpex Solar</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Yash Hi-Voltage" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/Yashhi-voltage.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/Yashhi-voltage.webp" alt="Yash Hi-Voltage report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Yash Hi-Voltage</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Advait" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/Advait.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/Advait.webp" alt="Advait report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Advait</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="LMW" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/LMW.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/LMW.webp" alt="LMW report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">LMW</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Craftsman" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/09Craftsman.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/09Craftsman.webp" alt="Craftsman report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Craftsman</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Diffusion" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/10Diffusion.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/10Diffusion.webp" alt="Diffusion report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Diffusion</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="GMM" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/11GMM.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/11GMM.webp" alt="GMM report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">GMM</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Rajesh Power" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/12Rajesh%20power.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/12Rajesh%20power.webp" alt="Rajesh Power report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Rajesh Power</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="building-nation" data-theme-label="Building the Nation" data-client="Simplex" data-deliverable="Report Design" data-full="img/ListCoverImages/BuildingtheNation/13Simplex.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/BuildingtheNation/13Simplex.webp" alt="Simplex report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Simplex</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Building the Nation</span>
+                </span>
+              </button>
+
+              <!-- Shaping the Future -->
+              <button class="work-card" type="button" data-theme="shaping-future" data-theme-label="Shaping the Future" data-client="CS Tech" data-deliverable="Report Design" data-full="img/ListCoverImages/ShapingtheFurure/01CStech.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/ShapingtheFurure/01CStech.webp" alt="CS Tech report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">CS Tech</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Shaping the Future</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="shaping-future" data-theme-label="Shaping the Future" data-client="Cyient DLM" data-deliverable="Report Design" data-full="img/ListCoverImages/ShapingtheFurure/02CyientDLM.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/ShapingtheFurure/02CyientDLM.webp" alt="Cyient DLM report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Cyient DLM</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Shaping the Future</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="shaping-future" data-theme-label="Shaping the Future" data-client="Rapidue" data-deliverable="Report Design" data-full="img/ListCoverImages/ShapingtheFurure/03Rapidue.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/ShapingtheFurure/03Rapidue.webp" alt="Rapidue report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Rapidue</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Shaping the Future</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="shaping-future" data-theme-label="Shaping the Future" data-client="Shellz" data-deliverable="Report Design" data-full="img/ListCoverImages/ShapingtheFurure/04Shellz.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/ShapingtheFurure/04Shellz.webp" alt="Shellz report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Shellz</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Shaping the Future</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="shaping-future" data-theme-label="Shaping the Future" data-client="Accent" data-deliverable="Report Design" data-full="img/ListCoverImages/ShapingtheFurure/05Accent.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/ShapingtheFurure/05Accent.webp" alt="Accent report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Accent</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Shaping the Future</span>
+                </span>
+              </button>
+
+              <!-- Creating Impact -->
+              <button class="work-card" type="button" data-theme="creating-impact" data-theme-label="Creating Impact" data-client="Adani" data-deliverable="Report Design" data-full="img/ListCoverImages/CreatingImpact/01Adani.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/CreatingImpact/01Adani.webp" alt="Adani report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Adani</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Creating Impact</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="creating-impact" data-theme-label="Creating Impact" data-client="Srichakra" data-deliverable="Report Design" data-full="img/ListCoverImages/CreatingImpact/02Srichakra.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/CreatingImpact/02Srichakra.webp" alt="Srichakra report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Srichakra</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Creating Impact</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="creating-impact" data-theme-label="Creating Impact" data-client="Sigachi" data-deliverable="Sustainability Report" data-full="img/ListCoverImages/CreatingImpact/03Sigachi%5BSR%5D.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/CreatingImpact/03Sigachi%5BSR%5D.webp" alt="Sigachi sustainability report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Sigachi</span>
+                  <span class="work-card__meta">Sustainability Report</span>
+                  <span class="work-card__theme">Creating Impact</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="creating-impact" data-theme-label="Creating Impact" data-client="Gainwell" data-deliverable="Report Design" data-full="img/ListCoverImages/CreatingImpact/04Gainwell.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/CreatingImpact/04Gainwell.webp" alt="Gainwell report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Gainwell</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Creating Impact</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="creating-impact" data-theme-label="Creating Impact" data-client="Sigachi" data-deliverable="Annual Report" data-full="img/ListCoverImages/CreatingImpact/05Sigachi%5BAR%5D.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/CreatingImpact/05Sigachi%5BAR%5D.webp" alt="Sigachi annual report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Sigachi</span>
+                  <span class="work-card__meta">Annual Report</span>
+                  <span class="work-card__theme">Creating Impact</span>
+                </span>
+              </button>
+
+              <!-- Driving Growth -->
+              <button class="work-card" type="button" data-theme="driving-growth" data-theme-label="Driving Growth" data-client="Zaggle" data-deliverable="Report Design" data-full="img/ListCoverImages/DrivingGrowth/01Zaggle.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/DrivingGrowth/01Zaggle.webp" alt="Zaggle report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Zaggle</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Driving Growth</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="driving-growth" data-theme-label="Driving Growth" data-client="SG Mart" data-deliverable="Report Design" data-full="img/ListCoverImages/DrivingGrowth/02SGMart.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/DrivingGrowth/02SGMart.webp" alt="SG Mart report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">SG Mart</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Driving Growth</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="driving-growth" data-theme-label="Driving Growth" data-client="Wealthfirst" data-deliverable="Report Design" data-full="img/ListCoverImages/DrivingGrowth/03Wealthfirst.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/DrivingGrowth/03Wealthfirst.webp" alt="Wealthfirst report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Wealthfirst</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Driving Growth</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="driving-growth" data-theme-label="Driving Growth" data-client="Armaan" data-deliverable="Report Design" data-full="img/ListCoverImages/DrivingGrowth/04Armaan.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/DrivingGrowth/04Armaan.webp" alt="Armaan report cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Armaan</span>
+                  <span class="work-card__meta">Report Design</span>
+                  <span class="work-card__theme">Driving Growth</span>
+                </span>
+              </button>
+
+              <button class="work-card" type="button" data-theme="driving-growth" data-theme-label="Driving Growth" data-client="Swiss Military" data-deliverable="Investor Presentation" data-full="img/ListCoverImages/DrivingGrowth/05SwissMilitary.webp">
+                <span class="work-card__media">
+                  <img src="img/ListCoverImages/DrivingGrowth/05SwissMilitary.webp" alt="Swiss Military investor presentation cover" loading="lazy" decoding="async">
+                  <span class="work-card__view" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <span class="work-card__body">
+                  <span class="work-card__client">Swiss Military</span>
+                  <span class="work-card__meta">Investor Presentation</span>
+                  <span class="work-card__theme">Driving Growth</span>
+                </span>
+              </button>
+
+              <p class="work-grid__empty" data-work-empty hidden>No covers in this category yet.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Section - Work Archive End -->
+
+      <!-- Section - Process Band Start -->
+      <div class="mxd-section work-process">
+        <div class="work-grid-lines" aria-hidden="true"></div>
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="work-process__head">
+              <div class="anim-uni-in-up">
+                <p class="work-process__eyebrow">Behind every annual report</p>
+                <h2>One senior team,<br><strong>four disciplines</strong></h2>
+              </div>
+              <p class="anim-uni-in-up">No handoffs between vendors. Research, writing, design and production sit under one roof, so the narrative never breaks between chapters.</p>
+            </div>
+
+            <div class="work-process__grid">
+              <article class="work-process__step anim-uni-in-up">
+                <span class="work-process__num">01</span>
+                <h3>Research &amp; data</h3>
+                <p>We interrogate filings, performance data and ESG metrics before a single word is written.</p>
+              </article>
+              <article class="work-process__step anim-uni-in-up">
+                <span class="work-process__num">02</span>
+                <h3>Narrative &amp; copy</h3>
+                <p>Senior writers shape the strategy story — compliant, credible and built for investors.</p>
+              </article>
+              <article class="work-process__step anim-uni-in-up">
+                <span class="work-process__num">03</span>
+                <h3>Design &amp; data viz</h3>
+                <p>Cover to colophon: typography, infographics and charts that make complexity legible.</p>
+              </article>
+              <article class="work-process__step anim-uni-in-up">
+                <span class="work-process__num">04</span>
+                <h3>Production &amp; delivery</h3>
+                <p>Print-ready artwork and digital editions, delivered against tight disclosure deadlines.</p>
+              </article>
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Portfolio Grid End -->
+      <!-- Section - Process Band End -->
 
       <!-- Section - Trust CTA Start -->
       <div class="mxd-section trust-cta-section">
@@ -271,17 +692,17 @@
               </h2>
             </div>
             <div class="trust-cta__actions anim-uni-in-up">
-              <a class="btn trust-cta__btn" href="contact.html">
-                <span class="trust-cta__btn-shine" aria-hidden="true"></span>
-                <span class="trust-cta__btn-copy">
-                  <span class="trust-cta__btn-kicker">Start the conversation</span>
-                  <span class="trust-cta__btn-text">Talk to us</span>
-                </span>
-                <span class="trust-cta__btn-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M6.75 17.25 17.25 6.75" fill="none" />
-                    <path d="M8.5 6.75h8.75v8.75" fill="none" />
-                  </svg>
+              <a class="site-btn site-btn--light" href="contact.html">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Talk to us</span>
+                    <span class="site-btn__row">Talk to us</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
                 </span>
               </a>
             </div>
@@ -370,6 +791,32 @@
     </footer>
     <!-- Footer End -->
 
+    <!-- Cover Lightbox Start -->
+    <div class="work-lightbox" role="dialog" aria-modal="true" aria-label="Project cover viewer" aria-hidden="true" data-work-lightbox>
+      <div class="work-lightbox__bar">
+        <div class="work-lightbox__caption">
+          <h3 data-lightbox-title>Project</h3>
+          <p data-lightbox-meta>Theme</p>
+        </div>
+        <button class="work-lightbox__btn work-lightbox__close" type="button" aria-label="Close viewer" data-lightbox-close>
+          <i class="ph-bold ph-x"></i>
+        </button>
+      </div>
+      <div class="work-lightbox__stage" data-lightbox-backdrop>
+        <img src="" alt="" data-lightbox-image>
+      </div>
+      <div class="work-lightbox__nav">
+        <button class="work-lightbox__btn" type="button" aria-label="Previous cover" data-lightbox-prev>
+          <i class="ph-bold ph-arrow-left"></i>
+        </button>
+        <p class="work-lightbox__counter"><strong data-lightbox-current>1</strong> / <span data-lightbox-total>28</span></p>
+        <button class="work-lightbox__btn" type="button" aria-label="Next cover" data-lightbox-next>
+          <i class="ph-bold ph-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Cover Lightbox End -->
+
     <!-- To Top Button Start -->
     <a href="#" id="to-top" class="btn btn-to-top slide-up anim-no-delay">
       <i class="ph ph-arrow-up"></i>
@@ -378,6 +825,7 @@
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
     <script src="js/app.js?v=20260214-16"></script>
+    <script src="js/work.js?v=20260813-1"></script>
     
   </body>
 
