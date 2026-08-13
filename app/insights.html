@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
     <link rel="stylesheet" type="text/css" href="css/plugins.css">
     <link rel="stylesheet" type="text/css" href="css/main.css?v=20260218-62">
+    <link rel="stylesheet" type="text/css" href="css/insights.css?v=20260813-1">
     <!-- Template Styles End -->
 
     <!-- Custom Font Weight Cap & Loader Font Start -->
@@ -83,6 +84,11 @@
               <div class="main-menu">
                 <nav class="main-menu__content">
                   <ul id="main-menu" class="main-menu__accordion">
+                    <li class="main-menu__item">
+                      <a class="main-menu__link btn btn-anim" href="index.html">
+                        <span class="btn-caption">Home</span>
+                      </a>
+                    </li>
                     <li class="main-menu__item">
                       <a class="main-menu__link btn btn-anim" href="about-us.html">
                         <span class="btn-caption">About</span>
@@ -148,13 +154,17 @@
         </a>
       </div>
       <div class="mxd-header__controls loading__fade">
-        <a class="btn header-intro-btn" href="#">
-          <span class="header-intro-btn__copy">
-            <span class="header-intro-btn__eyebrow">Media</span>
-            <span class="header-intro-btn__label">Play Intro</span>
-          </span>
-          <span class="header-intro-btn__icon" aria-hidden="true">
-            <i class="ph-fill ph-play"></i>
+        <a class="site-btn site-btn--dark" href="#">
+          <span class="site-btn__inner">
+            <span class="site-btn__fill" aria-hidden="true"></span>
+            <span class="site-btn__label">
+              <span class="site-btn__row">Play Intro</span>
+              <span class="site-btn__row">Play Intro</span>
+            </span>
+            <span class="site-btn__icon" aria-hidden="true">
+              <i class="ph-fill ph-play"></i>
+              <i class="ph-fill ph-play"></i>
+            </span>
           </span>
         </a>
       </div>
@@ -162,107 +172,260 @@
     <!-- Header End -->
 
     <!-- Page Content Start -->
-    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+    <main id="mxd-page-content" class="mxd-page-content">
 
-      <!-- Section - Inner Page Headline Start -->
-      <div class="mxd-section mxd-section-inner-headline padding-headline-pre-block">
-        <div class="mxd-container grid-container">
-          <div class="mxd-block loading-wrap">
-            <div class="container-fluid px-0">
-              <div class="row gx-0">
-                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
-                  <div class="mxd-block__name name-inner-headline loading__item">
-                    <p class="mxd-point-subtitle">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
-                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
-                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
-                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
-                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
-                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
-                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
-                      </svg>
-                      <span>Insights</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
-                  <div class="mxd-block__content">
-                    <div class="mxd-block__inner-headline">
-                      <h1 class="inner-headline__title headline-img-before headline-img-02 loading__item">
-                        Perspectives on Reporting, ESG &amp; <strong>Corporate Narratives</strong>
-                      </h1>
-                      <p class="inner-headline__text t-large loading__item">Stay ahead of regulatory updates, framework standards, and design trends shaping modern corporate communication.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <!-- Section - Insights Hero Start -->
+      <section class="mxd-section insights-hero loading-wrap">
+        <div class="insights-hero__ambient" aria-hidden="true"></div>
+        <div class="insights-grid-lines" aria-hidden="true"></div>
+        <div class="insights-hero__shell">
+          <h1 class="insights-hero__title">
+            <span class="insights-hero__line loading__item">Perspectives on</span>
+            <span class="insights-hero__line insights-hero__line--indent loading__item">Reporting, ESG &amp;</span>
+            <span class="insights-hero__line loading__item"><strong>Corporate Narratives.</strong></span>
+          </h1>
+
+          <div class="insights-hero__bottom loading__item">
+            <p class="insights-hero__intro">Stay ahead of regulatory updates, framework standards, and design trends shaping modern corporate communication.</p>
+            <div class="insights-hero__actions">
+              <a class="site-btn site-btn--light" href="#subscribe">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Subscribe for updates</span>
+                    <span class="site-btn__row">Subscribe for updates</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
+                </span>
+              </a>
+              <a class="insights-hero__discover" href="#archive">Browse the archive <i class="ph-bold ph-arrow-down"></i></a>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Section - Inner Page Headline End -->
 
-      <!-- Section - Articles Grid Start -->
-      <div class="mxd-section padding-pre-grid">
+        <div class="insights-hero__rail">
+          <div class="insights-hero__stat"><strong>7</strong><span>Articles published</span></div>
+          <div class="insights-hero__stat"><strong>4</strong><span>Topics covered</span></div>
+          <div class="insights-hero__stat"><strong>Monthly</strong><span>Publication cadence</span></div>
+          <div class="insights-hero__stat"><strong>Feb 2026</strong><span>Latest issue</span></div>
+        </div>
+      </section>
+      <!-- Section - Insights Hero End -->
+
+      <!-- Section - Featured Article Start -->
+      <div class="mxd-section padding-pre-grid insights-featured">
         <div class="mxd-container grid-container">
           <div class="mxd-block">
-            <div class="container-fluid p-0">
-              <div class="row g-4">
-                <!-- Article 1 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-calendar"></i> <span>February 2026</span></p>
-                    <h3 class="reveal-type mb-3">Navigating BRSR Core &amp; ESG Assurance Guidelines</h3>
-                    <p class="t-muted mb-4">A practical analysis of updated SEBI mandates, materiality assessment methods, and value chain reporting requirements.</p>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="#">
-                      <span class="btn-caption">Read Article</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- Article 2 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-calendar"></i> <span>January 2026</span></p>
-                    <h3 class="reveal-type mb-3">Why Strategic Storytelling Belongs in Annual Reports</h3>
-                    <p class="t-muted mb-4">How connecting financial indicators with value creation models increases institutional investor confidence.</p>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="#">
-                      <span class="btn-caption">Read Article</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- Article 3 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-calendar"></i> <span>December 2025</span></p>
-                    <h3 class="reveal-type mb-3">Structuring Decision-Ready Financial Disclosures</h3>
-                    <p class="t-muted mb-4">Best practices for condensing complex financial metrics into intuitive, audit-grade visual systems.</p>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="#">
-                      <span class="btn-caption">Read Article</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
-                </div>
-                <!-- Article 4 -->
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-calendar"></i> <span>November 2025</span></p>
-                    <h3 class="reveal-type mb-3">The Shift Toward Digital &amp; Interactive Microsites</h3>
-                    <p class="t-muted mb-4">Why forward-thinking enterprises are supplementing printed reports with interactive, accessible HTML microsites.</p>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="#">
-                      <span class="btn-caption">Read Article</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
+            <div class="insights-featured__head">
+              <p class="mxd-point-subtitle anim-uni-in-up"><span>Featured</span></p>
+              <h2 class="reveal-type">The story shaping <strong>this issue</strong></h2>
+            </div>
+            <div class="insights-featured__layout">
+              <figure class="insights-featured__visual anim-uni-in-up">
+                <img src="img/backgrounds/connectstory.webp" alt="Report and disclosure materials representing BRSR and ESG assurance documentation" loading="lazy" decoding="async">
+                <figcaption><i aria-hidden="true"></i> ESG &amp; BRSR</figcaption>
+              </figure>
+              <div class="insights-featured__copy anim-uni-in-up">
+                <span class="insights-featured__number" aria-hidden="true">01</span>
+                <span class="insights-featured__eyebrow">February 2026 issue</span>
+                <h3 class="insights-featured__title">Navigating BRSR Core &amp; ESG Assurance Guidelines</h3>
+                <p class="insights-featured__lead">A practical analysis of updated SEBI mandates, materiality assessment methods, and value chain reporting requirements.</p>
+                <p>This issue maps the newly tightened assurance requirements against the materiality and value chain disclosures boards are now expected to defend, and what that means for the next reporting cycle.</p>
+                <div class="insights-featured__closing">
+                  <span class="insights-featured__meta">Read time · 8 min</span>
+                  <a class="site-btn site-btn--light" href="#">
+                    <span class="site-btn__inner">
+                      <span class="site-btn__fill" aria-hidden="true"></span>
+                      <span class="site-btn__label">
+                        <span class="site-btn__row">Read the article</span>
+                        <span class="site-btn__row">Read the article</span>
+                      </span>
+                      <span class="site-btn__icon" aria-hidden="true">
+                        <i class="ph-bold ph-arrow-up-right"></i>
+                        <i class="ph-bold ph-arrow-up-right"></i>
+                      </span>
+                    </span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Articles Grid End -->
+      <!-- Section - Featured Article End -->
+
+      <!-- Section - Article Archive Start -->
+      <div id="archive" class="mxd-section insights-archive">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+
+            <div class="insights-archive__head">
+              <div class="anim-uni-in-up">
+                <h2>Browse by <strong>discipline</strong></h2>
+              </div>
+              <p class="insights-archive__note anim-uni-in-up">Filter articles by the discipline they draw on. New issues publish monthly.</p>
+            </div>
+
+            <div class="insights-filters">
+              <div class="insights-filters__list" role="group" aria-label="Filter articles by topic">
+                <button class="insights-filters__btn is-active" type="button" aria-pressed="true" data-insights-filter="all">All insights <sup>6</sup></button>
+                <button class="insights-filters__btn" type="button" aria-pressed="false" data-insights-filter="esg-brsr">ESG &amp; BRSR <sup>1</sup></button>
+                <button class="insights-filters__btn" type="button" aria-pressed="false" data-insights-filter="reporting-craft">Reporting Craft <sup>2</sup></button>
+                <button class="insights-filters__btn" type="button" aria-pressed="false" data-insights-filter="design-dataviz">Design &amp; Data Viz <sup>2</sup></button>
+                <button class="insights-filters__btn" type="button" aria-pressed="false" data-insights-filter="digital">Digital <sup>1</sup></button>
+              </div>
+              <p class="insights-filters__count">Showing <strong data-insights-count>6</strong> articles</p>
+            </div>
+
+            <div class="insights-grid" data-insights-grid>
+
+              <a class="insights-card" href="#" data-insights-topic="reporting-craft" data-insights-topic-label="Reporting Craft">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> January 2026</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">Why Strategic Storytelling Belongs in Annual Reports</h3>
+                <p class="insights-card__standfirst">How connecting financial indicators with value creation models increases institutional investor confidence.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">Reporting Craft</span></span>
+              </a>
+
+              <a class="insights-card" href="#" data-insights-topic="design-dataviz" data-insights-topic-label="Design &amp; Data Viz">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> December 2025</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">Structuring Decision-Ready Financial Disclosures</h3>
+                <p class="insights-card__standfirst">Best practices for condensing complex financial metrics into intuitive, audit-grade visual systems.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">Design &amp; Data Viz</span></span>
+              </a>
+
+              <a class="insights-card" href="#" data-insights-topic="digital" data-insights-topic-label="Digital">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> November 2025</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">The Shift Toward Digital &amp; Interactive Microsites</h3>
+                <p class="insights-card__standfirst">Why forward-thinking enterprises are supplementing printed reports with interactive, accessible HTML microsites.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">Digital</span></span>
+              </a>
+
+              <a class="insights-card" href="#" data-insights-topic="esg-brsr" data-insights-topic-label="ESG &amp; BRSR">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> October 2025</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">Integrated Reporting Frameworks: Aligning &lt;IR&gt; with BRSR</h3>
+                <p class="insights-card__standfirst">How the International &lt;IR&gt; Framework's six capitals model can be mapped against BRSR's nine principles without duplicating disclosure effort.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">ESG &amp; BRSR</span></span>
+              </a>
+
+              <a class="insights-card" href="#" data-insights-topic="reporting-craft" data-insights-topic-label="Reporting Craft">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> September 2025</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">XBRL Tagging: Where Regulatory Filings Go Wrong</h3>
+                <p class="insights-card__standfirst">Common tagging and taxonomy errors that trigger regulator queries, and the review checkpoints that catch them before filing.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">Reporting Craft</span></span>
+              </a>
+
+              <a class="insights-card" href="#" data-insights-topic="design-dataviz" data-insights-topic-label="Design &amp; Data Viz">
+                <span class="insights-card__top">
+                  <span class="insights-card__eyebrow"><i class="ph-bold ph-calendar" aria-hidden="true"></i> August 2025</span>
+                  <span class="insights-card__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+                <h3 class="insights-card__title">Designing AGM Collateral That Builds Shareholder Confidence</h3>
+                <p class="insights-card__standfirst">Notices, ballots and explanatory statements are compliance documents first, but the best ones read like considered communication.</p>
+                <span class="insights-card__foot"><span class="insights-card__tag">Design &amp; Data Viz</span></span>
+              </a>
+
+              <p class="insights-grid__empty" data-insights-empty hidden>No articles in this topic yet.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!-- Section - Article Archive End -->
+
+      <!-- Section - Knowledge Hub Band Start -->
+      <div class="mxd-section insights-hub">
+        <div class="insights-grid-lines" aria-hidden="true"></div>
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="insights-hub__head">
+              <div class="anim-uni-in-up">
+                <p class="insights-hub__eyebrow">Beyond the archive</p>
+                <h2>More ways to <strong>stay informed</strong></h2>
+              </div>
+              <p class="anim-uni-in-up">Shorter reads, reference material, and the enterprises we report for — all one click from this page.</p>
+            </div>
+
+            <div class="insights-hub__list">
+              <a class="insights-hub__row anim-uni-in-up" href="blog-standard.html">
+                <span class="insights-hub__index">01</span>
+                <span class="icon-badge"><img src="img/icons/resources.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="insights-hub__label">
+                  <span class="insights-hub__title">Blogs</span>
+                  <span class="insights-hub__desc">Shorter reads on reporting practice, published between issues.</span>
+                </span>
+                <span class="insights-hub__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                <span class="insights-hub__line" aria-hidden="true"></span>
+              </a>
+              <a class="insights-hub__row anim-uni-in-up" href="#">
+                <span class="insights-hub__index">02</span>
+                <span class="icon-badge"><img src="img/icons/resources.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="insights-hub__label">
+                  <span class="insights-hub__title">Knowledge Hub</span>
+                  <span class="insights-hub__desc">Frameworks, templates and reference guides for reporting and disclosure teams.</span>
+                </span>
+                <span class="insights-hub__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                <span class="insights-hub__line" aria-hidden="true"></span>
+              </a>
+              <a class="insights-hub__row anim-uni-in-up" href="work.html">
+                <span class="insights-hub__index">03</span>
+                <span class="icon-badge"><img src="img/icons/key-clients.svg" alt="" loading="lazy" decoding="async"></span>
+                <span class="insights-hub__label">
+                  <span class="insights-hub__title">Key Clients</span>
+                  <span class="insights-hub__desc">The listed enterprises and growth leaders we report for.</span>
+                </span>
+                <span class="insights-hub__arrow" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                <span class="insights-hub__line" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - Knowledge Hub Band End -->
+
+      <!-- Section - Subscribe Band Start -->
+      <div id="subscribe" class="mxd-section insights-subscribe">
+        <div class="insights-grid-lines" aria-hidden="true"></div>
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="insights-subscribe__layout">
+              <div class="insights-subscribe__copy anim-uni-in-up">
+                <p class="mxd-point-subtitle"><span>Stay informed</span></p>
+                <h2 class="reveal-type">Never miss an <strong>issue.</strong></h2>
+                <p class="insights-subscribe__note">One considered email a month: regulatory shifts, framework updates, and the reporting craft behind them. No noise.</p>
+              </div>
+              <div class="insights-subscribe__form anim-uni-in-up notify">
+                <div class="form-container">
+                  <div class="form__reply subscription-ok"><span class="reply__text">Done! Thanks for subscribing.</span></div>
+                  <div class="form__reply subscription-error"><span class="reply__text">Ooops! Something went wrong. Please try again later.</span></div>
+                  <form class="form notify-form form-light">
+                    <input type="email" placeholder="Your Email" required>
+                    <button class="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay" type="submit" aria-label="Subscribe to insights"><i class="ph ph-arrow-up-right"></i></button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - Subscribe Band End -->
 
       <!-- Section - Trust CTA Start -->
       <div class="mxd-section trust-cta-section">
@@ -275,17 +438,17 @@
               </h2>
             </div>
             <div class="trust-cta__actions anim-uni-in-up">
-              <a class="btn trust-cta__btn" href="contact.html">
-                <span class="trust-cta__btn-shine" aria-hidden="true"></span>
-                <span class="trust-cta__btn-copy">
-                  <span class="trust-cta__btn-kicker">Start the conversation</span>
-                  <span class="trust-cta__btn-text">Talk to us</span>
-                </span>
-                <span class="trust-cta__btn-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M6.75 17.25 17.25 6.75" fill="none" />
-                    <path d="M8.5 6.75h8.75v8.75" fill="none" />
-                  </svg>
+              <a class="site-btn site-btn--light" href="contact.html">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Talk to us</span>
+                    <span class="site-btn__row">Talk to us</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
                 </span>
               </a>
             </div>
@@ -382,6 +545,7 @@
     <!-- Load Scripts Start -->
     <script src="js/libs.min.js"></script>
     <script src="js/app.js?v=20260214-16"></script>
+    <script src="js/insights.js?v=20260813-1"></script>
     
   </body>
 
