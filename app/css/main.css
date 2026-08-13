@@ -24402,6 +24402,12 @@ body.home-no-radius .tag-default {
 /* Unified button, copied 1:1 from lrsd-1's Button.tsx: fixed-height bar,
    fill wipe expanding from the icon slot, sliding text swap, flying
    arrow-icon swap-out/swap-in. Two plain variants, nothing else. */
+/* Fill/row/icon transitions below run at .32s (was .5s): where two
+   site-btn instances sit close together (e.g. the "About Us" / "Our
+   Works" pair on the home page), a .5s hover animation is still
+   finishing on the first button by the time the cursor reaches the
+   second, so both appear to animate at once. .32s shrinks that
+   overlap window without making the motion feel abrupt. */
 .site-btn {
   position: relative;
   display: inline-flex;
@@ -24434,7 +24440,7 @@ body.home-no-radius .tag-default {
   bottom: 0;
   width: 4.4rem;
   z-index: 0;
-  transition: width .5s cubic-bezier(.16, 1, .3, 1);
+  transition: width .32s cubic-bezier(.16, 1, .3, 1);
 }
 .site-btn:hover .site-btn__fill { width: 100%; }
 
@@ -24450,7 +24456,7 @@ body.home-no-radius .tag-default {
   height: 1.4em;
   line-height: 1.4em;
   white-space: nowrap;
-  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  transition: transform .32s cubic-bezier(.16, 1, .3, 1);
 }
 .site-btn:hover .site-btn__row { transform: translateY(-1.4em); }
 
@@ -24468,7 +24474,7 @@ body.home-no-radius .tag-default {
 }
 .site-btn__icon > :first-child {
   display: block;
-  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  transition: transform .32s cubic-bezier(.16, 1, .3, 1);
 }
 /* Fixed rem offset, not a percentage: percentages resolve against the
    icon glyph's own box, which varies with the glyph's internal metrics
@@ -24485,7 +24491,7 @@ body.home-no-radius .tag-default {
   align-items: center;
   justify-content: center;
   transform: translate(-6rem, 6rem);
-  transition: transform .5s cubic-bezier(.16, 1, .3, 1);
+  transition: transform .32s cubic-bezier(.16, 1, .3, 1);
 }
 .site-btn:hover .site-btn__icon > :last-child { transform: translate(0, 0); }
 
