@@ -10106,6 +10106,12 @@ form textarea:required:valid {
   line-height: 1;
 }
 
+.mxd-people-foundation__icon img {
+  width: clamp(4.4rem, 4vw, 6rem);
+  height: clamp(4.4rem, 4vw, 6rem);
+  display: block;
+}
+
 .mxd-people-foundation__word {
   color: #2866a0;
   font-size: clamp(5.1rem, 4.95vw, 8.4rem);
@@ -10218,6 +10224,10 @@ form textarea:required:valid {
   }
   .mxd-people-foundation__icon i {
     font-size: 2.2rem;
+  }
+  .mxd-people-foundation__icon img {
+    width: 3.6rem;
+    height: 3.6rem;
   }
   .mxd-people-foundation__word {
     font-size: clamp(3.9rem, 10.2vw, 5.5rem);
@@ -10474,6 +10484,12 @@ form textarea:required:valid {
   color: #1f5028;
   font-size: clamp(4.2rem, 4.4vw, 6.5rem);
   line-height: 1;
+}
+
+.boutique-design__icon img {
+  width: clamp(4.2rem, 4.4vw, 6.5rem);
+  height: clamp(4.2rem, 4.4vw, 6.5rem);
+  display: block;
 }
 
 .boutique-design__card h3 {
