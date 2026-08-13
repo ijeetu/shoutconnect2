@@ -4,10 +4,10 @@
 
    NOTE: each page loads only main.css + its own stylesheet (never a
    sibling page's CSS), so a handful of small shared "atoms" — the
-   reveal-type strong colour, the trust-cta panel override, the light
-   display-heading weight rule, and the icon-badge system — are
-   duplicated here to match the exact convention already used by
-   about.css / work.css. */
+   reveal-type strong colour, the trust-cta panel override and the light
+   display-heading weight rule — are opted into here, matching the exact
+   convention already used by about.css / work.css. The icon-badge system
+   is global and lives in main.css. */
 
 /* ==========================================================================
    Shared atoms
@@ -21,16 +21,6 @@
    (300), with <strong> stepping back up to Medium (500) for emphasis. */
 .mxd-section-title__hrtitle h2 { font-weight: 300 !important; }
 .mxd-section-title__hrtitle h2 strong { font-weight: 500 !important; }
-
-.icon-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.icon-badge img { width: 3.6rem; height: 3.6rem; display: block; }
-.icon-badge--md img { width: 5.2rem; height: 5.2rem; }
-.mxd-point-subtitle .icon-badge { margin-right: .2rem; }
 
 /* ==========================================================================
    Hero

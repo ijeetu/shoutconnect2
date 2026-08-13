@@ -24512,3 +24512,25 @@ body.home-no-radius .tag-default {
    keep the section-level background behind it (see about.css for the
    same fix scoped to the about-us page). */
 body:not(.inner-page) .trust-cta__panel { background: none; box-shadow: none; }
+
+/* ------------------------------------------------*/
+/* Brand icon-badge system Start */
+/* ------------------------------------------------*/
+/* Shared across about-us / services / insights / careers. Lives here
+   rather than in a page stylesheet so every page that loads main.css
+   renders the badge at identical weight and size. Two sizes only. */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.icon-badge img { width: 3.6rem; height: 3.6rem; display: block; }
+
+.icon-badge--md img { width: 5.2rem; height: 5.2rem; }
+
+.mxd-point-subtitle .icon-badge { margin-right: .2rem; }
+/* ------------------------------------------------*/
+/* Brand icon-badge system End */
+/* ------------------------------------------------*/

@@ -218,22 +218,8 @@
 
 .about-hero__rail i { width: .8rem; height: .8rem; border-radius: 50%; background: #0a8a65; }
 
-/* ==========================================================================
-   Brand icon-badge system (recolored to logo palette: #1c6695 / #0a8a65)
-   Two sizes only, so icon weight stays consistent everywhere it appears.
-   ========================================================================== */
-.icon-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon-badge img { width: 3.6rem; height: 3.6rem; display: block; }
-
-.icon-badge--md img { width: 5.2rem; height: 5.2rem; }
-
-.mxd-point-subtitle .icon-badge { margin-right: .2rem; }
+/* The brand icon-badge system now lives in main.css so every page
+   renders it identically. */
 
 /* Shared hover-lift used by every bordered card on this page */
 .about-card {

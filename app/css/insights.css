@@ -10,16 +10,7 @@
 
 .trust-cta__panel { background: none; box-shadow: none; }
 
-/* icon-badge is defined per-page (this page does not load about.css) so it
-   keeps identical sizing wherever it appears across the site. */
-.icon-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.icon-badge img { width: 3.6rem; height: 3.6rem; display: block; }
+/* The icon-badge system lives in main.css, which every page loads. */
 
 .insights-grid-lines {
   position: absolute;
