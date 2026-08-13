@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
     <link rel="stylesheet" type="text/css" href="css/plugins.css">
     <link rel="stylesheet" type="text/css" href="css/main.css?v=20260218-62">
+    <link rel="stylesheet" type="text/css" href="css/careers.css?v=20260813-1">
     <!-- Template Styles End -->
 
     <!-- Custom Font Weight Cap & Loader Font Start -->
@@ -83,6 +84,11 @@
               <div class="main-menu">
                 <nav class="main-menu__content">
                   <ul id="main-menu" class="main-menu__accordion">
+                    <li class="main-menu__item">
+                      <a class="main-menu__link btn btn-anim" href="index.html">
+                        <span class="btn-caption">Home</span>
+                      </a>
+                    </li>
                     <li class="main-menu__item">
                       <a class="main-menu__link btn btn-anim" href="about-us.html">
                         <span class="btn-caption">About</span>
@@ -148,13 +154,17 @@
         </a>
       </div>
       <div class="mxd-header__controls loading__fade">
-        <a class="btn header-intro-btn" href="#">
-          <span class="header-intro-btn__copy">
-            <span class="header-intro-btn__eyebrow">Media</span>
-            <span class="header-intro-btn__label">Play Intro</span>
-          </span>
-          <span class="header-intro-btn__icon" aria-hidden="true">
-            <i class="ph-fill ph-play"></i>
+        <a class="site-btn site-btn--dark" href="#">
+          <span class="site-btn__inner">
+            <span class="site-btn__fill" aria-hidden="true"></span>
+            <span class="site-btn__label">
+              <span class="site-btn__row">Play Intro</span>
+              <span class="site-btn__row">Play Intro</span>
+            </span>
+            <span class="site-btn__icon" aria-hidden="true">
+              <i class="ph-fill ph-play"></i>
+              <i class="ph-fill ph-play"></i>
+            </span>
           </span>
         </a>
       </div>
@@ -162,80 +172,111 @@
     <!-- Header End -->
 
     <!-- Page Content Start -->
-    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+    <main id="mxd-page-content" class="mxd-page-content">
 
-      <!-- Section - Inner Page Headline Start -->
-      <div class="mxd-section mxd-section-inner-headline padding-headline-pre-block">
-        <div class="mxd-container grid-container">
-          <div class="mxd-block loading-wrap">
-            <div class="container-fluid px-0">
-              <div class="row gx-0">
-                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
-                  <div class="mxd-block__name name-inner-headline loading__item">
-                    <p class="mxd-point-subtitle">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
-                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
-                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
-                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
-                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
-                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
-                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
-                      </svg>
-                      <span>Careers</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
-                  <div class="mxd-block__content">
-                    <div class="mxd-block__inner-headline">
-                      <h1 class="inner-headline__title headline-img-before headline-img-04 loading__item">
-                        Build Meaningful Narratives with <strong>Precision &amp; Purpose</strong>
-                      </h1>
-                      <p class="inner-headline__text t-large loading__item">Be part of a team that values rigor, creativity, and hands-on ownership across financial writing, ESG research, and publication design.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <!-- Section - Careers Hero Start -->
+      <section class="mxd-section careers-hero loading-wrap">
+        <div class="careers-hero__ambient" aria-hidden="true"></div>
+        <div class="careers-hero__grid" aria-hidden="true"></div>
+        <div class="careers-hero__shell">
+          <h1 class="careers-hero__title">
+            <span class="careers-hero__line loading__item">Build Meaningful Narratives</span>
+            <span class="careers-hero__line careers-hero__line--indent loading__item">with <strong>Precision &amp; Purpose</strong></span>
+          </h1>
+
+          <div class="careers-hero__bottom loading__item">
+            <p class="careers-hero__intro">Be part of a team that values rigor, creativity, and hands-on ownership across financial writing, ESG research, and publication design.</p>
+            <div class="careers-hero__actions">
+              <a class="site-btn site-btn--light" href="#positions">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">View open roles</span>
+                    <span class="site-btn__row">View open roles</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
+                </span>
+              </a>
+              <a class="careers-hero__discover" href="#process">See how we hire <i class="ph-bold ph-arrow-down"></i></a>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Section - Inner Page Headline End -->
 
-      <!-- Section - Culture & Benefits Start -->
-      <div class="mxd-section padding-pre-grid">
+        <div class="careers-hero__rail" aria-label="Life at Connect">
+          <div class="careers-hero__stat"><strong>15+</strong><span>Team members</span></div>
+          <div class="careers-hero__stat"><strong>03</strong><span>Core disciplines</span></div>
+          <div class="careers-hero__stat"><strong>Hybrid</strong><span>Working model</span></div>
+          <div class="careers-hero__stat"><strong>India</strong><span>Studio base</span></div>
+        </div>
+      </section>
+      <!-- Section - Careers Hero End -->
+
+      <!-- Section - Culture Split Start -->
+      <div id="culture" class="mxd-section careers-split-section">
         <div class="mxd-container grid-container">
           <div class="mxd-block">
-            <div class="container-fluid p-0">
-              <div class="row g-4">
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-3"><i class="ph-bold ph-users"></i> <span>Our Culture</span></p>
-                    <h3 class="reveal-type mb-3">Work that <strong>Matters</strong></h3>
-                    <p class="t-muted mb-0">We operate as a focused boutique firm. You won't be a cog in a massive machine—you will own key reporting deliverables, work directly with leadership, and build work you are proud of.</p>
-                  </div>
-                </div>
-                <div class="col-12 col-md-6 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <p class="mxd-point-subtitle mb-3"><i class="ph-bold ph-gift"></i> <span>Benefits</span></p>
-                    <h3 class="reveal-type mb-3">Growth &amp; <strong>Perks</strong></h3>
-                    <ul class="mxd-awards-list border-0 p-0 m-0">
-                      <li class="py-2"><p class="mb-0">Continuous learning &amp; ESG certification support</p></li>
-                      <li class="py-2"><p class="mb-0">Flexible, hybrid-friendly workspace culture</p></li>
-                      <li class="py-2"><p class="mb-0">Direct mentorship from senior domain experts</p></li>
-                    </ul>
-                  </div>
+            <div class="careers-split loading__fade">
+              <div class="careers-split__col careers-split__col--primary anim-uni-in-up">
+                <span class="careers-split__quote-mark" aria-hidden="true">“</span>
+                <p class="mxd-point-subtitle mb-3">
+                  <span class="icon-badge"><img src="img/icons/beliefs.svg" alt="" loading="lazy" decoding="async"></span>
+                  <span>Our Culture</span>
+                </p>
+                <h2 class="reveal-type mb-3">Work that <strong>Matters</strong></h2>
+                <p class="t-large mb-0">We operate as a focused boutique firm. You won't be a cog in a massive machine—you will own key reporting deliverables, work directly with leadership, and build work you are proud of.</p>
+              </div>
+              <div class="careers-split__col anim-uni-in-up">
+                <p class="mxd-point-subtitle mb-3">
+                  <span class="icon-badge"><img src="img/icons/vision.svg" alt="" loading="lazy" decoding="async"></span>
+                  <span>What We Look For</span>
+                </p>
+                <h2 class="reveal-type mb-3">Senior, <strong>Self-Directed</strong></h2>
+                <p class="t-large mb-0">We hire specialists who need little supervision—people who ask the second question, push back on a weak chart, and treat a client's report as if it carried their own name.</p>
+                <div class="careers-split__traits">
+                  <span class="careers-split__trait">Precision</span>
+                  <span class="careers-split__trait">Curiosity</span>
+                  <span class="careers-split__trait">Ownership</span>
+                  <span class="careers-split__trait careers-split__trait--accent">Craft</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Culture & Benefits End -->
+      <!-- Section - Culture Split End -->
+
+      <!-- Section - Dark Values Band Start -->
+      <div class="mxd-section careers-values">
+        <div class="careers-values__lines" aria-hidden="true"></div>
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <p class="careers-values__eyebrow anim-uni-in-up">What we expect</p>
+            <div class="careers-values__cols">
+              <div class="careers-values__item anim-uni-in-up">
+                <p class="careers-values__label">
+                  <span class="icon-badge icon-badge--on-dark"><img src="img/icons/mission.svg" alt="" loading="lazy" decoding="async"></span>
+                  Ownership
+                </p>
+                <p>You will <strong>own the deliverable</strong>, end to end—accountable to leadership and to the client, not to a queue of assigned tasks.</p>
+              </div>
+              <div class="careers-values__item anim-uni-in-up">
+                <p class="careers-values__label">
+                  <span class="icon-badge icon-badge--on-dark"><img src="img/icons/value.svg" alt="" loading="lazy" decoding="async"></span>
+                  Craft
+                </p>
+                <p>We hire for <strong>depth over speed</strong>—writers who interrogate the data, designers who sweat the grid, analysts who question the framework.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - Dark Values Band End -->
 
       <!-- Section - Open Positions Start -->
-      <div class="mxd-section padding-pre-grid">
+      <div id="positions" class="mxd-section padding-pre-grid">
         <div class="mxd-container grid-container">
           <div class="mxd-block">
             <div class="mxd-section-title">
@@ -244,61 +285,142 @@
                   <div class="col-12 col-xl-8 mxd-grid-item no-margin">
                     <div class="mxd-section-title__hrtitle">
                       <h2 class="reveal-type">Open <strong>Positions</strong></h2>
+                      <p class="t-muted mt-2">Three senior roles, open now—each reporting directly to leadership.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="careers-roles">
+              <a class="careers-roles__row anim-uni-in-up" href="contact.html">
+                <span class="careers-roles__index">01</span>
+                <span class="careers-roles__main">
+                  <span class="careers-roles__title">Senior Financial Writer</span>
+                  <span class="careers-roles__meta">Financial Writing <i aria-hidden="true">·</i> Full-Time</span>
+                  <span class="careers-roles__descr">3+ years experience writing annual report narratives, management discussions, and investor communications.</span>
+                </span>
+                <span class="careers-roles__apply">
+                  <span class="careers-roles__apply-label">Apply now</span>
+                  <span class="careers-roles__apply-icon" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+              </a>
+              <a class="careers-roles__row anim-uni-in-up" href="contact.html">
+                <span class="careers-roles__index">02</span>
+                <span class="careers-roles__main">
+                  <span class="careers-roles__title">Lead Report Designer</span>
+                  <span class="careers-roles__meta">Report Design <i aria-hidden="true">·</i> Full-Time</span>
+                  <span class="careers-roles__descr">Expertise in InDesign, typography, chart visualization, and multi-page corporate report layout.</span>
+                </span>
+                <span class="careers-roles__apply">
+                  <span class="careers-roles__apply-label">Apply now</span>
+                  <span class="careers-roles__apply-icon" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+              </a>
+              <a class="careers-roles__row anim-uni-in-up" href="contact.html">
+                <span class="careers-roles__index">03</span>
+                <span class="careers-roles__main">
+                  <span class="careers-roles__title">ESG Research Analyst</span>
+                  <span class="careers-roles__meta">ESG Research <i aria-hidden="true">·</i> Full-Time</span>
+                  <span class="careers-roles__descr">Strong understanding of BRSR guidelines, materiality frameworks, and sustainability metrics compilation.</span>
+                </span>
+                <span class="careers-roles__apply">
+                  <span class="careers-roles__apply-label">Apply now</span>
+                  <span class="careers-roles__apply-icon" aria-hidden="true"><i class="ph-bold ph-arrow-up-right"></i></span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - Open Positions End -->
+
+      <!-- Section - Benefits Checklist Start -->
+      <div class="mxd-section padding-pre-grid">
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="mxd-section-title">
+              <div class="container-fluid p-0">
+                <div class="row g-0">
+                  <div class="col-12 col-xl-8 mxd-grid-item no-margin">
+                    <div class="mxd-section-title__hrtitle">
+                      <h2 class="reveal-type">Growth &amp; <strong>Perks</strong></h2>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div class="container-fluid p-0 mt-4">
-              <div class="row g-4">
-                <!-- Position 1 -->
-                <div class="col-12 col-md-4 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up d-flex flex-column justify-content-between">
-                    <div>
-                      <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-pen"></i> <span>Full-Time</span></p>
-                      <h3 class="reveal-type mb-2">Senior Financial Writer</h3>
-                      <p class="t-muted mb-4">3+ years experience writing annual report narratives, management discussions, and investor communications.</p>
-                    </div>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="contact.html">
-                      <span class="btn-caption">Apply Now</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
+              <div class="careers-checklist">
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-01.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Continuous learning &amp; ESG certification support</p>
                 </div>
-                <!-- Position 2 -->
-                <div class="col-12 col-md-4 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up d-flex flex-column justify-content-between">
-                    <div>
-                      <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-layout"></i> <span>Full-Time</span></p>
-                      <h3 class="reveal-type mb-2">Lead Report Designer</h3>
-                      <p class="t-muted mb-4">Expertise in InDesign, typography, chart visualization, and multi-page corporate report layout.</p>
-                    </div>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="contact.html">
-                      <span class="btn-caption">Apply Now</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-02.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Flexible, hybrid-friendly workspace culture</p>
                 </div>
-                <!-- Position 3 -->
-                <div class="col-12 col-md-4 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up d-flex flex-column justify-content-between">
-                    <div>
-                      <p class="mxd-point-subtitle mb-2"><i class="ph-bold ph-tree"></i> <span>Full-Time</span></p>
-                      <h3 class="reveal-type mb-2">ESG Research Analyst</h3>
-                      <p class="t-muted mb-4">Strong understanding of BRSR guidelines, materiality frameworks, and sustainability metrics compilation.</p>
-                    </div>
-                    <a class="btn btn-anim btn-default btn-outline slide-right-up mt-auto" href="contact.html">
-                      <span class="btn-caption">Apply Now</span>
-                      <i class="ph-bold ph-arrow-up-right"></i>
-                    </a>
-                  </div>
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-03.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Direct mentorship from senior domain experts</p>
+                </div>
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-04.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Conference and training budget for every specialist</p>
+                </div>
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-05.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Real ownership from day one, not a queue of small tasks</p>
+                </div>
+                <div class="careers-checklist__item anim-uni-in-up">
+                  <span class="icon-badge"><img src="img/icons/apart-06.svg" alt="" loading="lazy" decoding="async"></span>
+                  <p>Cross-functional exposure across writing, ESG research and design</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Open Positions End -->
+      <!-- Section - Benefits Checklist End -->
+
+      <!-- Section - Hiring Process Band Start -->
+      <div id="process" class="mxd-section careers-process">
+        <div class="careers-process__lines" aria-hidden="true"></div>
+        <div class="mxd-container grid-container">
+          <div class="mxd-block">
+            <div class="careers-process__head">
+              <div class="anim-uni-in-up">
+                <p class="careers-process__eyebrow">How we hire</p>
+                <h2>Four steps,<br><strong>no black box</strong></h2>
+              </div>
+              <p class="anim-uni-in-up">We keep hiring short and direct—every candidate meets leadership before an offer is made.</p>
+            </div>
+
+            <div class="careers-process__grid">
+              <article class="careers-process__step anim-uni-in-up">
+                <span class="careers-process__num">01</span>
+                <h3>Application</h3>
+                <p>Send your resume and a short note on the work you're proudest of.</p>
+              </article>
+              <article class="careers-process__step anim-uni-in-up">
+                <span class="careers-process__num">02</span>
+                <h3>Portfolio &amp; craft review</h3>
+                <p>We review real writing, design or research samples—not a test brief.</p>
+              </article>
+              <article class="careers-process__step anim-uni-in-up">
+                <span class="careers-process__num">03</span>
+                <h3>Conversation with leadership</h3>
+                <p>A direct conversation on fit, ownership and the work ahead.</p>
+              </article>
+              <article class="careers-process__step anim-uni-in-up">
+                <span class="careers-process__num">04</span>
+                <h3>Offer</h3>
+                <p>Clear terms, a defined role, and a start date that works for you.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section - Hiring Process Band End -->
 
       <!-- Section - Trust CTA Start -->
       <div class="mxd-section trust-cta-section">
@@ -311,17 +433,17 @@
               </h2>
             </div>
             <div class="trust-cta__actions anim-uni-in-up">
-              <a class="btn trust-cta__btn" href="contact.html">
-                <span class="trust-cta__btn-shine" aria-hidden="true"></span>
-                <span class="trust-cta__btn-copy">
-                  <span class="trust-cta__btn-kicker">Get in touch</span>
-                  <span class="trust-cta__btn-text">Submit Resume</span>
-                </span>
-                <span class="trust-cta__btn-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M6.75 17.25 17.25 6.75" fill="none" />
-                    <path d="M8.5 6.75h8.75v8.75" fill="none" />
-                  </svg>
+              <a class="site-btn site-btn--light" href="contact.html">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Submit Resume</span>
+                    <span class="site-btn__row">Submit Resume</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
                 </span>
               </a>
             </div>
