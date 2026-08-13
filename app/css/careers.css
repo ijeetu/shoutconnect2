@@ -37,7 +37,7 @@
   background:
     linear-gradient(90deg, rgba(3, 19, 29, .97) 0%, rgba(3, 19, 29, .9) 34%, rgba(3, 19, 29, .5) 66%, rgba(3, 19, 29, .14) 100%),
     linear-gradient(0deg, rgba(3, 19, 29, .55), transparent 42%),
-    url("../img/backgrounds/Boutique.jpg") right center / cover no-repeat,
+    url("../img/backgrounds/careers-hero-premium.webp") right center / cover no-repeat,
     #03131d;
 }
 
@@ -288,6 +288,12 @@
    Open Positions — the page's signature moment: full-width editorial
    rows, each one a single accessible link target (not a boxed card).
    ========================================================================== */
+/* .padding-pre-grid only sets padding-bottom, so this section otherwise
+   sits flush against the dark values band above it — every other band
+   transition on this page (see .careers-split-section, .careers-process)
+   adds its own top padding to keep the section rhythm even. */
+.careers-positions-section { padding-top: clamp(6rem, 8vw, 9rem); }
+
 .careers-roles { border-top: 1px solid rgba(22, 22, 22, .12); margin-top: 1rem; }
 
 .careers-roles__row {

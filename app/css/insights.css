@@ -40,7 +40,7 @@
   background:
     linear-gradient(90deg, rgba(3, 19, 29, .97) 0%, rgba(3, 19, 29, .9) 32%, rgba(3, 19, 29, .5) 64%, rgba(3, 19, 29, .14) 100%),
     linear-gradient(0deg, rgba(3, 19, 29, .55), transparent 42%),
-    url("../img/backgrounds/insight.webp") right center / cover no-repeat,
+    url("../img/backgrounds/insights-hero-premium.webp") right center / cover no-repeat,
     #03131d;
 }
 
@@ -718,6 +718,7 @@
   margin-bottom: 1.8rem;
   color: rgba(255, 255, 255, .55);
 }
+.insights-subscribe__copy .mxd-point-subtitle span { color: rgba(255, 255, 255, .55); }
 
 .insights-subscribe__copy h2 {
   margin: 0 0 1.8rem;

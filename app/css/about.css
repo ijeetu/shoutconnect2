@@ -200,23 +200,26 @@
 .about-hero__rail {
   position: relative;
   z-index: 3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1.2rem 2.6rem;
-  padding: 2.2rem 3rem;
-  border-top: 1px solid rgba(255, 255, 255, .12);
-  color: rgba(255, 255, 255, .9);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255, 255, 255, .14);
   background: rgba(0, 0, 0, .18);
   backdrop-filter: blur(12px);
-  font-size: clamp(1.6rem, 1.35vw, 2.4rem);
+}
+
+.about-hero__rail span {
+  display: flex;
+  align-items: center;
+  padding: clamp(1.8rem, 2.4vw, 2.6rem) clamp(2rem, 3vw, 4rem);
+  color: rgba(255, 255, 255, .78);
+  font-size: clamp(1.2rem, .9vw, 1.4rem);
   font-weight: 500 !important;
-  letter-spacing: .04em;
+  letter-spacing: .08em;
+  line-height: 1.3;
   text-transform: uppercase;
 }
 
-.about-hero__rail i { width: .8rem; height: .8rem; border-radius: 50%; background: #0a8a65; }
+.about-hero__rail span + span { border-left: 1px solid rgba(255, 255, 255, .12); }
 
 /* The brand icon-badge system now lives in main.css so every page
    renders it identically. */
@@ -810,6 +813,9 @@
   .about-hero__seal { right: 0; bottom: -4%; }
   .about-hero__bottom { grid-template-columns: 1fr; }
   .about-hero__actions { justify-content: flex-start; }
+  .about-hero__rail { grid-template-columns: repeat(2, 1fr); }
+  .about-hero__rail span:nth-child(3) { border-left: none; }
+  .about-hero__rail span:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, .12); }
   .about-story__head { grid-template-columns: 1fr; }
   .about-story__layout { grid-template-columns: 1fr; }
   .about-story__copy { min-height: 56rem; }
@@ -832,8 +838,6 @@
   .about-hero__intro { font-size: 1.9rem; }
   .about-hero__bottom { margin-top: 3rem; gap: 3rem; }
   .about-hero__actions { align-items: flex-start; flex-direction: column; }
-  .about-hero__rail { justify-content: flex-start; gap: 1rem 1.5rem; padding: 1.8rem 2.4rem; font-size: 1.25rem; }
-  .about-hero__rail i { width: .55rem; height: .55rem; }
   .about-story__head h2 { font-size: clamp(4rem, 13vw, 6rem); }
   .about-story__layout { border-radius: var(--_radius-m); }
   .about-story__visual { min-height: 38rem; }

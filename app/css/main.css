@@ -4490,15 +4490,19 @@ form textarea {
 }
 form ::-webkit-input-placeholder {
   color: var(--t-muted);
+  opacity: 0.5;
 }
 form :-moz-placeholder {
   color: var(--t-muted);
+  opacity: 0.5;
 }
 form ::-moz-placeholder {
   color: var(--t-muted);
+  opacity: 0.5;
 }
 form :-ms-input-placeholder {
   color: var(--t-muted);
+  opacity: 0.5;
 }
 form input:focus:required:invalid,
 form textarea:focus:required:invalid {
@@ -11742,8 +11746,6 @@ form textarea:required:valid {
 }
 
 .trust-cta {
-  border-top: 1px solid rgba(95, 160, 219, 0.56);
-  border-bottom: 1px solid rgba(95, 160, 219, 0.56);
   padding: clamp(1.8rem, 2.4vw, 3.2rem) 0 clamp(2.1rem, 2.8vw, 4rem);
 }
 
@@ -23942,8 +23944,6 @@ body.home-no-radius .tag-default {
 
 .trust-cta {
   position: relative;
-  border-top: 1px solid rgba(92, 149, 198, 0.4);
-  border-bottom: 1px solid rgba(92, 149, 198, 0.4);
   padding: clamp(2rem, 2.4vw, 3.6rem) 0 clamp(2.8rem, 3.6vw, 4.8rem);
 }
 
@@ -24470,14 +24470,21 @@ body.home-no-radius .tag-default {
   display: block;
   transition: transform .5s cubic-bezier(.16, 1, .3, 1);
 }
-.site-btn:hover .site-btn__icon > :first-child { transform: translate(150%, -150%); }
+/* Fixed rem offset, not a percentage: percentages resolve against the
+   icon glyph's own box, which varies with the glyph's internal metrics
+   (ph-arrow-up-right's diagonal ink sits further toward its top-right
+   than a symmetric icon like ph-play) — so 150% cleared the play icon
+   but left a visible sliver of the arrow icon inside .site-btn__icon's
+   clip box. 6rem comfortably exceeds the 4.4rem icon box on both axes
+   regardless of which icon is used. */
+.site-btn:hover .site-btn__icon > :first-child { transform: translate(6rem, -6rem); }
 .site-btn__icon > :last-child {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translate(-150%, 150%);
+  transform: translate(-6rem, 6rem);
   transition: transform .5s cubic-bezier(.16, 1, .3, 1);
 }
 .site-btn:hover .site-btn__icon > :last-child { transform: translate(0, 0); }
@@ -24534,3 +24541,12 @@ body:not(.inner-page) .trust-cta__panel { background: none; box-shadow: none; }
 /* ------------------------------------------------*/
 /* Brand icon-badge system End */
 /* ------------------------------------------------*/
+
+/* Per-page font-weight cap (see each page's inline <style> block) sets
+   `div { font-weight: 400 !important; }`. The reveal-type text-split
+   animation wraps every word/char in a <div>, so that blanket rule was
+   quietly forcing 400 onto headings meant to render at the light 300 —
+   a direct match on the div always beats the inherited weight from its
+   h2/h3 ancestor, regardless of the ancestor rule's own specificity. */
+.reveal-type .word,
+.reveal-type .char { font-weight: inherit !important; }

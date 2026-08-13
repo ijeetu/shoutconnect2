@@ -38,6 +38,7 @@
     <link rel="stylesheet" type="text/css" href="css/loaders/loader.css">
     <link rel="stylesheet" type="text/css" href="css/plugins.css">
     <link rel="stylesheet" type="text/css" href="css/main.css?v=20260218-63">
+    <link rel="stylesheet" type="text/css" href="css/contact.css?v=20260813-1">
     <!-- Template Styles End -->
 
     <!-- Custom Font Weight Cap & Loader Font Start -->
@@ -83,6 +84,11 @@
               <div class="main-menu">
                 <nav class="main-menu__content">
                   <ul id="main-menu" class="main-menu__accordion">
+                    <li class="main-menu__item">
+                      <a class="main-menu__link btn btn-anim" href="index.html">
+                        <span class="btn-caption">Home</span>
+                      </a>
+                    </li>
                     <li class="main-menu__item">
                       <a class="main-menu__link btn btn-anim" href="about-us.html">
                         <span class="btn-caption">About</span>
@@ -148,13 +154,17 @@
         </a>
       </div>
       <div class="mxd-header__controls loading__fade">
-        <a class="btn header-intro-btn" href="#">
-          <span class="header-intro-btn__copy">
-            <span class="header-intro-btn__eyebrow">Media</span>
-            <span class="header-intro-btn__label">Play Intro</span>
-          </span>
-          <span class="header-intro-btn__icon" aria-hidden="true">
-            <i class="ph-fill ph-play"></i>
+        <a class="site-btn site-btn--dark" href="#">
+          <span class="site-btn__inner">
+            <span class="site-btn__fill" aria-hidden="true"></span>
+            <span class="site-btn__label">
+              <span class="site-btn__row">Play Intro</span>
+              <span class="site-btn__row">Play Intro</span>
+            </span>
+            <span class="site-btn__icon" aria-hidden="true">
+              <i class="ph-fill ph-play"></i>
+              <i class="ph-fill ph-play"></i>
+            </span>
           </span>
         </a>
       </div>
@@ -162,118 +172,155 @@
     <!-- Header End -->
 
     <!-- Page Content Start -->
-    <main id="mxd-page-content" class="mxd-page-content inner-page-content">
+    <main id="mxd-page-content" class="mxd-page-content">
 
-      <!-- Section - Inner Page Headline Start -->
-      <div class="mxd-section mxd-section-inner-headline padding-headline-pre-block">
-        <div class="mxd-container grid-container">
-          <div class="mxd-block loading-wrap">
-            <div class="container-fluid px-0">
-              <div class="row gx-0">
-                <div class="col-12 col-xl-2 mxd-grid-item no-margin">
-                  <div class="mxd-block__name name-inner-headline loading__item">
-                    <p class="mxd-point-subtitle">
-                      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill="currentColor" d="M19.6,9.6c0,0-3,0-4,0c-0.4,0-1.8-0.2-1.8-0.2c-0.6-0.1-1.1-0.2-1.6-0.6c-0.5-0.3-0.9-0.8-1.2-1.2
-                          c-0.3-0.4-0.4-0.9-0.5-1.4c0,0-0.1-1.1-0.2-1.5c-0.1-1.1,0-4.4,0-4.4C10.4,0.2,10.2,0,10,0S9.6,0.2,9.6,0.4c0,0,0.1,3.3,0,4.4
-                          c0,0.4-0.2,1.5-0.2,1.5C9.4,6.7,9.2,7.2,9,7.6C8.7,8.1,8.2,8.5,7.8,8.9c-0.5,0.3-1,0.5-1.6,0.6c0,0-1.2,0.1-1.7,0.2
-                          c-1,0.1-4.2,0-4.2,0C0.2,9.6,0,9.8,0,10c0,0.2,0.2,0.4,0.4,0.4c0,0,3.1-0.1,4.2,0c0.4,0,1.7,0.2,1.7,0.2c0.6,0.1,1.1,0.2,1.6,0.6
-                          c0.4,0.3,0.8,0.7,1.1,1.1c0.3,0.5,0.5,1,0.6,1.6c0,0,0.1,1.3,0.2,1.7c0,1,0,4.1,0,4.1c0,0.2,0.2,0.4,0.4,0.4s0.4-0.2,0.4-0.4
-                          c0,0,0-3.1,0-4.1c0-0.4,0.2-1.7,0.2-1.7c0.1-0.6,0.2-1.1,0.6-1.6c0.3-0.4,0.7-0.8,1.1-1.1c0.5-0.3,1-0.5,1.6-0.6
-                          c0,0,1.3-0.1,1.8-0.2c1,0,4,0,4,0c0.2,0,0.4-0.2,0.4-0.4C20,9.8,19.8,9.6,19.6,9.6L19.6,9.6z"/>
-                      </svg>
-                      <span>Contact Us</span>
-                    </p>
-                  </div>
-                </div>
-                <div class="col-12 col-xl-10 mxd-grid-item no-margin">
-                  <div class="mxd-block__content">
-                    <div class="mxd-block__inner-headline">
-                      <h1 class="inner-headline__title headline-img-before headline-img-07 loading__item">
-                        Let’s Build a Report That <strong>Strengthens Trust</strong>
-                      </h1>
-                      <p class="inner-headline__text t-large loading__item">Reach out to discuss your upcoming Annual Report, ESG disclosures, corporate narratives, or design projects.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <!-- Section - Contact Hero Start -->
+      <section class="mxd-section contact-hero loading-wrap">
+        <div class="contact-hero__ambient" aria-hidden="true"></div>
+        <div class="contact-hero__grid" aria-hidden="true"></div>
+        <div class="contact-hero__shell">
+          <h1 class="contact-hero__title">
+            <span class="contact-hero__line loading__item">Let&rsquo;s build a report</span>
+            <span class="contact-hero__line contact-hero__line--indent loading__item">that <strong>strengthens trust</strong>.</span>
+          </h1>
+
+          <div class="contact-hero__bottom loading__item">
+            <p class="contact-hero__intro">Reach out to discuss your upcoming Annual Report, ESG disclosures, corporate narratives, or design projects.</p>
+            <div class="contact-hero__actions">
+              <a class="site-btn site-btn--light" href="#contact-form">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Send a message</span>
+                    <span class="site-btn__row">Send a message</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
+                </span>
+              </a>
+              <a class="contact-hero__discover" href="#reach">See other ways to reach us <i class="ph-bold ph-arrow-down"></i></a>
             </div>
           </div>
         </div>
-      </div>
-      <!-- Section - Inner Page Headline End -->
 
-      <!-- Section - Contact Grid & Form Start -->
-      <div class="mxd-section padding-pre-grid">
+        <div class="contact-hero__rail" aria-label="Ways to reach Connect">
+          <div class="contact-hero__stat"><a href="mailto:hello@theconnectagency.in"><strong>hello@theconnectagency.in</strong></a><span>Email us</span></div>
+          <div class="contact-hero__stat"><a href="tel:+919830935937"><strong>+91 98309 35937</strong></a><span>Call us</span></div>
+        </div>
+      </section>
+      <!-- Section - Contact Hero End -->
+
+      <!-- Section - Contact Split Start -->
+      <div id="reach" class="mxd-section contact-split-section">
         <div class="mxd-container grid-container">
           <div class="mxd-block">
-            <div class="container-fluid p-0">
-              <div class="row g-4">
-                <!-- Left Info Column -->
-                <div class="col-12 col-lg-4 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up d-flex flex-column justify-content-between">
-                    <div>
-                      <h3 class="reveal-type mb-4">Get in <strong>Touch</strong></h3>
-                      <div class="mb-4">
-                        <p class="mxd-point-subtitle mb-1"><i class="ph-bold ph-envelope"></i> <span>Email Us</span></p>
-                        <p class="t-large mb-0"><a href="mailto:hello@theconnectagency.in" class="text-decoration-none color-inherit">hello@theconnectagency.in</a></p>
-                      </div>
-                      <div class="mb-4">
-                        <p class="mxd-point-subtitle mb-1"><i class="ph-bold ph-phone"></i> <span>Call Us</span></p>
-                        <p class="t-large mb-0"><a href="tel:+919830935937" class="text-decoration-none color-inherit">+91 98309 35937</a></p>
-                      </div>
-                    </div>
-                    <div>
-                      <p class="mxd-point-subtitle mb-1"><i class="ph-bold ph-clock"></i> <span>Working Hours</span></p>
-                      <p class="t-muted mb-0">Monday – Friday: 9:30 AM – 6:30 PM IST</p>
-                    </div>
-                  </div>
-                </div>
+            <div class="contact-split loading__fade">
 
-                <!-- Right Form Column -->
-                <div class="col-12 col-lg-8 mxd-grid-item no-margin animate-card-2">
-                  <div class="bg-base-tint radius-m padding-4 fullheight-card anim-uni-in-up">
-                    <h3 class="reveal-type mb-4">Send Us a <strong>Message</strong></h3>
-                    <form class="form form-light">
-                      <div class="row g-3">
-                        <div class="col-12 col-md-6">
-                          <input type="text" class="form-control bg-base border-0 p-3 radius-m" placeholder="Your Name" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <input type="email" class="form-control bg-base border-0 p-3 radius-m" placeholder="Your Email" required>
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <input type="text" class="form-control bg-base border-0 p-3 radius-m" placeholder="Company Name">
-                        </div>
-                        <div class="col-12 col-md-6">
-                          <select class="form-control bg-base border-0 p-3 radius-m">
-                            <option value="">Select Service Needed</option>
-                            <option value="annual-report">Annual Report / Integrated Report</option>
-                            <option value="esg">ESG &amp; BRSR Reporting</option>
-                            <option value="content">Content Writing &amp; Decks</option>
-                            <option value="design">Design &amp; Visual Systems</option>
-                            <option value="careers">Career Application / Resume</option>
-                          </select>
-                        </div>
-                        <div class="col-12">
-                          <textarea class="form-control bg-base border-0 p-3 radius-m" rows="5" placeholder="Tell us about your project or requirement..." required></textarea>
-                        </div>
-                        <div class="col-12 mt-4">
-                          <button class="btn btn-anim btn-default btn-outline slide-right-up" type="submit">
-                            <span class="btn-caption">Submit Inquiry</span>
-                            <i class="ph-bold ph-arrow-up-right"></i>
-                          </button>
-                        </div>
-                      </div>
-                    </form>
-                  </div>
+              <!-- Info Column -->
+              <div class="contact-split__col contact-split__col--primary anim-uni-in-up">
+                <p class="mxd-point-subtitle mb-3">
+                  <span class="icon-badge"><img src="img/icons/contact-mail.svg" alt="" loading="lazy" decoding="async"></span>
+                  <span>Get in touch</span>
+                </p>
+                <h2 class="reveal-type mb-3">We reply within <strong>one business day</strong></h2>
+                <p class="t-large mb-4">Whether it&rsquo;s a full Annual Report, an ESG disclosure or a single investor deck &mdash; tell us what you&rsquo;re building and we&rsquo;ll take it from there.</p>
+
+                <div class="contact-info__list">
+                  <a class="contact-info__row" href="mailto:hello@theconnectagency.in">
+                    <span class="icon-badge"><img src="img/icons/contact-mail.svg" alt="" loading="lazy" decoding="async"></span>
+                    <span class="contact-info__body">
+                      <span class="contact-info__label">Email</span>
+                      <span class="contact-info__value">hello@theconnectagency.in</span>
+                    </span>
+                  </a>
+                  <a class="contact-info__row" href="tel:+919830935937">
+                    <span class="icon-badge"><img src="img/icons/contact-phone.svg" alt="" loading="lazy" decoding="async"></span>
+                    <span class="contact-info__body">
+                      <span class="contact-info__label">Phone</span>
+                      <span class="contact-info__value">+91 98309 35937</span>
+                    </span>
+                  </a>
                 </div>
               </div>
+
+              <!-- Form Column -->
+              <div class="contact-split__col anim-uni-in-up">
+                <p class="mxd-point-subtitle mb-3">
+                  <span class="icon-badge"><img src="img/icons/resources.svg" alt="" loading="lazy" decoding="async"></span>
+                  <span>Project inquiry</span>
+                </p>
+                <h2 class="reveal-type mb-4">Tell us about your <strong>report</strong></h2>
+
+                <div class="contact form-container">
+                  <div class="form__reply">
+                    <span class="reply__text">Thanks &mdash; we&rsquo;ve received your message and will be in touch within one business day.</span>
+                  </div>
+                  <form id="contact-form" class="form contact-form">
+                    <input type="hidden" name="admin_email" value="hello@theconnectagency.in">
+                    <input type="hidden" name="project_name" value="Connect Agency Website">
+                    <input type="hidden" name="form_subject" value="New enquiry from the website contact form">
+
+                    <div class="contact-form__row">
+                      <div class="contact-form__field">
+                        <label for="cf-name">Your name</label>
+                        <input type="text" id="cf-name" name="name" placeholder="Jane Sharma" required>
+                      </div>
+                      <div class="contact-form__field">
+                        <label for="cf-email">Your email</label>
+                        <input type="email" id="cf-email" name="email" placeholder="jane@company.com" required>
+                      </div>
+                    </div>
+                    <div class="contact-form__row">
+                      <div class="contact-form__field">
+                        <label for="cf-company">Company name</label>
+                        <input type="text" id="cf-company" name="company" placeholder="Company Pvt. Ltd.">
+                      </div>
+                      <div class="contact-form__field contact-form__field--select">
+                        <label for="cf-service">Service needed</label>
+                        <select id="cf-service" name="service">
+                          <option value="">Select an option</option>
+                          <option value="Annual Report / Integrated Report">Annual Report / Integrated Report</option>
+                          <option value="ESG &amp; BRSR Reporting">ESG &amp; BRSR Reporting</option>
+                          <option value="Content Writing &amp; Decks">Content Writing &amp; Decks</option>
+                          <option value="Design &amp; Visual Systems">Design &amp; Visual Systems</option>
+                          <option value="Career Application / Resume">Career Application / Resume</option>
+                          <option value="Others">Others</option>
+                        </select>
+                        <i class="ph-bold ph-caret-down" aria-hidden="true"></i>
+                      </div>
+                    </div>
+                    <div class="contact-form__field contact-form__field--full">
+                      <label for="cf-message">Your message</label>
+                      <textarea id="cf-message" name="message" rows="4" placeholder="Tell us about your project or requirement..." required></textarea>
+                    </div>
+
+                    <div class="contact-form__submit-row">
+                      <button class="site-btn site-btn--dark" type="submit">
+                        <span class="site-btn__inner">
+                          <span class="site-btn__fill" aria-hidden="true"></span>
+                          <span class="site-btn__label">
+                            <span class="site-btn__row">Send message</span>
+                            <span class="site-btn__row">Send message</span>
+                          </span>
+                          <span class="site-btn__icon" aria-hidden="true">
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                            <i class="ph-bold ph-arrow-up-right"></i>
+                          </span>
+                        </span>
+                      </button>
+                      <p class="contact-form__note">We&rsquo;ll never share your details with anyone else.</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
       </div>
-      <!-- Section - Contact Grid & Form End -->
+      <!-- Section - Contact Split End -->
 
       <!-- Section - Trust CTA Start -->
       <div class="mxd-section trust-cta-section">
@@ -281,22 +328,22 @@
           <div class="trust-cta">
             <div class="trust-cta__panel anim-uni-in-up">
               <h2>
-                <span class="trust-cta__line-1">Ready to build a report that</span>
-                <span class="trust-cta__line-2">strengthens trust?</span>
+                <span class="trust-cta__line-1">Ready to start your</span>
+                <span class="trust-cta__line-2">next project?</span>
               </h2>
             </div>
             <div class="trust-cta__actions anim-uni-in-up">
-              <a class="btn trust-cta__btn" href="contact.html">
-                <span class="trust-cta__btn-shine" aria-hidden="true"></span>
-                <span class="trust-cta__btn-copy">
-                  <span class="trust-cta__btn-kicker">Start the conversation</span>
-                  <span class="trust-cta__btn-text">Talk to us</span>
-                </span>
-                <span class="trust-cta__btn-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" focusable="false">
-                    <path d="M6.75 17.25 17.25 6.75" fill="none" />
-                    <path d="M8.5 6.75h8.75v8.75" fill="none" />
-                  </svg>
+              <a class="site-btn site-btn--light" href="#contact-form">
+                <span class="site-btn__inner">
+                  <span class="site-btn__fill" aria-hidden="true"></span>
+                  <span class="site-btn__label">
+                    <span class="site-btn__row">Talk to us</span>
+                    <span class="site-btn__row">Talk to us</span>
+                  </span>
+                  <span class="site-btn__icon" aria-hidden="true">
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                    <i class="ph-bold ph-arrow-up-right"></i>
+                  </span>
                 </span>
               </a>
             </div>

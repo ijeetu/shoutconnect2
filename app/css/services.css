@@ -38,8 +38,9 @@
   overflow: hidden;
   color: #fff;
   background:
-    radial-gradient(115% 85% at 14% 8%, rgba(10, 138, 101, .3) 0%, rgba(3, 19, 29, 0) 56%),
-    radial-gradient(95% 80% at 88% 96%, rgba(28, 102, 149, .32) 0%, rgba(3, 19, 29, 0) 62%),
+    linear-gradient(90deg, rgba(3, 19, 29, .97) 0%, rgba(3, 19, 29, .9) 34%, rgba(3, 19, 29, .5) 66%, rgba(3, 19, 29, .14) 100%),
+    linear-gradient(0deg, rgba(3, 19, 29, .55), transparent 42%),
+    url("../img/backgrounds/services-hero-premium.webp") right center / cover no-repeat,
     #03131d;
 }
 
