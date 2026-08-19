@@ -688,6 +688,8 @@ img {
   justify-content: center !important;
   gap: clamp(0.8rem, 1.2vw, 1.6rem);
   width: min(100%, 110rem);
+  padding: 0 clamp(1.6rem, 4vw, 3rem);
+  box-sizing: border-box;
   text-align: left;
 }
 
@@ -703,11 +705,14 @@ img {
 .loader__count .count__text {
   display: block;
   min-height: 3.15em;
+  max-width: 100%;
   font-family: var(--_font-accent);
   font-size: clamp(5rem, 7.5vw, 12rem);
   line-height: 0.96;
   letter-spacing: -0.015em;
   font-weight: 300;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .loader__count .typed-cursor {
@@ -715,6 +720,19 @@ img {
   font-size: clamp(5rem, 7.5vw, 12rem);
   line-height: 0.96;
   font-weight: 300;
+}
+
+@media only screen and (max-width: 767px) {
+  .loader__count {
+    gap: 0.8rem;
+  }
+  .loader__count .count__lead {
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+  }
+  .loader__count .count__text,
+  .loader__count .typed-cursor {
+    font-size: clamp(3rem, 9.5vw, 4.6rem);
+  }
 }
 
 #loader .typed-cursor {
@@ -10125,6 +10143,9 @@ form textarea:required:valid {
     gap: 1.2rem;
     font-size: clamp(2.3rem, 7.4vw, 3.4rem);
   }
+  .mxd-work-question__line span {
+    white-space: normal;
+  }
   .mxd-work-question__tail {
     white-space: normal;
   }
@@ -10339,10 +10360,10 @@ form textarea:required:valid {
   }
   .mxd-people-foundation__closing-line--green span,
   .mxd-people-foundation__closing-line--blue span {
-    font-size: clamp(4.5rem, 11.2vw, 6rem);
+    font-size: clamp(3.6rem, 11.2vw, 6rem);
   }
   .mxd-people-foundation__closing-line--blue {
-    margin-left: clamp(2.4rem, 8.5vw, 4.2rem);
+    margin-left: clamp(0.6rem, 8.5vw, 4.2rem);
     margin-top: 1rem;
   }
 }
@@ -10701,6 +10722,7 @@ form textarea:required:valid {
 .problem-stack {
   max-width: 145rem;
   margin: 0 auto;
+  padding: 0 clamp(1.6rem, 4vw, 6rem);
 }
 
 .problem-stack__intro {
@@ -11622,6 +11644,7 @@ form textarea:required:valid {
 
 .key-clients h2 {
   margin: 0 0 clamp(2rem, 2.2vw, 3.2rem);
+  padding: 0 clamp(1.6rem, 4vw, 3rem);
   text-align: center;
   font-family: var(--_font-accent);
   font-size: clamp(8.6rem, 9.2vw, 17.8rem);
@@ -11684,6 +11707,10 @@ form textarea:required:valid {
 .insights-hub-section {
   padding: clamp(4.4rem, 4.8vw, 7.2rem) 0 clamp(5.4rem, 6vw, 8rem);
   background-color: #efefe9;
+}
+
+.insights-hub {
+  padding: 0 clamp(1.6rem, 4vw, 6rem);
 }
 
 .insights-hub__head h2 {
