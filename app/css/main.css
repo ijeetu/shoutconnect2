@@ -15382,6 +15382,7 @@ a.insights-hub__media:focus-visible .insights-hub__arrow {
       -ms-flex-direction: column;
           flex-direction: column;
   padding-top: 11.2rem;
+  padding-bottom: clamp(7rem, 10vw, 14rem);
 }
 @media only screen and (min-width: 768px) {
   .mxd-article-area {
@@ -24673,7 +24674,8 @@ body.home-no-radius .deliver-showcase__row {
 /* Home page only: drop the trust-cta panel's own background patch,
    keep the section-level background behind it (see about.css for the
    same fix scoped to the about-us page). */
-body:not(.inner-page) .trust-cta__panel { background: none; box-shadow: none; }
+body:not(.inner-page) .trust-cta__panel,
+.trust-cta-section--flat .trust-cta__panel { background: none; box-shadow: none; }
 
 /* ------------------------------------------------*/
 /* Brand icon-badge system Start */
