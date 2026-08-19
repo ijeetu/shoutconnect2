@@ -262,12 +262,7 @@
   width: auto;
   height: clamp(2.6rem, 2.6vw, 4rem);
   object-fit: contain;
-  opacity: .5;
-  filter: grayscale(1);
-  transition: opacity .35s ease, filter .35s ease;
 }
-
-.work-marquee__group img:hover { opacity: 1; filter: grayscale(0); }
 
 @keyframes work-marquee-scroll {
   from { transform: translate3d(0, 0, 0); }

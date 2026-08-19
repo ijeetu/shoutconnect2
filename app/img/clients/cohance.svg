@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" version="1.2" viewBox="0 0 155 54" width="155" height="54">
   <style>
-		.s0 { fill: #ffffff } 
+		.s0 { fill: #000000 }
 		.s1 { fill: #ffcd00 } 
 		.s2 { fill: #00abc8 } 
 	</style>

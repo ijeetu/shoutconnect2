@@ -774,36 +774,38 @@ $(function() {
   // --------------------------------------------- //
 
   // --------------------------------------------- //
-  // Mailchimp Subscribe Form Start
+  // Subscribe Form Start
   // --------------------------------------------- //
-  $('.notify-form').ajaxChimp({
-    callback: mailchimpCallback,
-    url: 'https://club.us10.list-manage.com/subscribe/post?u=e8d650c0df90e716c22ae4778&amp;id=54a7906900&amp;f_id=00b64ae4f0'
-  });
+  $('.notify-form').on('submit', function(e) {
+    e.preventDefault();
+    var $form = $(this);
+    var $notify = $form.closest('.notify');
+    var email = $form.find('input[type="email"]').val();
 
-  function mailchimpCallback(resp) {
-    if(resp.result === 'success') {
-      $('.notify').find('.form').addClass('is-hidden');
-      $('.notify').find('.subscription-ok').addClass('is-visible');
+    $.ajax({
+      type: 'POST',
+      url: 'subscribe.php',
+      data: { email: email }
+    }).done(function() {
+      $notify.find('.form').addClass('is-hidden');
+      $notify.find('.subscription-ok').addClass('is-visible');
       setTimeout(function() {
-        // Done Functions
-        $('.notify').find('.subscription-ok').removeClass('is-visible');
-        $('.notify').find('.form').delay(300).removeClass('is-hidden');
-        $('.notify-form').trigger("reset");
+        $notify.find('.subscription-ok').removeClass('is-visible');
+        $notify.find('.form').delay(300).removeClass('is-hidden');
+        $form.trigger('reset');
       }, 5000);
-    } else if(resp.result === 'error') {
-      $('.notify').find('.form').addClass('is-hidden');
-      $('.notify').find('.subscription-error').addClass('is-visible');
+    }).fail(function() {
+      $notify.find('.form').addClass('is-hidden');
+      $notify.find('.subscription-error').addClass('is-visible');
       setTimeout(function() {
-        // Done Functions
-        $('.notify').find('.subscription-error').removeClass('is-visible');
-        $('.notify').find('.form').delay(300).removeClass('is-hidden');
-        $('.notify-form').trigger("reset");
+        $notify.find('.subscription-error').removeClass('is-visible');
+        $notify.find('.form').delay(300).removeClass('is-hidden');
+        $form.trigger('reset');
       }, 5000);
-    }
-  };
+    });
+  });
   // --------------------------------------------- //
-  // Mailchimp Subscribe Form End
+  // Subscribe Form End
   // --------------------------------------------- //
 
   // --------------------------------------------- //
@@ -1017,6 +1019,7 @@ if (deliverShowcases.length) {
 // Progress Stories Hover Loops Start
 // --------------------------------------------- //
 const progressStoryItems = document.querySelectorAll(".progress-stories__item");
+const progressStoriesGrid = document.querySelector(".progress-stories__grid");
 
 if (progressStoryItems.length) {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1040,7 +1043,6 @@ if (progressStoryItems.length) {
       "img/ListCoverImages/ShapingtheFurure/01CStech.webp",
       "img/ListCoverImages/ShapingtheFurure/02CyientDLM.webp",
       "img/ListCoverImages/ShapingtheFurure/03Rapidue.webp",
-      "img/ListCoverImages/ShapingtheFurure/04Shellz.webp",
       "img/ListCoverImages/ShapingtheFurure/05Accent.webp"
     ],
     creating_impact: [
@@ -1094,6 +1096,7 @@ if (progressStoryItems.length) {
       const outgoing = showFront ? frontImg : backImg;
       incoming.src = imageSet[index];
       incoming.alt = initialAlt;
+      media.style.setProperty("--story-bg", `url("${imageSet[index]}")`);
       requestAnimationFrame(() => {
         incoming.classList.add("is-visible");
         outgoing.classList.remove("is-visible");
@@ -1103,6 +1106,7 @@ if (progressStoryItems.length) {
 
     const startLoop = () => {
       item.classList.add("is-looping");
+      if (progressStoriesGrid) progressStoriesGrid.classList.add("is-focus-active");
       if (prefersReducedMotion || loopTimer || imageSet.length < 2) return;
       loopTimer = window.setInterval(() => {
         currentIndex = (currentIndex + 1) % imageSet.length;
@@ -1112,6 +1116,7 @@ if (progressStoryItems.length) {
 
     const stopLoop = () => {
       item.classList.remove("is-looping");
+      if (progressStoriesGrid) progressStoriesGrid.classList.remove("is-focus-active");
       if (loopTimer) {
         window.clearInterval(loopTimer);
         loopTimer = null;
@@ -1121,12 +1126,14 @@ if (progressStoryItems.length) {
       backImg.src = imageSet[0];
       frontImg.classList.add("is-visible");
       backImg.classList.remove("is-visible");
+      media.style.setProperty("--story-bg", `url("${imageSet[0]}")`);
       showFront = true;
     };
 
     frontImg.src = imageSet[0];
     frontImg.classList.add("is-visible");
     backImg.classList.remove("is-visible");
+    media.style.setProperty("--story-bg", `url("${imageSet[0]}")`);
 
     item.addEventListener("mouseenter", startLoop);
     item.addEventListener("mouseleave", stopLoop);

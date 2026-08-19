@@ -70,19 +70,27 @@
     link.addEventListener("click", function () {
       var target = document.getElementById(link.dataset.servicesTarget);
       if (!target) return;
+      setActive(link.dataset.servicesTarget);
       target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
     });
   });
 
   if ("IntersectionObserver" in window) {
-    var observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) setActive(entry.target.id);
-        });
-      },
-      { rootMargin: "-40% 0px -50% 0px", threshold: 0 }
-    );
+    var computeActive = function () {
+      var refLine = window.innerHeight * 0.35;
+      var current = panels[0];
+      for (var i = 0; i < panels.length; i++) {
+        if (panels[i].getBoundingClientRect().top <= refLine) {
+          current = panels[i];
+        }
+      }
+      setActive(current.id);
+    };
+
+    var observer = new IntersectionObserver(computeActive, {
+      rootMargin: "0px",
+      threshold: [0, 0.1, 0.25, 0.5, 0.75, 1]
+    });
     panels.forEach(function (panel) {
       observer.observe(panel);
     });

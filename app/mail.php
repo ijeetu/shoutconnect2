@@ -1,52 +1,68 @@
 <?php
 
-$method = $_SERVER['REQUEST_METHOD'];
+header('Content-Type: application/json; charset=utf-8');
 
-//Script Foreach
-$c = true;
-if ( $method === 'POST' ) {
+require_once __DIR__ . '/inc/mailer.php';
 
-	$project_name = trim($_POST["project_name"]);
-	$admin_email  = trim($_POST["admin_email"]);
-	$form_subject = trim($_POST["form_subject"]);
-
-	foreach ( $_POST as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
-			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-			</tr>
-			";
-		}
-	}
-} else if ( $method === 'GET' ) {
-
-	$project_name = trim($_GET["project_name"]);
-	$admin_email  = trim($_GET["admin_email"]);
-	$form_subject = trim($_GET["form_subject"]);
-
-	foreach ( $_GET as $key => $value ) {
-		if ( $value != "" && $key != "project_name" && $key != "admin_email" && $key != "form_subject" ) {
-			$message .= "
-			" . ( ($c = !$c) ? '<tr>':'<tr style="background-color: #f8f8f8;">' ) . "
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'><b>$key</b></td>
-				<td style='padding: 10px; border: #e9e9e9 1px solid;'>$value</td>
-			</tr>
-			";
-		}
-	}
+function respond($ok, $message)
+{
+    http_response_code($ok ? 200 : 400);
+    echo json_encode(['status' => $ok ? 'ok' : 'error', 'message' => $message]);
+    exit;
 }
 
-$message = "<table style='width: 100%;'>$message</table>";
-
-function adopt($text) {
-	return '=?UTF-8?B?'.Base64_encode($text).'?=';
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    respond(false, 'Invalid request method.');
 }
 
-$headers = "MIME-Version: 1.0" . PHP_EOL .
-"Content-Type: text/html; charset=utf-8" . PHP_EOL .
-'From: '.adopt($project_name).' <'.$admin_email.'>' . PHP_EOL .
-'Reply-To: '.$admin_email.'' . PHP_EOL;
+// Single-line fields must not contain header-injection newlines.
+function clean_line($value)
+{
+    return trim(preg_replace('/[\r\n]+/', ' ', (string) $value));
+}
 
-mail($admin_email, adopt($form_subject), $message, $headers );
+$name    = clean_line($_POST['name'] ?? '');
+$email   = clean_line($_POST['email'] ?? '');
+$company = clean_line($_POST['company'] ?? '');
+$service = clean_line($_POST['service'] ?? '');
+$message = trim((string) ($_POST['message'] ?? ''));
+$subject = clean_line($_POST['form_subject'] ?? 'New enquiry from the website contact form');
+
+if ($name === '' || $email === '' || $message === '') {
+    respond(false, 'Please fill in your name, email and message.');
+}
+
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    respond(false, 'Please enter a valid email address.');
+}
+
+$rows = [
+    'Name'    => $name,
+    'Email'   => $email,
+    'Company' => $company,
+    'Service' => $service,
+    'Message' => nl2br(htmlspecialchars($message)),
+];
+
+$body = '<table style="width:100%; border-collapse: collapse;">';
+$shaded = false;
+foreach ($rows as $label => $value) {
+    if ($value === '') {
+        continue;
+    }
+    $bg = $shaded ? ' style="background-color:#f8f8f8;"' : '';
+    $shaded = !$shaded;
+    $body .= "<tr{$bg}>"
+        . '<td style="padding:10px; border:1px solid #e9e9e9;"><b>' . htmlspecialchars($label) . '</b></td>'
+        . '<td style="padding:10px; border:1px solid #e9e9e9;">' . ($label === 'Message' ? $value : htmlspecialchars($value)) . '</td>'
+        . '</tr>';
+}
+$body .= '</table>';
+
+$sent = send_smtp_mail($subject, $body, $email, $name);
+
+if ($sent) {
+    respond(true, 'Message sent.');
+}
+
+respond(false, 'Sorry, something went wrong sending your message. Please try again later.');

@@ -213,6 +213,7 @@
   position: sticky;
   top: clamp(3rem, 4vw, 5rem);
   z-index: 5;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   gap: .4rem;
@@ -221,7 +222,11 @@
 }
 
 .services-nav__link {
+  position: relative;
+  z-index: 1;
   display: flex;
+  width: 100%;
+  min-height: 5.8rem;
   align-items: baseline;
   gap: 1.4rem;
   padding: 1.4rem 1.6rem;
@@ -233,8 +238,12 @@
   font-family: inherit;
   text-align: left;
   cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
   transition: color .3s ease, background .3s ease, border-color .3s ease, padding-left .3s ease;
 }
+
+.services-nav__link > * { pointer-events: none; }
 
 .services-nav__link:hover { color: var(--t-bright); background: rgba(var(--accent-rgb), .05); padding-left: 2rem; }
 
@@ -242,6 +251,11 @@
   color: var(--t-bright);
   background: rgba(var(--accent-rgb), .07);
   border-left-color: var(--accent);
+}
+
+.services-nav__link.is-active:hover {
+  background: rgba(var(--accent-rgb), .12);
+  padding-left: 2rem;
 }
 
 .services-nav__num {
@@ -392,7 +406,7 @@
 .services-engage__head p {
   margin: 0;
   color: rgba(255, 255, 255, .6);
-  font-size: clamp(1.6rem, 1.2vw, 1.9rem);
+  font-size: clamp(1.9rem, 1.5vw, 2.3rem);
   line-height: 1.6;
 }
 
@@ -496,6 +510,10 @@
 /* ==========================================================================
    What You Receive — deliverables matrix
    ========================================================================== */
+.services-frameworks.padding-pre-grid {
+  padding-bottom: clamp(3.5rem, 5vw, 6rem);
+}
+
 .services-matrix {
   display: grid;
   grid-template-columns: 1fr 1fr;
