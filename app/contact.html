@@ -249,8 +249,13 @@
                 <h2 class="reveal-type mb-4">Tell us about your <strong>report</strong></h2>
 
                 <div class="contact form-container">
-                  <div class="form__reply">
+                  <div class="form__reply contact-ok">
+                    <span class="reply__icon"><i class="ph-bold ph-check-circle"></i></span>
                     <span class="reply__text">Thanks &mdash; we&rsquo;ve received your message and will be in touch within one business day.</span>
+                  </div>
+                  <div class="form__reply contact-error">
+                    <span class="reply__icon reply__icon--error"><i class="ph-bold ph-warning-circle"></i></span>
+                    <span class="reply__text">Ooops! Something went wrong. Please try again later.</span>
                   </div>
                   <form id="contact-form" class="form contact-form">
                     <input type="hidden" name="form_subject" value="New enquiry from the website contact form">
@@ -398,10 +403,10 @@
             <p class="mxd-point-subtitle anim-uni-in-up"><i class="ph ph-phone-call"></i><a href="tel:+919830935937">+91 98309 35937</a></p>
           </div>
           <div class="footer-blocks__card fill-card notify">
-            <div class="footer-blocks__title anim-uni-in-up"><p class="footer-blocks__title-m">Subscribe to our insights:</p></div>
+            <div class="footer-blocks__title anim-uni-in-up"><p class="footer-blocks__title-m reveal-type">Subscribe to our insights:</p></div>
             <div class="form-container anim-uni-in-up">
-              <div class="form__reply subscription-ok"><span class="reply__text">Done! Thanks for subscribing.</span></div>
-              <div class="form__reply subscription-error"><span class="reply__text">Ooops! Something went wrong. Please try again later.</span></div>
+              <div class="form__reply subscription-ok"><span class="reply__icon"><i class="ph-bold ph-check-circle"></i></span><span class="reply__text">Done! Thanks for subscribing.</span></div>
+              <div class="form__reply subscription-error"><span class="reply__icon reply__icon--error"><i class="ph-bold ph-warning-circle"></i></span><span class="reply__text">Ooops! Something went wrong. Please try again later.</span></div>
               <form class="form notify-form form-light">
                 <input type="email" placeholder="Your Email" required>
                 <button class="btn btn-form btn-absolute-right btn-muted slide-right-up anim-no-delay" type="submit"><i class="ph ph-arrow-up-right"></i></button>

@@ -23,9 +23,11 @@ function parse_from_header($raw)
 
 /**
  * Sends an HTML email over the configured SMTP account.
+ * $to defaults to the agency inbox (CONTACT_TO_EMAIL); pass an address to
+ * send elsewhere, e.g. a confirmation back to the person who submitted a form.
  * Returns true on success, false on failure (details go to the PHP error log).
  */
-function send_smtp_mail($subject, $htmlBody, $replyToEmail = null, $replyToName = '')
+function send_smtp_mail($subject, $htmlBody, $replyToEmail = null, $replyToName = '', $to = null, $toName = '')
 {
     $mail = new PHPMailer(true);
 
@@ -41,7 +43,7 @@ function send_smtp_mail($subject, $htmlBody, $replyToEmail = null, $replyToName 
 
         [$fromName, $fromEmail] = parse_from_header(env('SMTP_FROM', env('SMTP_USER')));
         $mail->setFrom($fromEmail, $fromName);
-        $mail->addAddress(env('CONTACT_TO_EMAIL'));
+        $mail->addAddress($to ?: env('CONTACT_TO_EMAIL'), $toName);
 
         if ($replyToEmail) {
             $mail->addReplyTo($replyToEmail, $replyToName);

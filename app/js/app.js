@@ -781,6 +781,7 @@ $(function() {
     var $form = $(this);
     var $notify = $form.closest('.notify');
     var email = $form.find('input[type="email"]').val();
+    var $btn = $form.find('button[type="submit"]').addClass('is-submitting').prop('disabled', true);
 
     $.ajax({
       type: 'POST',
@@ -802,6 +803,8 @@ $(function() {
         $notify.find('.form').delay(300).removeClass('is-hidden');
         $form.trigger('reset');
       }, 5000);
+    }).always(function() {
+      $btn.removeClass('is-submitting').prop('disabled', false);
     });
   });
   // --------------------------------------------- //
@@ -813,19 +816,29 @@ $(function() {
   // --------------------------------------------- //
   $("#contact-form").submit(function() { //Change
     var th = $(this);
+    var $btn = th.find('button[type="submit"]').addClass('is-submitting').prop('disabled', true);
     $.ajax({
       type: "POST",
       url: "mail.php", //Change
       data: th.serialize()
     }).done(function() {
       $('.contact').find('.form').addClass('is-hidden');
-      $('.contact').find('.form__reply').addClass('is-visible');
+      $('.contact').find('.contact-ok').addClass('is-visible');
       setTimeout(function() {
         // Done Functions
-        $('.contact').find('.form__reply').removeClass('is-visible');
+        $('.contact').find('.contact-ok').removeClass('is-visible');
         $('.contact').find('.form').delay(300).removeClass('is-hidden');
         th.trigger("reset");
       }, 5000);
+    }).fail(function() {
+      $('.contact').find('.form').addClass('is-hidden');
+      $('.contact').find('.contact-error').addClass('is-visible');
+      setTimeout(function() {
+        $('.contact').find('.contact-error').removeClass('is-visible');
+        $('.contact').find('.form').delay(300).removeClass('is-hidden');
+      }, 5000);
+    }).always(function() {
+      $btn.removeClass('is-submitting').prop('disabled', false);
     });
     return false;
   });

@@ -3222,6 +3222,14 @@ p.t-semibold {
   font-size: 2.6rem;
   overflow: hidden;
 }
+.btn-form.is-submitting {
+  cursor: wait;
+  opacity: .55;
+  pointer-events: none;
+}
+.btn-form.is-submitting i {
+  animation: spin .8s linear infinite;
+}
 .no-touch .btn-form:hover {
   -webkit-transform: scale(1.04);
      -moz-transform: scale(1.04);
@@ -4556,22 +4564,85 @@ form textarea:required:valid {
 }
 
 .reply__icon {
-  display: block;
-  font-size: 6rem;
-  color: var(--t-bright);
-  margin-bottom: 1.2rem;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto 1.4rem;
+  border-radius: 50%;
+  --reply-rgb: var(--accent-rgb);
+  color: var(--accent);
+  font-size: 3.2rem;
+  opacity: 0;
+}
+.reply__icon--error {
+  --reply-rgb: 226, 87, 76;
+  color: #e2574c;
+}
+.reply__icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(var(--reply-rgb), .12);
+  z-index: -1;
+}
+.form__reply.is-visible .reply__icon {
+  animation: replyIconPop .6s cubic-bezier(.34, 1.56, .64, 1) .05s forwards;
+}
+.form__reply.is-visible .reply__icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  animation: replyIconRing .9s ease-out .05s both;
+}
+.form__reply[class*="-error"].is-visible {
+  animation: replyShake .5s cubic-bezier(.36, .07, .19, .97) both;
 }
 
 .reply__title {
   font: normal var(--fw-medium) 3.6rem/1.2 var(--_font-accent);
   color: var(--t-bright);
   margin-bottom: 1.4rem;
+  opacity: 0;
+  transform: translateY(.8rem);
+}
+.form__reply.is-visible .reply__title {
+  animation: replyContentRise .5s ease .16s forwards;
 }
 
 .reply__text {
   display: block;
   font: normal var(--fw-regular) 1.8rem/1.6 var(--_font-accent);
   color: var(--t-medium);
+  opacity: 0;
+  transform: translateY(.8rem);
+}
+.form__reply.is-visible .reply__text {
+  animation: replyContentRise .5s ease .22s forwards;
+}
+
+@keyframes replyIconPop {
+  0% { opacity: 0; transform: scale(.4) rotate(-10deg); }
+  60% { opacity: 1; transform: scale(1.12) rotate(3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+@keyframes replyIconRing {
+  0% { box-shadow: 0 0 0 0 rgba(var(--reply-rgb), .45); opacity: 1; }
+  100% { box-shadow: 0 0 0 1.8rem rgba(var(--reply-rgb), 0); opacity: 0; }
+}
+@keyframes replyContentRise {
+  0% { opacity: 0; transform: translateY(.8rem); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes replyShake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
 }
 
 /* ------------------------------------------------*/
@@ -24553,6 +24624,31 @@ body.home-no-radius .deliver-showcase__row {
 .site-btn--light .site-btn__fill { background: var(--accent); }
 .site-btn--light .site-btn__icon { color: #fff; }
 .site-btn--light:hover { color: #fff; }
+
+/* Submit-in-flight state — overlays a spinner rather than touching the
+   fly-icon transform above, since that's already animating on hover. */
+.site-btn.is-submitting {
+  cursor: wait;
+  pointer-events: none;
+}
+.site-btn.is-submitting .site-btn__label,
+.site-btn.is-submitting .site-btn__icon {
+  opacity: .3;
+}
+.site-btn.is-submitting::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 1.6rem;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: -.8rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  opacity: .8;
+  animation: spin .7s linear infinite;
+}
 /* ------------------------------------------------*/
 /* Site Button - lrsd-1 style fly button End */
 /* ------------------------------------------------*/

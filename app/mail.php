@@ -62,6 +62,20 @@ $body .= '</table>';
 $sent = send_smtp_mail($subject, $body, $email, $name);
 
 if ($sent) {
+    $confirmation = '<p>Hi ' . htmlspecialchars($name) . ',</p>'
+        . '<p>Thanks for reaching out to Connect Agency &mdash; we&rsquo;ve received your message and will be in touch within one business day.</p>'
+        . '<p>Here&rsquo;s a copy of what you sent us:</p>'
+        . $body;
+
+    send_smtp_mail(
+        'We\'ve received your message — Connect Agency',
+        $confirmation,
+        null,
+        '',
+        $email,
+        $name
+    );
+
     respond(true, 'Message sent.');
 }
 

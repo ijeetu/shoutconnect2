@@ -26,6 +26,17 @@ $body = '<p>New newsletter subscriber:</p><p><b>' . htmlspecialchars($email) . '
 $sent = send_smtp_mail('New newsletter subscriber', $body, $email);
 
 if ($sent) {
+    $welcome = '<p>Hi there,</p>'
+        . '<p>Thanks for subscribing to Connect Agency&rsquo;s insights &mdash; you&rsquo;ll now get our latest annual report, ESG and BRSR updates straight to your inbox.</p>';
+
+    send_smtp_mail(
+        'You\'re subscribed — Connect Agency Insights',
+        $welcome,
+        null,
+        '',
+        $email
+    );
+
     respond(true, 'Subscribed.');
 }
 
