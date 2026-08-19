@@ -3224,11 +3224,23 @@ p.t-semibold {
 }
 .btn-form.is-submitting {
   cursor: wait;
-  opacity: .55;
   pointer-events: none;
 }
 .btn-form.is-submitting i {
-  animation: spin .8s linear infinite;
+  opacity: 0;
+}
+.btn-form.is-submitting::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin: -0.9rem 0 0 -0.9rem;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin .7s linear infinite;
 }
 .no-touch .btn-form:hover {
   -webkit-transform: scale(1.04);
@@ -24625,28 +24637,33 @@ body.home-no-radius .deliver-showcase__row {
 .site-btn--light .site-btn__icon { color: #fff; }
 .site-btn--light:hover { color: #fff; }
 
-/* Submit-in-flight state — overlays a spinner rather than touching the
-   fly-icon transform above, since that's already animating on hover. */
+/* Submit-in-flight state — swaps the fly-icon slot for a spinner rather
+   than touching its transform, since that's already animating on hover.
+   The spinner hangs off .site-btn__icon (not .site-btn) so it inherits
+   that element's fill-contrast color instead of the button's own —
+   .site-btn__fill sits behind the icon slot and isn't always the same
+   color as the button text (e.g. white fill under white button text on
+   the dark variant), so borrowing the icon's color keeps it visible. */
 .site-btn.is-submitting {
   cursor: wait;
   pointer-events: none;
 }
-.site-btn.is-submitting .site-btn__label,
-.site-btn.is-submitting .site-btn__icon {
-  opacity: .3;
+.site-btn.is-submitting .site-btn__label {
+  opacity: .4;
 }
-.site-btn.is-submitting::after {
+.site-btn.is-submitting .site-btn__icon > * {
+  opacity: 0;
+}
+.site-btn.is-submitting .site-btn__icon::after {
   content: "";
   position: absolute;
-  top: 50%;
-  right: 1.6rem;
-  width: 1.6rem;
-  height: 1.6rem;
-  margin-top: -.8rem;
+  inset: 0;
+  margin: auto;
+  width: 1.8rem;
+  height: 1.8rem;
   border: 2px solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  opacity: .8;
   animation: spin .7s linear infinite;
 }
 /* ------------------------------------------------*/
