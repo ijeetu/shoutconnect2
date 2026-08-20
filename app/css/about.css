@@ -98,15 +98,6 @@
 
 .about-hero__statement { position: relative; }
 
-.about-hero__eyebrow {
-  margin: 0 0 clamp(1.2rem, 1.6vw, 2rem);
-  color: rgba(255, 255, 255, .6);
-  font-size: clamp(1.4rem, 1vw, 1.8rem);
-  font-weight: 500 !important;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
 .about-hero__title {
   position: relative;
   z-index: 2;
@@ -729,7 +720,6 @@
   .about-hero__shell { padding: 12rem 2.4rem 4.5rem; }
   .about-hero__topline { margin-bottom: 4rem; }
   .about-hero__index { display: none; }
-  .about-hero__eyebrow { font-size: 1.2rem; letter-spacing: .08em; }
   .about-hero__title { max-width: none; font-size: clamp(4.8rem, 16vw, 7rem); line-height: .88; }
   .about-hero__line--two { padding-left: 0; }
   .about-hero__seal { position: relative; right: auto; bottom: auto; width: 13rem; margin: 3rem 0 0 auto; }
