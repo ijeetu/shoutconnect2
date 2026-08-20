@@ -241,19 +241,8 @@
 
 .about-split__col--beliefs { padding-right: clamp(2rem, 3vw, 4rem); border-right: 1px solid rgba(22, 22, 22, .1); }
 
-.about-split__quote-mark {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: -1rem;
-  color: rgba(var(--accent-rgb), .14);
-  font: 500 clamp(9rem, 9vw, 13rem)/1 var(--_font-accent);
-  pointer-events: none;
-}
-
 .about-split h2 { position: relative; z-index: 1; max-width: 20ch; }
 .about-split .mxd-point-subtitle { position: relative; z-index: 1; }
-.about-split__col--beliefs h2 { margin-top: clamp(1.6rem, 2.5vw, 3.2rem); }
 
 .about-split__flow {
   display: flex;
