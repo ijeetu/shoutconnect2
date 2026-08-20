@@ -18,156 +18,27 @@
 body.inner-page .trust-cta__panel { background: none; box-shadow: none; }
 
 /* ==========================================================================
-   Hero
-   ========================================================================== */
-.contact-hero {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  color: #fff;
-  background:
-    linear-gradient(90deg, rgba(3, 19, 29, .97) 0%, rgba(3, 19, 29, .9) 34%, rgba(3, 19, 29, .5) 66%, rgba(3, 19, 29, .14) 100%),
-    linear-gradient(0deg, rgba(3, 19, 29, .55), transparent 42%),
-    url("../img/backgrounds/contact-hero-premium.webp") right center / cover no-repeat,
-    #03131d;
-}
-
-.contact-hero__ambient {
-  position: absolute;
-  top: 14%;
-  right: 6%;
-  width: clamp(24rem, 38vw, 60rem);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, .1);
-  box-shadow: inset 0 0 8rem rgba(10, 138, 101, .1), 0 0 9rem rgba(28, 102, 149, .08);
-  opacity: .7;
-  pointer-events: none;
-}
-.contact-hero__ambient::before,
-.contact-hero__ambient::after {
-  content: "";
-  position: absolute;
-  border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, .08);
-}
-.contact-hero__ambient::before { inset: 12%; }
-.contact-hero__ambient::after { inset: 27%; background: rgba(255, 255, 255, .018); }
-
-.contact-hero__grid {
-  position: absolute;
-  inset: 0;
-  opacity: .12;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, .07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, .07) 1px, transparent 1px);
-  background-size: clamp(5rem, 8vw, 12rem) clamp(5rem, 8vw, 12rem);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 4%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(to bottom, transparent 4%, #000 45%, transparent 100%);
-  pointer-events: none;
-}
-
-.contact-hero__shell {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 192rem;
-  margin: 0 auto;
-  padding: clamp(12rem, 16vh, 18rem) clamp(2.4rem, 5vw, 8rem) clamp(4rem, 7vh, 7rem);
-}
-
-.contact-hero__title {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-  max-width: 16ch;
-  color: #fff;
-  font-size: clamp(5.2rem, 8vw, 12rem);
-  line-height: .88;
-  letter-spacing: -.06em;
-}
-.contact-hero__line { display: block; font-weight: 300 !important; }
-.contact-hero__line--indent { padding-left: clamp(2rem, 8vw, 12rem); }
-.contact-hero__title strong { color: #37b68e; font-weight: 500 !important; }
-
-.contact-hero__bottom {
-  display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(30rem, .75fr);
-  align-items: end;
-  gap: 4rem;
-  margin-top: clamp(4rem, 7vh, 7rem);
-}
-.contact-hero__intro {
-  max-width: 60rem;
-  margin: 0;
-  color: rgba(255, 255, 255, .8);
-  font-size: clamp(1.8rem, 1.55vw, 2.6rem);
-  line-height: 1.4;
-}
-.contact-hero__actions {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 1.5rem 2.4rem;
-}
-.contact-hero__discover {
-  display: inline-flex;
-  align-items: center;
-  gap: .8rem;
-  color: rgba(255, 255, 255, .78);
-  font-size: 1.6rem;
-  text-decoration: none;
-  transition: color .3s ease;
-}
-.contact-hero__discover i { color: #35bc91; transition: transform .3s ease; }
-.contact-hero__discover:hover { color: #fff; }
-.contact-hero__discover:hover i { transform: translateY(.35rem); }
-.contact-hero__discover:focus-visible { outline: 2px solid #58d5ac; outline-offset: .4rem; border-radius: .4rem; }
-
-.contact-hero__rail {
-  position: relative;
-  z-index: 3;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid rgba(255, 255, 255, .14);
-  background: rgba(0, 0, 0, .18);
-  backdrop-filter: blur(12px);
-}
-.contact-hero__stat {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
-  padding: clamp(1.8rem, 2.4vw, 2.6rem) clamp(2rem, 3vw, 4rem);
-}
-.contact-hero__stat + .contact-hero__stat { border-left: 1px solid rgba(255, 255, 255, .12); }
-.contact-hero__stat strong,
-.contact-hero__stat a {
-  color: #fff;
-  font-size: clamp(1.5rem, 1.15vw, 1.9rem);
-  font-weight: 500 !important;
-  line-height: 1.25;
-  letter-spacing: -.01em;
-  text-decoration: none;
-}
-.contact-hero__stat a { transition: color .3s ease; }
-.no-touch .contact-hero__stat a:hover { color: #37b68e; }
-.contact-hero__stat span {
-  color: rgba(255, 255, 255, .55);
-  font-size: clamp(1.2rem, .9vw, 1.4rem);
-  letter-spacing: .06em;
-  line-height: 1.3;
-  text-transform: uppercase;
-}
-
-/* ==========================================================================
    Contact split — info column + form column
    ========================================================================== */
 .contact-split-section { padding-top: clamp(6rem, 8vw, 9rem); padding-bottom: clamp(6rem, 8vw, 9rem); }
+
+/* No hero on this page anymore — clear the absolutely positioned header
+   the same way .mxd-article-area does on the legal pages, and fill the
+   screen with the form vertically centered in it. */
+.contact-split-section--top {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: 11.2rem;
+}
+@media only screen and (min-width: 768px) {
+  .contact-split-section--top { padding-top: 15.2rem; }
+}
+@media only screen and (min-width: 1200px) {
+  .contact-split-section--top { padding-top: 9.2rem; }
+}
 
 .contact-split {
   display: grid;
@@ -304,26 +175,10 @@ body.inner-page .trust-cta__panel { background: none; box-shadow: none; }
   .contact-split__col--primary { padding-right: 0; padding-bottom: 4rem; border-right: none; border-bottom: 1px solid rgba(22, 22, 22, .1); }
 }
 
-@media only screen and (max-width: 991px) {
-  .contact-hero__bottom { grid-template-columns: 1fr; }
-  .contact-hero__actions { justify-content: flex-start; }
-  .contact-hero__rail { grid-template-columns: repeat(2, 1fr); }
-  .contact-hero__stat:nth-child(3) { border-left: none; }
-  .contact-hero__stat:nth-child(n+3) { border-top: 1px solid rgba(255, 255, 255, .12); }
-}
-
 @media only screen and (max-width: 767px) {
-  .contact-hero__shell { padding: 12rem 2.4rem 4.5rem; }
-  .contact-hero__title { max-width: none; font-size: clamp(4.4rem, 14vw, 6.6rem); line-height: .94; }
-  .contact-hero__line--indent { padding-left: 0; }
-  .contact-hero__intro { font-size: 1.7rem; }
-  .contact-hero__bottom { margin-top: 3rem; gap: 3rem; }
-  .contact-hero__actions { align-items: flex-start; flex-direction: column; }
-
   .contact-form__row { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-hero__discover i,
   .contact-info__row { transition: none; }
 }

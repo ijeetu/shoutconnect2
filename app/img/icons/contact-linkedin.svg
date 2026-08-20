@@ -1,0 +1,35 @@
+<svg width="108" height="98" viewBox="0 0 108 98" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="15" y="9" width="78" height="80" rx="14" fill="url(#linkedin-card)" stroke="#1C6695"/>
+  <path d="M29 9.5H79C86.456 9.5 92.5 15.544 92.5 23V35" stroke="url(#linkedin-highlight)" stroke-linecap="round"/>
+
+  <circle cx="35.75" cy="32.25" r="5.25" fill="url(#linkedin-accent)" stroke="#0A8A65" stroke-opacity="0.5"/>
+  <rect x="31" y="43" width="9.5" height="28" rx="3" fill="url(#linkedin-mark)"/>
+  <path d="M49 43H58V47.15C60.78 43.55 64.43 41.75 68.95 41.75C78.47 41.75 83.5 47.68 83.5 58.9V71H74V59.8C74 53.69 72.02 50.45 67.68 50.45C62.33 50.45 58.5 54.16 58.5 60.75V71H49V43Z" fill="url(#linkedin-mark)"/>
+
+  <path d="M22 78.5C31.46 84.42 42.66 87.85 54.66 87.85C66.3 87.85 77.2 84.62 86.45 79.02" stroke="url(#linkedin-accent-line)" stroke-linecap="round"/>
+
+  <defs>
+    <linearGradient id="linkedin-card" x1="15" y1="9" x2="93" y2="89" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C6695" stop-opacity="0.22"/>
+      <stop offset="0.58" stop-color="#1C6695" stop-opacity="0.07"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linkedin-highlight" x1="30" y1="9" x2="89" y2="30" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A8A65"/>
+      <stop offset="1" stop-color="#0A8A65" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="linkedin-mark" x1="34" y1="39" x2="82" y2="72" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1C6695"/>
+      <stop offset="1" stop-color="#1C6695" stop-opacity="0.42"/>
+    </linearGradient>
+    <linearGradient id="linkedin-accent" x1="31" y1="27" x2="41" y2="38" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A8A65"/>
+      <stop offset="1" stop-color="#0A8A65" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="linkedin-accent-line" x1="22" y1="83" x2="86" y2="83" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0A8A65" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#0A8A65" stop-opacity="0.58"/>
+      <stop offset="1" stop-color="#0A8A65" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+</svg>
