@@ -631,6 +631,11 @@
   line-height: 1.6;
 }
 
+.work-process__head .work-process__intro {
+  font-size: clamp(1.9rem, 1.5vw, 2.3rem);
+  line-height: 1.55;
+}
+
 .work-process__grid {
   position: relative;
   z-index: 1;

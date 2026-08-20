@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /fonts/
+Disallow: /vendor/
+
+Sitemap: https://theconnectagency.in/sitemap.xml
