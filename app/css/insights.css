@@ -170,7 +170,11 @@
 /* ==========================================================================
    Featured lead article — editorial split (mirrors about-story__layout)
    ========================================================================== */
-.insights-featured { overflow: hidden; padding-top: clamp(6rem, 8vw, 11rem); }
+.mxd-section.insights-featured {
+  overflow: hidden;
+  padding-top: clamp(6rem, 8vw, 11rem);
+  padding-bottom: clamp(2.5rem, 3vw, 4rem);
+}
 
 .insights-featured__head {
   display: grid;
@@ -194,13 +198,13 @@
 .insights-featured__layout {
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(34rem, .9fr);
-  min-height: clamp(58rem, 60vw, 82rem);
+  min-height: 0;
   border-radius: var(--_radius-l);
   overflow: hidden;
   background: #03131d;
 }
 
-.insights-featured__visual { position: relative; min-height: 46rem; margin: 0; overflow: hidden; }
+.insights-featured__visual { position: relative; min-height: clamp(44rem, 36vw, 50rem); margin: 0; overflow: hidden; }
 .insights-featured__visual::after {
   content: "";
   position: absolute;
@@ -236,8 +240,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: clamp(4rem, 6vw, 8rem);
+  justify-content: flex-start;
+  padding: clamp(3.5rem, 4.5vw, 5.5rem);
   color: rgba(255, 255, 255, .66);
 }
 
@@ -307,7 +311,7 @@
 /* ==========================================================================
    Archive — heading, sticky filters, article grid
    ========================================================================== */
-.insights-archive { padding: clamp(6rem, 8vw, 11rem) 0 clamp(5rem, 7vw, 9rem); }
+.insights-archive { padding: clamp(2.5rem, 3vw, 4rem) 0 clamp(5rem, 7vw, 9rem); }
 
 .insights-archive__head {
   display: grid;
