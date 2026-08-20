@@ -356,6 +356,15 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # ----------------------------------------------------------------------
+# | Page redirects                                                     |
+# ----------------------------------------------------------------------
+
+# services.html was renamed to expertise.html.
+<IfModule mod_rewrite.c>
+    RewriteRule ^services\.html$ /expertise.html [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
 # | Forcing `https://`                                                 |
 # ----------------------------------------------------------------------
 
