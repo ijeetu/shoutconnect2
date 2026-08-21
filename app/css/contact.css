@@ -37,7 +37,7 @@ body.inner-page .trust-cta__panel { background: none; box-shadow: none; }
   .contact-split-section--top { padding-top: 15.2rem; }
 }
 @media only screen and (min-width: 1200px) {
-  .contact-split-section--top { padding-top: 9.2rem; }
+  .contact-split-section--top { padding-top: 14.2rem; }
 }
 
 .contact-split {
