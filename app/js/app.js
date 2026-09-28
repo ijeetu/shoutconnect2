@@ -1038,50 +1038,81 @@ if (progressStoryItems.length) {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const hoverImageSets = {
     building_nation: [
-      "img/ListCoverImages/BuildingtheNation/1APLapollotubes.webp",
-      "img/ListCoverImages/BuildingtheNation/Ganeshhousing.webp",
-      "img/ListCoverImages/BuildingtheNation/Ajmerarealty.webp",
-      "img/ListCoverImages/BuildingtheNation/04 Tarc.webp",
-      "img/ListCoverImages/BuildingtheNation/Alpexsolar.webp",
-      "img/ListCoverImages/BuildingtheNation/Yashhi-voltage.webp",
-      "img/ListCoverImages/BuildingtheNation/Advait.webp",
-      "img/ListCoverImages/BuildingtheNation/LMW.webp",
-      "img/ListCoverImages/BuildingtheNation/09Craftsman.webp",
-      "img/ListCoverImages/BuildingtheNation/10Diffusion.webp",
-      "img/ListCoverImages/BuildingtheNation/11GMM.webp",
-      "img/ListCoverImages/BuildingtheNation/12Rajesh power.webp",
-      "img/ListCoverImages/BuildingtheNation/13Simplex.webp"
+      "img/covers/2026/thumb/apl-apollo-tubes.webp",
+      "img/covers/2026/thumb/ashwini-container-movers.webp",
+      "img/covers/2026/thumb/advait-energy.webp",
+      "img/covers/2026/thumb/ajmera-realty.webp",
+      "img/covers/2026/thumb/alpex-solar.webp",
+      "img/covers/2026/thumb/alphageo.webp",
+      "img/covers/2026/thumb/azad-engineering.webp",
+      "img/covers/2026/thumb/elin-electronics.webp",
+      "img/covers/2026/thumb/fujiyama-power.webp",
+      "img/covers/2026/thumb/gmm-pfaudler.webp",
+      "img/covers/2026/thumb/hbl-engineering.webp",
+      "img/covers/2026/thumb/heg.webp",
+      "img/covers/2026/thumb/kajaria-ceramics.webp",
+      "img/covers/2026/thumb/krishca-strapping.webp",
+      "img/covers/2026/thumb/lmw.webp",
+      "img/covers/2026/thumb/midwest.webp",
+      "img/covers/2026/thumb/orientbell.webp",
+      "img/covers/2026/thumb/rvnl.webp",
+      "img/covers/2026/thumb/shyam-metalics.webp",
+      "img/covers/2026/thumb/tarc.webp",
+      "img/covers/2026/thumb/tipco-engineering.webp",
+      "img/covers/2026/thumb/vardhman-special-steels.webp",
+      "img/covers/2026/thumb/yash-highvoltage.webp"
     ],
     shaping_future: [
-      "img/ListCoverImages/ShapingtheFurure/01CStech.webp",
-      "img/ListCoverImages/ShapingtheFurure/02CyientDLM.webp",
-      "img/ListCoverImages/ShapingtheFurure/03Rapidue.webp",
-      "img/ListCoverImages/ShapingtheFurure/05Accent.webp"
+      "img/covers/2026/thumb/cyient-dlm.webp",
+      "img/covers/2026/thumb/cohance-lifesciences.webp",
+      "img/covers/2026/thumb/alembic-pharma.webp",
+      "img/covers/2026/thumb/suven-life-sciences.webp",
+      "img/covers/2026/thumb/balaji-amines.webp",
+      "img/covers/2026/thumb/gujarat-terce.webp",
+      "img/covers/2026/thumb/ind-swift-labs.webp",
+      "img/covers/2026/thumb/jg-chemicals.webp",
+      "img/covers/2026/thumb/primo-chemicals.webp",
+      "img/covers/2026/thumb/sigachi.webp",
+      "img/covers/2026/thumb/venus-remedies.webp",
+      "img/covers/2026/thumb/vipul-organics.webp"
     ],
     creating_impact: [
-      "img/ListCoverImages/CreatingImpact/01Adani.webp",
-      "img/ListCoverImages/CreatingImpact/02Srichakra.webp",
-      "img/ListCoverImages/CreatingImpact/03Sigachi[SR].webp",
-      "img/ListCoverImages/CreatingImpact/04Gainwell.webp"
+      "img/covers/2026/thumb/srichakra-polyplast.webp",
+      "img/covers/2026/thumb/heritage-foods.webp",
+      "img/covers/2026/thumb/vardhman-textiles.webp",
+      "img/covers/2026/thumb/andhra-paper.webp",
+      "img/covers/2026/thumb/bhilwara-technical-textiles.webp",
+      "img/covers/2026/thumb/gokul-agro.webp",
+      "img/covers/2026/thumb/indo-count.webp",
+      "img/covers/2026/thumb/maral-overseas.webp",
+      "img/covers/2026/thumb/nacl-industries.webp",
+      "img/covers/2026/thumb/pajson-agro.webp",
+      "img/covers/2026/thumb/relaxo.webp",
+      "img/covers/2026/thumb/rswm.webp"
     ],
     driving_growth: [
-      "img/ListCoverImages/DrivingGrowth/01Zaggle.webp",
-      "img/ListCoverImages/DrivingGrowth/02SGMart.webp",
-      "img/ListCoverImages/DrivingGrowth/03Wealthfirst.webp",
-      "img/ListCoverImages/DrivingGrowth/04Armaan.webp",
-      "img/ListCoverImages/DrivingGrowth/05SwissMilitary.webp"
+      "img/covers/2026/thumb/zaggle.webp",
+      "img/covers/2026/thumb/mobikwik.webp",
+      "img/covers/2026/thumb/capital-india.webp",
+      "img/covers/2026/thumb/sg-finserve.webp",
+      "img/covers/2026/thumb/wealth-first.webp",
+      "img/covers/2026/thumb/arman-financial.webp"
     ]
   };
 
   const encodePath = (path) => path.split("/").map((segment) => encodeURIComponent(segment)).join("/");
 
-  Object.values(hoverImageSets).forEach((rawSet) => {
-    rawSet.forEach((rawPath) => {
-      const src = encodePath(rawPath);
+  // Warm a set only when its card is first hovered/focused, so the homepage
+  // doesn't download every cover up front.
+  const preloadedSets = new Set();
+  const preloadSet = (setName) => {
+    if (preloadedSets.has(setName) || !hoverImageSets[setName]) return;
+    preloadedSets.add(setName);
+    hoverImageSets[setName].forEach((rawPath) => {
       const preloaded = new Image();
-      preloaded.src = src;
+      preloaded.src = encodePath(rawPath);
     });
-  });
+  };
 
   progressStoryItems.forEach((item) => {
     const media = item.querySelector(".progress-stories__media");
@@ -1118,6 +1149,7 @@ if (progressStoryItems.length) {
     };
 
     const startLoop = () => {
+      preloadSet(setName);
       item.classList.add("is-looping");
       if (progressStoriesGrid) progressStoriesGrid.classList.add("is-focus-active");
       if (prefersReducedMotion || loopTimer || imageSet.length < 2) return;
