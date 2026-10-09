@@ -63,37 +63,26 @@ gsap.registerPlugin(Flip);
 // --------------------------------------------- //
 // Loader & Loading Animation Start
 // --------------------------------------------- //
-const content = document.querySelector('body');
-const imgLoad = imagesLoaded(content);
 const loadingWrap = document.querySelector('.loading-wrap');
-const loadingItems = loadingWrap.querySelectorAll('.loading__item:not(.hero-news__title):not(.hero-news__services)');
+const loadingItems = loadingWrap
+  ? loadingWrap.querySelectorAll('.loading__item:not(.hero-news__title):not(.hero-news__services)')
+  : [];
 const fadeInItems = document.querySelectorAll('.loading__fade');
 const pageEntryItems = document.querySelectorAll('.mxd-nav__wrap, #header, #mxd-page-content');
-const deferredVideos = document.querySelectorAll('.menu-video, .mxd-hero-05-videoblock__video video');
+const deferredVideos = document.querySelectorAll('.mxd-hero-05-videoblock__video video');
 const loaderRoot = document.getElementById('loader');
 const isInnerPage = document.body.classList.contains('inner-page') || !loaderRoot;
 const loaderTypedTarget = document.getElementById('loader-typed');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-let lenisInstance = null;
-let loaderTypedInstance = null;
-let loaderTypingDone = false;
-let loaderImagesDone = false;
+// Content is ready as soon as its markup is available. Lazy images, custom
+// fonts, and background videos must not hold the whole page behind an intro.
+gsap.set(pageEntryItems, { autoAlpha: 1 });
+if (loadingItems.length) gsap.set(loadingItems, { autoAlpha: 1, y: 0 });
+gsap.set(fadeInItems, { autoAlpha: 1 });
 
-deferredVideos.forEach((video) => video.pause());
-
-if (isInnerPage) {
-  if (loaderRoot) loaderRoot.style.display = 'none';
-  gsap.set(pageEntryItems, { autoAlpha: 1 });
-  playDeferredVideos();
-} else {
-  gsap.set(pageEntryItems, { autoAlpha: 0 });
-}
-
-// Pause key videos until loader finishes, then trigger playback.
-function playDeferredVideos() {
-  deferredVideos.forEach((video) => {
-    video.pause();
+function playVideos(videos) {
+  videos.forEach((video) => {
     const playPromise = video.play();
     if (playPromise && playPromise.catch) {
       playPromise.catch(() => {});
@@ -101,189 +90,39 @@ function playDeferredVideos() {
   });
 }
 
-function startSequenceWhenReady() {
-  if (isInnerPage) return;
-  if (loaderTypingDone && loaderImagesDone) {
-    hideLoader(pageAppearance);
+function finishLoader() {
+  if (!loaderRoot) return;
+  loaderRoot.classList.add('loaded');
+  loaderRoot.hidden = true;
+}
+
+// If scripts arrive late, the page may already be painted; do not cover it
+// with an introduction after the visitor has started reading.
+const introIsTimely = window.performance && window.performance.now() < 600;
+if (loaderRoot && !isInnerPage && !prefersReducedMotion && introIsTimely) {
+  if (loaderTypedTarget) {
+    loaderTypedTarget.innerHTML = 'Conceptualisers<br>Creators<br>Communicators';
   }
-}
-
-function markLoaderTypingDone() {
-  if (loaderTypingDone) {
-    return;
-  }
-  loaderTypingDone = true;
-  startSequenceWhenReady();
-}
-
-function markLoaderImagesDone() {
-  if (loaderImagesDone) {
-    return;
-  }
-  loaderImagesDone = true;
-  startSequenceWhenReady();
-}
-
-function revealLoaderText() {
-  if (loaderRoot) {
-    loaderRoot.classList.add('loader--fonts-ready');
-  }
-}
-
-function waitForLoaderFonts() {
-  if (!document.fonts || !document.fonts.load) {
-    return Promise.resolve();
-  }
-
-  return Promise.race([
-    Promise.all([
-      document.fonts.load('500 1em "Futura Cyrillic"'),
-      document.fonts.load('300 1em "Futura Cyrillic"')
-    ]),
-    new Promise((resolve) => setTimeout(resolve, 1800))
-  ]).catch(() => {});
-}
-
-function startLoader() {
-  if (isInnerPage) return;
-  if (loaderTypedTarget && window.Typed) {
-    loaderTypedTarget.innerHTML = "";
-    loaderTypedInstance = new Typed("#loader-typed", {
-      strings: ["Conceptualisers<br>Creators<br>Communicators"],
-      typeSpeed: 56,
-      backSpeed: 0,
-      startDelay: 140,
-      showCursor: false,
-      cursorChar: "|",
-      loop: false,
-      contentType: "html",
-      onComplete: () => {
-        setTimeout(markLoaderTypingDone, 260);
-      }
-    });
-    setTimeout(markLoaderTypingDone, 5200);
-  } else if (loaderTypedTarget) {
-    loaderTypedTarget.innerHTML = "Conceptualisers<br>Creators<br>Communicators";
-    setTimeout(markLoaderTypingDone, 1200);
-  } else {
-    setTimeout(markLoaderTypingDone, 800);
-  }
-}
-
-if (!isInnerPage) {
-  waitForLoaderFonts().finally(() => {
-    revealLoaderText();
-    startLoader();
-  });
-
-  imgLoad.on('always', () => {
-    markLoaderImagesDone();
-  });
-
-  // Safety fallback: never let the loader block the homepage forever.
-  window.addEventListener('load', markLoaderImagesDone, { once: true });
-  setTimeout(markLoaderImagesDone, 4200);
-}
-
-function hideLoader(onComplete) {
-  const finalizeLoaderExit = () => {
-    document.getElementById("loader").classList.add("loaded");
-    playDeferredVideos();
-    if (typeof onComplete === 'function') {
-      requestAnimationFrame(() => requestAnimationFrame(onComplete));
-    }
-  };
-
-  if (prefersReducedMotion) {
-    gsap.to(".loader__wrapper", {
-      duration: 0.22,
+  loaderRoot.classList.add('loader--fonts-ready');
+  loaderRoot.setAttribute('aria-hidden', 'true');
+  loaderRoot.style.pointerEvents = 'none';
+  loaderRoot.hidden = false;
+  // Keep the existing branding as a brief introduction, without typing or
+  // network readiness delays. The timeout also guards an interrupted tween.
+  setTimeout(() => {
+    gsap.to(loaderRoot.querySelector('.loader__wrapper'), {
+      duration: 0.18,
       ease: 'none',
       autoAlpha: 0,
-      overwrite: 'auto',
-      onComplete: finalizeLoaderExit
+      onComplete: finishLoader
     });
-    return;
-  }
-
-  gsap.timeline({
-    defaults: { overwrite: 'auto' },
-    onComplete: finalizeLoaderExit
-  })
-    .to(".loader__wrapper", {
-      duration: 0.64,
-      ease: 'power1.inOut',
-      autoAlpha: 0
-    }, 0);
+  }, 350);
+  setTimeout(finishLoader, 650);
+} else {
+  finishLoader();
 }
 
-function pageAppearance() {
-  const heroSection = document.querySelector('.hero-news.mxd-hero-section');
-  const heroTitleLines = document.querySelectorAll('.hero-news__title .hero-news__line-nowrap, .hero-news__title > strong');
-  const heroServicesList = document.querySelector('.hero-news__services');
-  const heroServiceItems = document.querySelectorAll('.hero-news__services li');
-  gsap.to(pageEntryItems, { autoAlpha: 1, duration: 0.45, ease: 'power2.out' });
-
-  if (heroSection) {
-    if (prefersReducedMotion) {
-      gsap.set(heroSection, { autoAlpha: 1, scale: 1 });
-      gsap.set(heroTitleLines, { autoAlpha: 1, y: 0 });
-      gsap.set(heroServicesList, { autoAlpha: 1, y: 0 });
-      gsap.set(heroServiceItems, { autoAlpha: 1, y: 0 });
-    } else {
-      gsap.set(heroSection, { autoAlpha: 0, scale: 1.02, transformOrigin: "50% 50%" });
-      gsap.set(heroTitleLines, {
-        autoAlpha: 1,
-        y: 110,
-        clipPath: 'inset(0 0 100% 0)',
-        filter: 'blur(10px)'
-      });
-      gsap.set(heroServicesList, { autoAlpha: 1, y: 22 });
-      gsap.set(heroServiceItems, { autoAlpha: 0, y: 36, filter: 'blur(8px)' });
-
-      gsap.timeline({ delay: 0.28 })
-        .to(heroSection, {
-          duration: 1.1,
-          ease: 'power2.out',
-          autoAlpha: 1,
-          scale: 1
-        })
-        .to(heroTitleLines, {
-          duration: 0.96,
-          ease: 'power4.out',
-          y: 0,
-          clipPath: 'inset(0 0 0% 0)',
-          filter: 'blur(0px)',
-          stagger: 0.12
-        }, '-=0.62')
-        .to(heroServicesList, {
-          duration: 0.6,
-          ease: 'power3.out',
-          y: 0
-        }, '-=0.38')
-        .to(heroServiceItems, {
-          duration: 0.72,
-          ease: 'power3.out',
-          autoAlpha: 1,
-          y: 0,
-          filter: 'blur(0px)',
-          stagger: 0.08
-        }, '-=0.48');
-    }
-  }
-
-  gsap.set(loadingItems, { opacity: 0 })
-  gsap.to(loadingItems, { 
-    duration: 1.1,
-    ease: 'power4',
-    startAt: {y: 120},
-    y: 0,
-    opacity: 1,
-    delay: 0.2,
-    stagger: 0.08
-  }, '>-=1.1');
-  gsap.set(fadeInItems, { opacity: 0 });
-  gsap.to(fadeInItems, { duration: 0.8, ease: 'none', opacity: 1, delay: 0.25 });
-}
+playVideos(deferredVideos);
 
 // --------------------------------------------- //
 // Loader & Loading Animation End
@@ -293,7 +132,6 @@ function pageAppearance() {
 // Lenis Scroll Plugin Start
 // --------------------------------------------- //
 const lenis = new Lenis();
-lenisInstance = lenis;
 lenis.on('scroll', ScrollTrigger.update);
 gsap.ticker.add((time) => {
   lenis.raf(time * 1000)
@@ -597,8 +435,18 @@ $(function() {
     let menuLinkEl    = $(this).find(".mxd-menu__link");
     let menuItem      = $(this).find(".main-menu__item");
     let videoEl       = $(this).find(".menu-promo__video");
+    const menuVideos  = $(this).find(".menu-video").get();
     let fadeInEl      = $(this).find(".menu-fade-in");
-    let flipDuration = 0.6;
+    const headerEl = $(".mxd-header");
+    let menuOpen = false;
+
+    gsap.set(menuWrapEl, { display: "none", pointerEvents: "none" });
+
+    function finishMenuClose() {
+      if (menuOpen) return;
+      gsap.set(menuWrapEl, { display: "none", pointerEvents: "none" });
+      headerEl.removeClass("menu-is-visible");
+    }
 
     function flip(forwards) {
       let state = Flip.getState(flipItemEl);
@@ -610,15 +458,11 @@ $(function() {
       Flip.from(state, { ease: "power4.inOut", duration: 0.8 });
     }
 
-    let tl = gsap.timeline({ paused: true });
-    tl.set(menuWrapEl, { display: "flex" });
+    let tl = gsap.timeline({ paused: true, onReverseComplete: finishMenuClose });
     tl.from(menuBaseEl, { 
       opacity: 0,
       duration: 0.75,
-      ease: "power2.inOut",
-      onStart: () => {
-        flip(true);
-      }
+      ease: "power2.inOut"
     }, 0);
     tl.from(menuContainEl, {
       opacity: 0,
@@ -635,10 +479,7 @@ $(function() {
       opacity: 0,
       yPercent: 50,
       duration: 0.2,
-      stagger: {amount: 0.2},
-      onReverseComplete: () => {
-        flip(false);
-      }
+      stagger: {amount: 0.2}
     }, "fade-in-up")
     .from(videoEl, {
       opacity: 0,
@@ -648,18 +489,29 @@ $(function() {
     tl.from(fadeInEl, { opacity: 0, duration: 0.3, });
 
     function openMenu(open) {
-      if (!tl.isActive()) {
-        if (open) {
-          tl.play();
-          hamburgerEl.addClass("nav-open");
-        } else {
-          tl.reverse();
-          hamburgerEl.removeClass("nav-open");
-        }
+      if (menuOpen === open) return;
+      menuOpen = open;
+
+      if (open) {
+        gsap.set(menuWrapEl, { display: "flex", pointerEvents: "auto" });
+        flip(true);
+        playVideos(menuVideos);
+        hamburgerEl.addClass("nav-open");
+        headerEl.addClass("menu-is-visible");
+        tl.play();
+      } else {
+        // A close request must interrupt the entrance animation immediately.
+        // Release the page beneath the panel while its outro completes.
+        menuVideos.forEach((video) => video.pause());
+        gsap.set(menuWrapEl, { pointerEvents: "none" });
+        flip(false);
+        hamburgerEl.removeClass("nav-open");
+        tl.reverse();
+        if (tl.time() === 0) finishMenuClose();
       }
     }
 
-    hamburgerEl.on("click", function() {
+    hamburgerEl.on("click", function(event) {
       event.preventDefault();
       if ($(this).hasClass("nav-open")) {
         openMenu(false);
@@ -683,22 +535,6 @@ $(function() {
   });
   // --------------------------------------------- //
   // Menu & Hamburger End
-  // --------------------------------------------- //
-
-  // --------------------------------------------- //
-  // Header/Menu Z-index Change Start
-  // --------------------------------------------- //
-  $(".mxd-nav__hamburger").on("click", function() {
-    if ($(".mxd-nav__hamburger").hasClass("nav-open")) {
-      $(".mxd-header").addClass("menu-is-visible");
-    } else {
-      setTimeout(function() {
-        $(".mxd-header").removeClass("menu-is-visible");
-      }, 1100);
-    }
-  });
-  // --------------------------------------------- //
-  // Header/Menu Z-index Change End
   // --------------------------------------------- //
 
   // --------------------------------------------- //
@@ -1101,17 +937,60 @@ if (progressStoryItems.length) {
   };
 
   const encodePath = (path) => path.split("/").map((segment) => encodeURIComponent(segment)).join("/");
-
-  // Warm a set only when its card is first hovered/focused, so the homepage
-  // doesn't download every cover up front.
-  const preloadedSets = new Set();
-  const preloadSet = (setName) => {
-    if (preloadedSets.has(setName) || !hoverImageSets[setName]) return;
-    preloadedSets.add(setName);
-    hoverImageSets[setName].forEach((rawPath) => {
-      const preloaded = new Image();
-      preloaded.src = encodePath(rawPath);
-    });
+  const coverCompanies = {
+    "apl-apollo-tubes": "APL Apollo Tubes",
+    "ashwini-container-movers": "Ashwini Container Movers",
+    "advait-energy": "Advait Energy",
+    "ajmera-realty": "Ajmera Realty",
+    "alpex-solar": "Alpex Solar",
+    alphageo: "Alphageo",
+    "azad-engineering": "Azad Engineering",
+    "elin-electronics": "Elin Electronics",
+    "fujiyama-power": "Fujiyama Power",
+    "gmm-pfaudler": "GMM Pfaudler",
+    "hbl-engineering": "HBL Engineering",
+    heg: "HEG",
+    "kajaria-ceramics": "Kajaria Ceramics",
+    "krishca-strapping": "Krishca Strapping",
+    lmw: "LMW",
+    midwest: "Midwest",
+    orientbell: "Orientbell",
+    rvnl: "RVNL",
+    "shyam-metalics": "Shyam Metalics",
+    tarc: "TARC",
+    "tipco-engineering": "Tipco Engineering",
+    "vardhman-special-steels": "Vardhman Special Steels",
+    "yash-highvoltage": "Yash Highvoltage",
+    "cyient-dlm": "Cyient DLM",
+    "cohance-lifesciences": "Cohance Lifesciences",
+    "alembic-pharma": "Alembic Pharma",
+    "suven-life-sciences": "Suven Life Sciences",
+    "balaji-amines": "Balaji Amines",
+    "gujarat-terce": "Gujarat Terce",
+    "ind-swift-labs": "Ind-Swift Labs",
+    "jg-chemicals": "JG Chemicals",
+    "primo-chemicals": "Primo Chemicals",
+    sigachi: "Sigachi",
+    "venus-remedies": "Venus Remedies",
+    "vipul-organics": "Vipul Organics",
+    "srichakra-polyplast": "Srichakra Polyplast",
+    "heritage-foods": "Heritage Foods",
+    "vardhman-textiles": "Vardhman Textiles",
+    "andhra-paper": "Andhra Paper",
+    "bhilwara-technical-textiles": "Bhilwara Technical Textiles",
+    "gokul-agro": "Gokul Agro",
+    "indo-count": "Indo Count",
+    "maral-overseas": "Maral Overseas",
+    "nacl-industries": "NACL Industries",
+    "pajson-agro": "Pajson Agro",
+    relaxo: "Relaxo",
+    rswm: "RSWM",
+    zaggle: "Zaggle",
+    mobikwik: "MobiKwik",
+    "capital-india": "Capital India",
+    "sg-finserve": "SG Finserve",
+    "wealth-first": "Wealth First",
+    "arman-financial": "Arman Financial"
   };
 
   progressStoryItems.forEach((item) => {
@@ -1122,37 +1001,72 @@ if (progressStoryItems.length) {
     const setName = item.dataset.storySet;
     const rawSet = hoverImageSets[setName];
     if (!rawSet || !rawSet.length) return;
-    const imageSet = rawSet.map(encodePath);
-    const initialAlt = frontImg.alt;
+    const imageSet = rawSet.map((path) => {
+      const slug = path.split("/").pop().replace(/\.webp$/, "");
+      const company = coverCompanies[slug] || slug.replace(/-/g, " ");
+      return {
+        src: encodePath(path),
+        alt: `${company} annual report 2025-26 cover`
+      };
+    });
+    const coverBackground = (src) => `url("${new URL(src, document.baseURI).href}")`;
 
     const backImg = frontImg.cloneNode(true);
     backImg.classList.remove("is-visible");
-    backImg.removeAttribute("loading");
-    backImg.removeAttribute("decoding");
+    backImg.setAttribute("aria-hidden", "true");
     media.appendChild(backImg);
 
     let currentIndex = 0;
     let loopTimer = null;
     let showFront = true;
+    let swapVersion = 0;
+    const preloadedPaths = new Set([imageSet[0].src]);
+
+    // Fetch only the next two covers while the card is active, rather than
+    // downloading its entire gallery on the first hover or keyboard focus.
+    const preloadUpcoming = () => {
+      if (prefersReducedMotion) return;
+      for (let offset = 1; offset <= 2; offset++) {
+        const src = imageSet[(currentIndex + offset) % imageSet.length].src;
+        if (preloadedPaths.has(src)) continue;
+        preloadedPaths.add(src);
+        const preloaded = new Image();
+        preloaded.decoding = "async";
+        preloaded.src = src;
+      }
+    };
 
     const swapTo = (index) => {
       const incoming = showFront ? backImg : frontImg;
       const outgoing = showFront ? frontImg : backImg;
-      incoming.src = imageSet[index];
-      incoming.alt = initialAlt;
-      media.style.setProperty("--story-bg", `url("${imageSet[index]}")`);
-      requestAnimationFrame(() => {
-        incoming.classList.add("is-visible");
-        outgoing.classList.remove("is-visible");
-        showFront = !showFront;
-      });
+      const version = ++swapVersion;
+      let revealed = false;
+      const revealIncoming = () => {
+        requestAnimationFrame(() => {
+          if (revealed || version !== swapVersion || !loopTimer) return;
+          revealed = true;
+          incoming.onload = null;
+          incoming.classList.add("is-visible");
+          incoming.removeAttribute("aria-hidden");
+          outgoing.classList.remove("is-visible");
+          outgoing.setAttribute("aria-hidden", "true");
+          media.style.setProperty("--story-bg", coverBackground(imageSet[index].src));
+          showFront = !showFront;
+        });
+      };
+      // Keep the current cover visible until the next one has loaded.
+      incoming.onload = revealIncoming;
+      incoming.src = imageSet[index].src;
+      incoming.alt = imageSet[index].alt;
+      if (incoming.complete && incoming.naturalWidth) revealIncoming();
+      preloadUpcoming();
     };
 
     const startLoop = () => {
-      preloadSet(setName);
       item.classList.add("is-looping");
       if (progressStoriesGrid) progressStoriesGrid.classList.add("is-focus-active");
       if (prefersReducedMotion || loopTimer || imageSet.length < 2) return;
+      preloadUpcoming();
       loopTimer = window.setInterval(() => {
         currentIndex = (currentIndex + 1) % imageSet.length;
         swapTo(currentIndex);
@@ -1166,19 +1080,29 @@ if (progressStoryItems.length) {
         window.clearInterval(loopTimer);
         loopTimer = null;
       }
+      swapVersion++;
       currentIndex = 0;
-      frontImg.src = imageSet[0];
-      backImg.src = imageSet[0];
+      frontImg.onload = null;
+      backImg.onload = null;
+      frontImg.src = imageSet[0].src;
+      backImg.src = imageSet[0].src;
+      frontImg.alt = imageSet[0].alt;
+      backImg.alt = imageSet[0].alt;
       frontImg.classList.add("is-visible");
+      frontImg.removeAttribute("aria-hidden");
       backImg.classList.remove("is-visible");
-      media.style.setProperty("--story-bg", `url("${imageSet[0]}")`);
+      backImg.setAttribute("aria-hidden", "true");
+      media.style.setProperty("--story-bg", coverBackground(imageSet[0].src));
       showFront = true;
     };
 
-    frontImg.src = imageSet[0];
+    frontImg.src = imageSet[0].src;
+    frontImg.alt = imageSet[0].alt;
+    backImg.alt = imageSet[0].alt;
     frontImg.classList.add("is-visible");
+    frontImg.removeAttribute("aria-hidden");
     backImg.classList.remove("is-visible");
-    media.style.setProperty("--story-bg", `url("${imageSet[0]}")`);
+    media.style.setProperty("--story-bg", coverBackground(imageSet[0].src));
 
     item.addEventListener("mouseenter", startLoop);
     item.addEventListener("mouseleave", stopLoop);
@@ -1959,7 +1883,8 @@ $(".btn-to-top").each(function() {
 // ------------------------------------------------------------------------------ //
 // Parallax Universal (apply parallax effect to any element with a data-speed attribute) Start
 // ------------------------------------------------------------------------------ //
-gsap.to("[data-speed]", {
+const parallaxElements = document.querySelectorAll("[data-speed]");
+if (parallaxElements.length) gsap.to(parallaxElements, {
   y: (i, el) => (1 - parseFloat(el.getAttribute("data-speed"))) * ScrollTrigger.maxScroll(window) ,
   ease: "none",
   scrollTrigger: {

@@ -36,7 +36,7 @@
 
 <IfModule mod_setenvif.c>
     <IfModule mod_headers.c>
-        <FilesMatch "\.(bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
+        <FilesMatch "\.(avif|bmp|cur|gif|ico|jpe?g|png|svgz?|webp)$">
             SetEnvIf Origin ":" IS_CORS
             Header set Access-Control-Allow-Origin "*" env=IS_CORS
         </FilesMatch>
@@ -219,6 +219,7 @@ Options -MultiViews
     AddType audio/mp4                                   f4a f4b m4a
     AddType audio/ogg                                   oga ogg opus
     AddType image/bmp                                   bmp
+    AddType image/avif                                  avif
     AddType image/webp                                  webp
     AddType video/mp4                                   f4v f4p m4v mp4
     AddType video/ogg                                   ogv
@@ -356,71 +357,35 @@ AddDefaultCharset utf-8
 </IfModule>
 
 # ----------------------------------------------------------------------
-# | Page redirects                                                     |
+# | Canonical host and page redirects                                  |
 # ----------------------------------------------------------------------
 
-# services.html was renamed to expertise.html.
+# Only the production hostnames are canonicalized, so localhost and
+# preview hosts remain usable. Explicit page aliases go straight to the
+# final HTTPS URL, including when requested through HTTP or www.
+# Query strings are retained by mod_rewrite automatically.
 <IfModule mod_rewrite.c>
+    # THE_REQUEST excludes internal DirectoryIndex requests, avoiding a
+    # redirect loop when Apache serves index.html for the homepage.
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?theconnectagency\.in(?::[0-9]+)?$ [NC]
+    RewriteCond %{THE_REQUEST} \s/+index\.html(?:[?\s]) [NC]
+    RewriteRule ^index\.html$ https://theconnectagency.in/ [R=301,L]
+
+    # services.html was renamed to expertise.html.
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?theconnectagency\.in(?::[0-9]+)?$ [NC]
+    RewriteRule ^services\.html$ https://theconnectagency.in/expertise.html [R=301,L]
+
+    RewriteCond %{HTTP_HOST} ^(?:www\.)?theconnectagency\.in(?::[0-9]+)?$ [NC]
+    RewriteCond %{HTTPS} !=on [OR]
+    RewriteCond %{HTTP_HOST} !^theconnectagency\.in$ [NC]
+    # Preserve the original escaped path rather than decoding reserved
+    # characters into a fragment or query separator during the redirect.
+    RewriteCond %{THE_REQUEST} \s(/[^?\s]*)
+    RewriteRule ^ https://theconnectagency.in%1 [NE,R=301,L]
+
+    # Keep the legacy page alias working on local and preview hosts.
     RewriteRule ^services\.html$ /expertise.html [R=301,L]
 </IfModule>
-
-# ----------------------------------------------------------------------
-# | Forcing `https://`                                                 |
-# ----------------------------------------------------------------------
-
-# Redirect from the `http://` to the `https://` version of the URL.
-# https://wiki.apache.org/httpd/RewriteHTTPToHTTPS
-
-# <IfModule mod_rewrite.c>
-#    RewriteEngine On
-#    RewriteCond %{HTTPS} !=on
-#    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-# </IfModule>
-
-# ----------------------------------------------------------------------
-# | Suppressing / Forcing the `www.` at the beginning of URLs          |
-# ----------------------------------------------------------------------
-
-# The same content should never be available under two different
-# URLs, especially not with and without `www.` at the beginning.
-# This can cause SEO problems (duplicate content), and therefore,
-# you should choose one of the alternatives and redirect the other
-# one.
-#
-# By default `Option 1` (no `www.`) is activated.
-# http://no-www.org/faq.php?q=class_b
-#
-# If you would prefer to use `Option 2`, just comment out all the
-# lines from `Option 1` and uncomment the ones from `Option 2`.
-#
-# (!) NEVER USE BOTH RULES AT THE SAME TIME!
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Option 1: rewrite www.example.com → example.com
-
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{HTTPS} !=on
-    RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-    RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
-</IfModule>
-
-# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-# Option 2: rewrite example.com → www.example.com
-#
-# Be aware that the following might not be a good idea if you use "real"
-# subdomains for certain parts of your website.
-
-# <IfModule mod_rewrite.c>
-#     RewriteEngine On
-#     RewriteCond %{HTTPS} !=on
-#     RewriteCond %{HTTP_HOST} !^www\. [NC]
-#     RewriteCond %{SERVER_ADDR} !=127.0.0.1
-#     RewriteCond %{SERVER_ADDR} !=::1
-#     RewriteRule ^ http://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
-# </IfModule>
 
 
 # ######################################################################
@@ -594,9 +559,11 @@ AddDefaultCharset utf-8
 # https://tools.ietf.org/html/draft-ietf-websec-strict-transport-sec-14#section-6.1
 # http://blogs.msdn.com/b/ieinternals/archive/2014/08/18/hsts-strict-transport-security-attacks-mitigations-deployment-https.aspx
 
-# <IfModule mod_headers.c>
-#     Header set Strict-Transport-Security "max-age=16070400; includeSubDomains"
-# </IfModule>
+# Apply HSTS to the HTTPS apex host, including error responses. Subdomains
+# are deliberately excluded until their HTTPS support is confirmed.
+<IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on' && tolower(%{HTTP_HOST}) =~ m#^theconnectagency\.in(?::443)?$#"
+</IfModule>
 
 # ----------------------------------------------------------------------
 # | Reducing MIME type security risks                                  |
@@ -811,11 +778,8 @@ FileETag None
 # | Expires headers                                                    |
 # ----------------------------------------------------------------------
 
-# Serve resources with far-future expires headers.
-#
-# (!) If you don't control versioning with filename-based
-# cache busting, you should consider lowering the cache times
-# to something like one week.
+# Cache scripts and styles for one week. Some callers can still request
+# unversioned URLs, so a year or immutable caching would hide updates.
 #
 # https://httpd.apache.org/docs/current/mod/mod_expires.html
 
@@ -825,7 +789,7 @@ FileETag None
     ExpiresDefault                                      "access plus 1 month"
 
   # CSS
-    ExpiresByType text/css                              "access plus 1 year"
+    ExpiresByType text/css                              "access plus 1 week"
 
   # Data interchange
     ExpiresByType application/atom+xml                  "access plus 1 hour"
@@ -847,12 +811,12 @@ FileETag None
     ExpiresByType text/html                             "access plus 0 seconds"
 
   # JavaScript
-    ExpiresByType application/javascript                "access plus 1 year"
-    ExpiresByType application/x-javascript              "access plus 1 year"
-    ExpiresByType text/javascript                       "access plus 1 year"
+    ExpiresByType application/javascript                "access plus 1 week"
+    ExpiresByType application/x-javascript              "access plus 1 week"
+    ExpiresByType text/javascript                       "access plus 1 week"
 
   # Manifest files
-    ExpiresByType application/manifest+json             "access plus 1 year"
+    ExpiresByType application/manifest+json             "access plus 1 week"
 
     ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
     ExpiresByType text/cache-manifest                   "access plus 0 seconds"
@@ -860,10 +824,12 @@ FileETag None
   # Media files
     ExpiresByType audio/ogg                             "access plus 1 month"
     ExpiresByType image/bmp                             "access plus 1 month"
+    ExpiresByType image/avif                            "access plus 1 month"
     ExpiresByType image/gif                             "access plus 1 month"
     ExpiresByType image/jpeg                            "access plus 1 month"
     ExpiresByType image/png                             "access plus 1 month"
     ExpiresByType image/svg+xml                         "access plus 1 month"
+    ExpiresByType image/webp                            "access plus 1 month"
     ExpiresByType video/mp4                             "access plus 1 month"
     ExpiresByType video/ogg                             "access plus 1 month"
     ExpiresByType video/webm                            "access plus 1 month"
@@ -891,6 +857,17 @@ FileETag None
   # Other
     ExpiresByType text/x-cross-domain-policy            "access plus 1 week"
 
+</IfModule>
+
+# Explicit Cache-Control also covers hosts without mod_expires or with a
+# different JavaScript MIME type. Limit it to assets, leaving HTML fresh.
+<IfModule mod_headers.c>
+    <FilesMatch "(?i)\.(css|js)$">
+        Header set Cache-Control "public, max-age=604800"
+    </FilesMatch>
+    <FilesMatch "(?i)\.(avif|webp)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
 </IfModule>
 
 # ----------------------------------------------------------------------

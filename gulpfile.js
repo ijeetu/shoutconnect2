@@ -10,6 +10,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
 const del          = require('del');
 const cache        = require('gulp-cache');
+const { versionAssets } = require('./scripts/version-assets');
 
 // browserSync rules
 function browsersync() {
@@ -38,6 +39,14 @@ function styles() {
   }))
   .pipe(dest('app/css/'))
   .pipe(browserSync.reload({stream: true}))
+}
+
+// The current CSS contains custom sections not yet mirrored in Sass.
+// Compress it directly so a production build preserves those sections.
+function productionstyles() {
+  return src('app/css/**/*.css')
+    .pipe(cleanCSS())
+    .pipe(dest('app/css/'));
 }
 
 // minificated CSS compilation to source-files folder
@@ -86,12 +95,10 @@ function libs() {
   return src([
     'node_modules/jquery/dist/jquery.js',
     'assets/modernizr/modernizr.js',
-    'node_modules/ajaxchimp/jquery.ajaxchimp.js',
     'node_modules/gsap/dist/gsap.js',
     'node_modules/gsap/dist/ScrollTrigger.js',
     'node_modules/gsap/dist/ScrollToPlugin.js',
     'node_modules/gsap/dist/Flip.js',
-    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'assets/split-type/split-type.js',
     'node_modules/@studio-freight/lenis/dist/lenis.js',
     'node_modules/imagesloaded/imagesloaded.pkgd.js',
@@ -101,14 +108,10 @@ function libs() {
     'node_modules/svg-injector/dist/svg-injector.min.js',
     'node_modules/ukiyojs/dist/ukiyo.min.js',
     'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-    'node_modules/photoswipe/dist/photoswipe.js',
-    'node_modules/photoswipe/dist/photoswipe-ui-default.js',
     'node_modules/masonry-layout/dist/masonry.pkgd.js'
   ])
   .pipe(concat('libs.min.js'))
-  .pipe(uglify().on('error', console.error))
   .pipe(uglify())
-  .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
   .pipe(dest('app/js/'))
   .pipe(browserSync.stream())
 }
@@ -118,12 +121,10 @@ function libsexp() {
   return src([
     'node_modules/jquery/dist/jquery.js',
     'assets/modernizr/modernizr.js',
-    'node_modules/ajaxchimp/jquery.ajaxchimp.js',
     'node_modules/gsap/dist/gsap.js',
     'node_modules/gsap/dist/ScrollTrigger.js',
     'node_modules/gsap/dist/ScrollToPlugin.js',
     'node_modules/gsap/dist/Flip.js',
-    'node_modules/bootstrap/dist/js/bootstrap.bundle.js',
     'assets/split-type/split-type.js',
     'node_modules/@studio-freight/lenis/dist/lenis.js',
     'node_modules/imagesloaded/imagesloaded.pkgd.js',
@@ -133,8 +134,6 @@ function libsexp() {
     'node_modules/svg-injector/dist/svg-injector.min.js',
     'node_modules/ukiyojs/dist/ukiyo.min.js',
     'node_modules/magnific-popup/dist/jquery.magnific-popup.js',
-    'node_modules/photoswipe/dist/photoswipe.js',
-    'node_modules/photoswipe/dist/photoswipe-ui-default.js',
     'node_modules/masonry-layout/dist/masonry.pkgd.js'
   ])
   .pipe(concat('libs.js'))
@@ -156,9 +155,29 @@ function buildcopy() {
     'app/video/**/*',
     'app/img/**/*',
     'app/.htaccess',
-    'app/mail.php'
+    'app/*.php',
+    'app/inc/**/*.php',
+    'app/vendor/**/*.php',
+    'app/robots.txt',
+    'app/sitemap.xml'
   ], { base: 'app', encoding: false })
   .pipe(dest('dist'))
+}
+
+function productionjs() {
+  return src(['app/js/**/*.js', '!app/js/**/*.min.js'])
+    .pipe(uglify())
+    .pipe(dest('dist/js/'));
+}
+
+function assetversions(done) {
+  try {
+    versionAssets('app');
+    versionAssets('dist');
+    done();
+  } catch (error) {
+    done(error);
+  }
 }
 
 // app.js copy to dist
@@ -172,8 +191,8 @@ function buildalljs() {
 // files watch
 function startwatch() {
   watch('app/**/*.html').on('change', browserSync.reload);
-  watch([ 'app/**/*.js', '!app/**/*.min.js' ], libs);
-  watch([ 'app/sass/**/*.sass' ], styles);
+  watch('app/css/**/*.css').on('change', browserSync.reload);
+  watch([ 'app/js/**/*.js', '!app/js/libs.min.js' ]).on('change', browserSync.reload);
 }
 
 // clear cache
@@ -192,7 +211,7 @@ exports.html          = html;
 exports.clearcache    = clearcache;
 
 // build function
-exports.build         = series(cleandist, styles, cssmin, cssexp, html, libs, libsexp, buildcopy, buildalljs);
+exports.build         = series(cleandist, productionstyles, libs, buildcopy, productionjs, assetversions);
 
 // default function (gulp)
-exports.default       = parallel(styles, libs, browsersync, startwatch);
+exports.default       = parallel(libs, browsersync, startwatch);
