@@ -8,13 +8,13 @@ For the current OpenLiteSpeed host, apply the native settings described in [OPEN
 
 ## Google Analytics
 
-Google Analytics is prepared but inactive until a real measurement ID is configured. To configure it during the build:
+Google Analytics is configured with measurement ID `G-P69RQDL9LW` on every public page. To override it during the build:
 
 ```sh
 GA4_MEASUREMENT_ID=G-YOUR_REAL_ID npm run build
 ```
 
-Alternatively, set the `ga4-measurement-id` meta tag on each page. Empty IDs cause no Google Analytics requests. Before activating analytics, update the privacy policy's current statements that analytics is not used and apply the site's required consent settings. The shared integration is in `app/js/site.js`.
+Alternatively, set the `ga4-measurement-id` meta tag on each page. Empty IDs cause no Google Analytics requests. Keep the privacy policy and the site's required consent settings aligned with the analytics configuration. The shared integration is in `app/js/site.js`.
 
 ## Release checks
 
