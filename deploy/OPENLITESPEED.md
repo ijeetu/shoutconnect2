@@ -6,7 +6,7 @@ These settings have not been applied to production. The Apache configuration was
 
 ## Apply the release and virtual-host settings
 
-1. Build and upload the contents of `dist/` into the website's existing document root, including the hidden `.htaccess` file and `404.html`. Keep the server's private `.env` file in place. The new rewrite rules consolidate HTTP, www and `/index.html` into `https://theconnectagency.in/`, preserving query strings.
+1. Build and upload the contents of `dist/` into the website's existing document root, including the hidden `.htaccess` file and `404.html`. Keep the server's private `.env` file in place. The rewrite rules consolidate HTTP and www into HTTPS on the apex host, redirect `/index.html` to `/`, and redirect old `.html` page URLs to extensionless paths such as `/about-us`. Clean page requests serve the existing HTML files internally. Query strings are preserved.
 2. In OpenLiteSpeed WebAdmin, find the website's virtual host through the listener's host mappings, then open its **Basic → Config File** value. Use that actual config path; CyberPanel installations may name it differently from the example `vhconf.conf`. Preserve the existing PHP application, SSL, user, logging and document-root settings.
 3. Merge [openlitespeed-vhost.conf](openlitespeed-vhost.conf) into that config. Update an existing `rewrite` or `context /` block instead of adding a second copy. Preserve existing header operations when adding the two security-header lines. Replace any existing `errorpage 404` with `/404.html`. If an equivalent asset context already exists, update it rather than creating overlapping matches.
 
@@ -46,20 +46,26 @@ curl -sS -D - -o /dev/null 'http://theconnectagency.in/'
 curl -sS -D - -o /dev/null 'https://www.theconnectagency.in/about-us.html?utm_source=review'
 curl -sS -D - -o /dev/null 'http://www.theconnectagency.in/index.html?utm_source=review'
 curl -sS -D - -o /dev/null 'https://theconnectagency.in/'
+curl -sS -D - -o /dev/null 'https://theconnectagency.in/about-us'
+curl -sS -D - -o /dev/null 'https://theconnectagency.in/work.html?utm_source=review'
+curl -sS -D - -o /dev/null 'https://theconnectagency.in/contact/'
+curl -sS -D - -o /dev/null 'https://theconnectagency.in/services.html'
 curl -sS -D - -o /dev/null 'https://theconnectagency.in/js/libs.min.js?v=review'
 curl -sS -D - -o /dev/null 'https://theconnectagency.in/js/libs.min.js'
 curl -sS -D - -o /dev/null 'https://theconnectagency.in/css/main.css?v=review'
 curl -sS -D - -o /dev/null 'https://theconnectagency.in/img/backgrounds/contact-hero-premium.webp'
 curl -sS -D /tmp/connect-404-headers.txt -o /tmp/connect-404-body.html 'https://theconnectagency.in/nested/review-missing-page'
+curl -sS -D - -o /dev/null 'https://theconnectagency.in/review-missing-page.html'
 ```
 
 Check that:
 
-- The first three requests return 301 directly to the corresponding HTTPS apex URL. The index request ends at `https://theconnectagency.in/?utm_source=review` in one hop.
+- The first three requests return 301 directly to the corresponding clean HTTPS apex URL. The about request ends at `https://theconnectagency.in/about-us?utm_source=review` and the index request ends at `https://theconnectagency.in/?utm_source=review`, each in one hop.
 - The HTTPS homepage returns 200 with `Strict-Transport-Security: max-age=31536000`.
+- `/about-us` returns 200 without redirecting to `.html`. `/work.html?utm_source=review`, `/contact/`, and `/services.html` return 301 to `/work?utm_source=review`, `/contact`, and `/expertise` respectively. Check all navigation uses clean URLs, including after a direct page load or refresh.
 - Both versioned and unversioned JavaScript, and the CSS request, receive a single `Cache-Control` header with `max-age=604800` and a matching `Expires` value. JavaScript must have a JavaScript MIME type.
 - The WebP response has `Content-Type: image/webp` and `max-age=2592000`. Check `image/avif` similarly when an AVIF asset is deployed.
-- `/tmp/connect-404-headers.txt` shows status 404. The body contains the branded “This page left” content. Open that nested URL in a browser and confirm its styles, logos, menu, Home and Work links load from the root paths.
+- `/tmp/connect-404-headers.txt` shows status 404. The body contains the branded “This page left” content. Missing `.html` URLs also retain status 404 without redirecting to `/404`. Open the nested URL in a browser and confirm its styles, logos, menu, Home and Work links load from the root paths.
 
 If redirects work but headers or the custom 404 do not, verify that the edited native config belongs to the listener mapping serving this domain, then inspect the OpenLiteSpeed error log. Uploading `.htaccess` alone will not apply these native settings.
 

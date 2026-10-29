@@ -11,11 +11,12 @@ const cleanCSS     = require('gulp-clean-css');
 const del          = require('del');
 const cache        = require('gulp-cache');
 const { versionAssets } = require('./scripts/version-assets');
+const { cleanUrls } = require('./scripts/clean-urls');
 
 // browserSync rules
 function browsersync() {
   browserSync.init({
-    server: { baseDir: 'app/' },
+    server: { baseDir: 'app/', middleware: [cleanUrls('app')] },
     notify: true,
     online: true,
     ui: false

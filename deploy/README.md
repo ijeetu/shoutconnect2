@@ -6,6 +6,12 @@ The production build compresses the current CSS and JavaScript and gives local s
 
 For the current OpenLiteSpeed host, apply the native settings described in [OPENLITESPEED.md](OPENLITESPEED.md). OpenLiteSpeed does not apply Apache header and error-page directives from `.htaccess`.
 
+## Clean URLs
+
+Public pages use `/`, `/about-us`, `/work`, `/expertise`, `/insights`, `/careers`, `/contact`, `/privacy-policy`, and `/terms-conditions`. Keep the physical `.html` files in the release: `.htaccess` serves them internally for these URLs. Old `.html` URLs permanently redirect to the clean paths, `/index.html` redirects to `/`, and the old `/services` and `/services.html` aliases redirect to `/expertise`. Page URLs with trailing slashes redirect to the same paths without slashes. Query strings are preserved.
+
+Upload the HTML pages, sitemap, and `.htaccess` together. On OpenLiteSpeed, enable rewrite and `.htaccess` autoload and restart the server after uploading, as described in [OPENLITESPEED.md](OPENLITESPEED.md). Without the rewrite rules, clean page URLs return 404. `npm run dev` mirrors the clean routing in BrowserSync for local previews.
+
 ## Google Analytics
 
 Google Analytics is configured with measurement ID `G-P69RQDL9LW` on every public page. To override it during the build:
