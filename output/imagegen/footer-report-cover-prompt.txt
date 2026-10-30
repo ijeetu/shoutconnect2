@@ -1,0 +1,6 @@
+Mode: built-in image_gen, compositing edit
+Edit target: app/img/mockup/ReasonToSelectUs.webp
+Cover artwork: app/img/covers/2026/apl-apollo-tubes.webp
+Website asset: app/img/mockup/footer-apl-apollo-report.webp
+
+undefined
